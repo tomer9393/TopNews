@@ -1,10 +1,11 @@
 const Article = require('../models/article');
 
-const createArticle = async (title, subTitle, categoty, body, published, lastUpdate) => {
+const createArticle = async (title, subTitle, img, categoty, body, published, lastUpdate) => {
     const article = new Article({
         title : title,
         subTitle : subTitle,
         categoty : categoty,
+        img: img,
         body : body,
     });
 
@@ -32,7 +33,7 @@ const getLatestArticles = async (numOfArticles) => {
     return await Article.find().sort({ published: -1 }).limit(numOfArticles);
 };
 
-const updateArticle = async (id, title, subTitle, categoty, body) => {
+const updateArticle = async (id, title, img, subTitle, categoty, body) => {
     const article = await getArticleById(id);
     if (!article)
         return null;
@@ -41,6 +42,8 @@ const updateArticle = async (id, title, subTitle, categoty, body) => {
     article.subTitle = subTitle;
     article.categoty = categoty;
     article.body = body;
+    article.img = img;
+    article.lastUpdate = Date.now;
 
     await article.save();
     return article;

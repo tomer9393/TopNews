@@ -12,6 +12,9 @@ const Article = new Schema({
     subTitle: {
         type: String
     },
+    img:{
+        type: String
+    },
     body: {
         type: String
     },
