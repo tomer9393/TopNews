@@ -1,7 +1,8 @@
 const Comment=require ('../models/comment')
 
-const createComment = async (name,body,published) => {
+const createComment = async (articleId,name,body,published) => {
     const comment = new Comment({
+        articleId: articleId,
         name: name,
         body: body
         
@@ -16,8 +17,8 @@ const getCommentByID= async (id)=> {
     return await Comment.findByID(id);
 }
 
-const getComments= async () => {
-    return await Comment.find({});
+const getAllCommentsByArticleID= async (articleId) => {
+    return await Comment.find({articleId : articleId});
 }
 
 const UpdateComment = async(id,name,body,published)=> {
@@ -26,7 +27,7 @@ const UpdateComment = async(id,name,body,published)=> {
         return null;
     comment.name=name;
     comment.body=body;
-    comment.published=published;
+    comment.published=Date.now;
     await comment.save();
     return comment;
 
