@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "server" : "cd server && npm start", 
-    "client-react" : "cd client\\client-react && npm start",
-    "client-angular" : "cd client\\client-angular && npm start",
+    "server": "cd server && npm start",
+    "client-react": "cd client\\client-react && npm start",
+    "client-angular": "cd client\\client-angular && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client-react\" \"npm run client-angular\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
