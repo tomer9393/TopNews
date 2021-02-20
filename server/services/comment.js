@@ -14,20 +14,20 @@ const createComment = async (articleId,name,body,published) => {
 }
 
 const getCommentByID= async (id)=> {
-    return await Comment.findByID(id);
+    return await Comment.findById(id);
 }
 
 const getAllCommentsByArticleID= async (articleId) => {
     return await Comment.find({articleId : articleId});
 }
 
-const UpdateComment = async(id,name,body,published)=> {
+const UpdateComment = async(id,name,body)=> {
     const comment = await getCommentByID(id);
     if(!comment)
         return null;
     comment.name=name;
     comment.body=body;
-    comment.published=Date.now;
+    comment.published=Date.now();
     await comment.save();
     return comment;
 
@@ -42,3 +42,10 @@ const DeleteComment = async(id)=> {
     return comment;
 
 }
+module.exports = {
+    createComment,
+    getCommentByID,
+    getAllCommentsByArticleID,
+    UpdateComment,
+    DeleteComment
+};

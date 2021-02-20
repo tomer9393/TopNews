@@ -1,6 +1,16 @@
 import SingleCategoryPost from './singleCategoryPost';
-
+import { getArticleByCategory } from '../../api/ArticleAPI'
+import React, { useEffect, useState } from 'react'
 function CategoryPage() {
+    const [articles, setArticles] = useState([]);
+
+    useEffect(async () => {
+        getArticleByCategory('test').then(({data})=>{
+            setArticles(data);
+        })
+        console.log('articles:');
+        console.log(articles);
+    }, []);
     return (
         <>
             {/* Breadcumb Area Start */}
@@ -24,15 +34,15 @@ function CategoryPage() {
             <section className="catagory-welcome-post-area section_padding_100">
                 <div className="container">
                     <div className="row">
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
-                        <SingleCategoryPost/>
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
+                        <SingleCategoryPost />
                     </div>
                     <div className="row">
                         <div className="col-12">
