@@ -10,7 +10,7 @@ router.route('/:articleId')
     .get(commentController.getAllCommentsByArticleID);
 
 
-router.route('/:id')
+router.route('/id/:id')
     .get(commentController.getCommentByID)
     .patch(commentController.UpdateComment)
     .delete(commentController.deleteComment);
