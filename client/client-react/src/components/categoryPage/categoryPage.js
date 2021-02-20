@@ -5,7 +5,7 @@ function CategoryPage() {
     const [articles, setArticles] = useState([]);
 
     useEffect(async () => {
-        getArticleByCategory('test').then(({ data }) => {
+        getArticleByCategory('test').then(({data})=>{
             setArticles(data);
         })
         console.log('articles:');
@@ -21,9 +21,9 @@ function CategoryPage() {
                             <div className="breacumb-content d-flex align-items-center justify-content-between">
                                 {/* Post Tag */}
                                 <div className="gazette-post-tag">
-                                    <a href="#">{articles.length}</a>
+                                    <a href="#">politics</a>
                                 </div>
-                                <p className="editorial-post-date text-dark mb-0">{articles[0].title}</p>
+                                <p className="editorial-post-date text-dark mb-0">March 29, 2016</p>
                             </div>
                         </div>
                     </div>
