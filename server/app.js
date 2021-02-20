@@ -20,9 +20,9 @@ app.use(express.json());
 console.log(process.env.PORT);
 
 
-app.use('/category',articleRoutes);
-app.use('/article',articleRoutes);
-app.use('/comment',articleRoutes);
+app.use('/categories',categoryRoutes);
+app.use('/articles',articleRoutes);
+app.use('/comments',commentRoutes);
 
 
 

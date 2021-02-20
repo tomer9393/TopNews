@@ -11,8 +11,8 @@ router.route('/:category')
     .get(articleController.getArticlesByCategory);
 
 
-router.route('/:id')
-    .get(articleController.getArticle)
+router.route('/id/:id')
+    .get(articleController.getArticleById)
     .patch(articleController.updateArticle)
     .delete(articleController.deleteArticle);
 
