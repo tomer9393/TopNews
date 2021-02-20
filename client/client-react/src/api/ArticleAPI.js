@@ -15,9 +15,3 @@ export const getArticleByCategory = async (category) => {
     } catch (error) { throw new Error(error); }
 }
 
-export const createArticle = async (name) => {
-    try {
-        const category = await axios.post(`${baseUrl}/articles/`,);
-        return category;
-    } catch (error) { throw new Error(error); }
-}
