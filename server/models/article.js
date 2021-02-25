@@ -6,7 +6,7 @@ const Article = new Schema({
         type: String,
         required: true
     },
-    categoty: {
+    category: {
         type: String
     },
     subTitle: {

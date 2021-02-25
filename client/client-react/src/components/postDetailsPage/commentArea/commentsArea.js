@@ -1,25 +1,32 @@
 import SingleComment from "./singleComment";
 import LeaveComment from "./leaveComment";
 import moment from "moment";
+import { useEffect, useState } from "react";
+import { getCommentsByArticleID } from "../../../api/CommentAPI";
 
-function CommentArea(comments) {
+function CommentArea(props) {
+  const id = props.id;
+  const [comments, setComments] = useState(undefined);
+
+  useEffect(() => {
+    getCommentsByArticleID(id).then((res) => setComments(res.data));
+  }, []);
+
   //comment mock - delete!
-  comments = [
-    {
-      name: "Daniel Braunstein",
-      body: "I think that Lee is a very serious egg",
-      published: moment().format('DD/MM/YYYY'),
-    },
-    {
-      name: "Lee Lisker",
-      body: "I agree with #1",
-      published: moment().format('DD/MM/YYYY'),
-    },
-  ];
+  // comments = [
+  //   {
+  //     name: "Daniel Braunstein",
+  //     body: "I think that Lee is a very serious egg",
+  //     published: moment().format('DD/MM/YYYY'),
+  //   },
+  //   {
+  //     name: "Lee Lisker",
+  //     body: "I agree with #1",
+  //     published: moment().format('DD/MM/YYYY'),
+  //   },
+  // ];
 
-  const allComments = comments.map((comment) => {
-    console.log("inside map");
-    console.log(comment);
+  const allComments = comments?.map((comment) => {
     return <SingleComment comment={comment} />;
   });
 
@@ -38,7 +45,7 @@ function CommentArea(comments) {
               </div>
 
               {/* Leave A Comment */}
-              <LeaveComment />
+              <LeaveComment id={id}/>
             </div>
           </div>
         </div>
