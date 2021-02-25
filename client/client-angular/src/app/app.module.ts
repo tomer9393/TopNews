@@ -18,6 +18,7 @@ import {
   AgmCoreModule
 } from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { UserCounterComponent } from './dashboard/user-counter/user-counter.component';
 
 @NgModule({ 
   imports: [
@@ -35,7 +36,7 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
   declarations: [
     AppComponent,
     AdminLayoutComponent,
- 
+    UserCounterComponent, 
   ],
   providers: [],
   bootstrap: [AppComponent]

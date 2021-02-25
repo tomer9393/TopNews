@@ -1,7 +1,7 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header card-header-danger">
-      <h4 class="card-title">Categories Table</h4>
+      <h4 class="card-title">Articles Table</h4>
       <a class="" (click)="onCreate()" href="javascript:void(0)">
         <i class="material-icons">add_box</i>
         <!-- <p class="card-category">ADD NEW CATEGORY</p> -->
@@ -11,12 +11,20 @@
       <div class="table-responsive">
         <table class="table">
           <thead class="text-primary">
-            <th>Name</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>body</th>
+            <th>Published</th>
+            <th>Last Update</th>
             <th>Actions</th>
           </thead>
           <tbody>
-            <tr *ngFor="let category of categories">
-              <td>{{category.name}}</td>
+            <tr *ngFor="let article of articles">
+              <td>{{article.title}}</td>
+              <td>{{article.category}}</td>
+              <td>{{article.body.substring(0,20)}}</td>
+              <td class="text-primary">{{article.published | date: 'shortDate'}}</td>
+              <td class="text-primary">{{article.lastUpdate | date: 'shortDate'}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(article)">
                   <i class="material-icons">edit</i>
