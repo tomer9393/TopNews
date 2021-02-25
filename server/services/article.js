@@ -33,7 +33,7 @@ const getLatestArticles = async (numOfArticles) => {
     return await Article.find().sort({ published: -1 }).limit(numOfArticles);
 };
 
-const updateArticle = async (id, title, img, subTitle, categoty, body) => {
+const updateArticle = async (id, title, subTitle, categoty, body ,img) => {
     const article = await getArticleById(id);
     if (!article)
         return null;
@@ -43,7 +43,7 @@ const updateArticle = async (id, title, img, subTitle, categoty, body) => {
     article.categoty = categoty;
     article.body = body;
     article.img = img;
-    article.lastUpdate = Date.now;
+    article.lastUpdate = Date.now();
 
     await article.save();
     return article;

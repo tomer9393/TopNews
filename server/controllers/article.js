@@ -1,7 +1,7 @@
 const articleService = require('../services/article');
 
 const createArticle = async (req, res) => {
-  const newArticle = await articleService.createArticle(req.body.title, req.body.subTitle,req.body.img, req.body.categoty, req.body.body, req.body.published, req.body.lastUpdate);
+  const newArticle = await articleService.createArticle(req.body.title, req.body.subTitle, req.body.img, req.body.categoty, req.body.body, req.body.published, req.body.lastUpdate);
   res.json(newArticle);
 };
 
@@ -10,7 +10,8 @@ const getArticles = async (req, res) => {
   res.json(articles);
 };
 
-const getArticle = async (req, res) => {
+const getArticleById = async (req, res) => {
+  console.log(`req with articleId: ${req.params.id} `);
   const article = await articleService.getArticleById(req.params.id);
   if (!article) {
     return res.status(404).json({ errors: ['Article not found'] });
@@ -38,13 +39,13 @@ const getArticlesByCategory = async (req, res) => {
 };
 
 const updateArticle = async (req, res) => {
-  if (!req.body.id) {
+  if (!req.params.id) {
     res.status(400).json({
       message: "id is required",
     });
   }
 
-  const article = await articleService.updateArticle(req.params.id, req.body.title, req.body.subTitle, req.body.img, req.body.categoty, req.body.body, req.body.published, req.body.lastUpdate);
+  const article = await articleService.updateArticle(req.params.id, req.body.title, req.body.subTitle, req.body.categoty, req.body.body, req.body.img);
   if (!article) {
     return res.status(404).json({ errors: ['Article not found'] });
   }
@@ -64,7 +65,7 @@ const deleteArticle = async (req, res) => {
 module.exports = {
   createArticle,
   getArticles,
-  getArticle,
+  getArticleById,
   getLatestArticles,
   getArticlesByCategory,
   updateArticle,

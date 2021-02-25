@@ -7,7 +7,7 @@ const createComment = async (req, res) =>{
 };
 
 const getCommentByID = async (req,res) =>{
-    const comment = await commentService.getCommentByID(req.body.id);
+    const comment = await commentService.getCommentByID(req.params.id);
     res.json(comment);
 };
 
@@ -17,13 +17,13 @@ const getAllCommentsByArticleID = async (req,res) => {
 };
 
 const UpdateComment = async (req,res)=> {
-    if (!req.body.id) {
+    if (!req.params.id) {
         res.status(400).json({
           message: "id is required",
         });
       }
     
-      const comment = await commentService.UpdateComment(req.params.id, req.body.name, req.body.body, req.body.publishd);
+      const comment = await commentService.UpdateComment(req.params.id, req.body.name, req.body.body);
       if (!comment) {
         return res.status(404).json({ errors: ['Comment not found'] });
       }
