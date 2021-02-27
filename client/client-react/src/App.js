@@ -1,4 +1,5 @@
 //import './App.css';
+import React from "react";
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import HomePage from './components/homePage/homePage';
@@ -8,7 +9,6 @@ import AboutUsPage from './components/aboutUsPage/aboutUsPage';
 import ContactPage from './components/contactPage/contactPage';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-
 
 
 function App() {
