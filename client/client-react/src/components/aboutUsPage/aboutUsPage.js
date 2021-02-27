@@ -1,6 +1,13 @@
-import SingleTeamMember from './singleTeamMember';
+import LirazTeamMember from './LirazTeamMember';
+import MatanTeamMember from './MatanTeamMember';
+import LeeTeamMember from './LeeTeamMember';
+import MeitalTeamMember from './MeitalTeamMember';
+import TomerTeamMember from './TomerTeamMember';
+import moment from "moment";
 
-function AboutUsPage() {
+function AboutUsPage() 
+{
+
     return (
         <>
             {/* Breadcumb Area Start */}
@@ -10,7 +17,7 @@ function AboutUsPage() {
                         <div className="col-12">
                             <div className="breacumb-content d-flex align-items-center justify-content-between">
                                 <h3 className="font-pt mb-0">About Us</h3>
-                                <p className="editorial-post-date text-dark mb-0">28 November 2017</p>
+                                <p className="editorial-post-date text-dark mb-0">{moment().format('DD/MM/YYYY')}</p>
                             </div>
                         </div>
                     </div>
@@ -22,13 +29,13 @@ function AboutUsPage() {
                     <div className="container">
                         <div className="row">
                             <div className="col-12">
-                                <h3 className="font-pt mb-30">Sort History</h3>
+                                {/* <h3 className="font-pt mb-30">Sort History</h3> */}
                             </div>
                             <div className="col-12 col-md-6">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam congue placerat finibus. Fusce a enim non erat faucibus pellentesque. Ut mattis vel leo sit amet tincidunt. Sed placerat condimentum ante vitae ornare. Nam nibh leo, pharetra vel lacus in, dictum tincidunt magna. Aliquam ut placerat justo. Duis elementum justo in sapien auctor, ut placerat purus sodales. Pellentesque a risus eu elit scelerisque fermentum in sed nisi. Sed maximus vel lectus sit</p>
+                                <p>The world's leading news site. Full coverage of news from Israel and the world that deals with diverse and different areas of interest, including sports, economics, culture, food, science and nature.</p>
                             </div>
                             <div className="col-12 col-md-6">
-                                <p>amet rhoncus. Vestibulum ut mattis mi, ac aliquam turpis. Suspendisse potenti. In semper nec urna sed mattis. Vivamus augue tellus, placerat nec lectus a, sodales sollicitudin arcu. enean a porta sem. In a nunc sapien. Aliquam justo augue, ornare eu mauris varius, scelerisque consequat purus. Ut semper ac neque eu cursus. Cras pellentesque quam vel metus bibendum, ac fringilla tellus tempus.</p>
+                                <p>We make sure you always stay up to date.</p>
                             </div>
                         </div>
                     </div>
@@ -41,11 +48,11 @@ function AboutUsPage() {
                             </div>
                         </div>
                         <div className="row">
-                            <SingleTeamMember />
-                            <SingleTeamMember />
-                            <SingleTeamMember />
-                            <SingleTeamMember />
-                            <SingleTeamMember />
+                            <LirazTeamMember />
+                            <MatanTeamMember />
+                            <LeeTeamMember />
+                            <MeitalTeamMember />
+                            <TomerTeamMember />
                         </div>
                     </div>
                 </div>
