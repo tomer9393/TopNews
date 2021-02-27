@@ -13,7 +13,6 @@
           <thead class="text-primary">
             <th>Name</th>
             <th>Email</th>
-            <th>Subject</th>
             <th>Body</th>
             <th>Actions</th>
           </thead>
@@ -21,7 +20,6 @@
             <tr *ngFor="let contact of contacts">
               <td>{{contact.name}}</td>
               <td>{{contact.email}}</td>
-              <td>{{contact.subject}}</td>
               <td class="text-primary">{{contact.body.substring(0,30)}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(article)">

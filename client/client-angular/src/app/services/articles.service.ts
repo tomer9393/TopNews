@@ -16,8 +16,20 @@ export class ArticlesService {
     return this.http.get<Article[]>(this.articlesUrl);
   }
 
-  addArticle(title: string): Observable<Article> {
-    return this.http.post<Article>(this.articlesUrl, { title: title });
+  addArticle(title: String, subTitle: String, img: String, category: String, body: String): Observable<Article> {
+    console.log({ 
+      title: title, 
+      subTitle: subTitle, 
+      category: category, 
+      img: img, 
+      body: body });
+    return this.http.post<Article>(this.articlesUrl, { 
+      title: title, 
+      subTitle: subTitle, 
+      category: category, 
+      img: img, 
+      body: body });
+
   }
 
   getArticle(id: String): Observable<Article> {

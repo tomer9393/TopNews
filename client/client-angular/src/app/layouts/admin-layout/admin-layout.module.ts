@@ -3,10 +3,8 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminLayoutRoutes } from './admin-layout.routing';
-import { DashboardComponent } from '../../dashboard/dashboard.component';
+//import { DashboardComponent } from '../../dashboard/dashboard.component';
 import { UserProfileComponent } from '../../user-profile/user-profile.component';
-// import { TableListComponent } from '../../table-list/table-list.component';
-// import { CategoriesListComponent } from '../../table-list/categories-list/categories-list.component';
 import { IconsComponent } from '../../icons/icons.component';
 import {MatButtonModule} from '@angular/material/button';
 import {MatInputModule} from '@angular/material/input';
@@ -15,6 +13,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { TableListModule } from '../../table-list/table-list.module';
+import { DashboardModule } from '../../dashboard/dashboard.module';
 
 
 @NgModule({
@@ -30,9 +29,9 @@ import { TableListModule } from '../../table-list/table-list.module';
     MatSelectModule,
     MatTooltipModule,
     TableListModule,
+    DashboardModule,
   ],
   declarations: [
-    DashboardComponent,
     UserProfileComponent,
     IconsComponent,
   ]

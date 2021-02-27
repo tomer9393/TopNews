@@ -27,7 +27,7 @@ export class ContactsService {
 
   updateContact(contact: Contact): Observable<Contact> {
     const url = `${this.contactsUrl}/${contact._id}`;
-    return this.http.patch<Contact>(url, { subject: contact.subject });
+    return this.http.patch<Contact>(url, { subject: contact.body });
   }
 
   deleteContact(id: String): Observable<Contact> {

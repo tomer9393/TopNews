@@ -24,11 +24,6 @@ export class ArticlesListComponent implements OnInit {
       this.articles = data;
     });
   }
-  
-  onCreate(){
-    //this.currentArticleService.changeCurrentArticle(article);
-    console.log("t");
-  }
 
   onEdit(article : Article){
     //this.currentArticleService.changeCurrentArticle(article);

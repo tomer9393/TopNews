@@ -14,11 +14,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { TableListComponent } from './table-list/table-list.component';
 import { IconsComponent } from './icons/icons.component';
-import {
-  AgmCoreModule
-} from '@agm/core';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
-import { UserCounterComponent } from './dashboard/user-counter/user-counter.component';
+
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+const config: SocketIoConfig = { url: 'http://localhost:8081', options: {} };
+
 
 @NgModule({ 
   imports: [
@@ -29,14 +29,12 @@ import { UserCounterComponent } from './dashboard/user-counter/user-counter.comp
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
-    AgmCoreModule.forRoot({
-      apiKey: 'YOUR_GOOGLE_MAPS_API_KEY'
-    })
+    SocketIoModule.forRoot(config),
+
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    UserCounterComponent, 
   ],
   providers: [],
   bootstrap: [AppComponent]

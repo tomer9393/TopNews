@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-header card-header-danger">
       <h4 class="card-title">Articles Table</h4>
-      <a class="" (click)="onCreate()" href="javascript:void(0)">
+      <a class="" routerLink="/CreateArticle" (click)="onCreate()" href="javascript:void(0)">
         <i class="material-icons">add_box</i>
         <!-- <p class="card-category">ADD NEW CATEGORY</p> -->
       </a>
@@ -23,8 +23,8 @@
               <td>{{article.title}}</td>
               <td>{{article.category}}</td>
               <td>{{article.body.substring(0,20)}}</td>
-              <td class="text-primary">{{article.published | date: 'shortDate'}}</td>
-              <td class="text-primary">{{article.lastUpdate | date: 'shortDate'}}</td>
+              <td class="text-primary">{{article.published | date: 'short'}}</td>
+              <td class="text-primary">{{article.lastUpdate | date: 'short'}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(article)">
                   <i class="material-icons">edit</i>
