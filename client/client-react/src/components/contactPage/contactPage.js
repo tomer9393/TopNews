@@ -1,4 +1,5 @@
 import ContactForm from './contactForm';
+import moment from "moment";
 
 function AboutUsPage() {
     return (
@@ -11,7 +12,7 @@ function AboutUsPage() {
                         <div className="col-12">
                             <div className="breacumb-content d-flex align-items-center justify-content-between">
                                 <h3 className="font-pt mb-0">Contact</h3>
-                                <p className="editorial-post-date text-dark mb-0">28 November 2017</p>
+                                <p className="editorial-post-date text-dark mb-0">{moment().format('DD/MM/YYYY')}</p>
                             </div>
                         </div>
                     </div>
@@ -36,14 +37,14 @@ function AboutUsPage() {
                                 <h4 className="font-bold">address</h4>
                             </div>
                             <div className="contact-address-info mb-50">
-                                <p>Address: 1635 Franklin Street <br /> City / State: Montgomery, AL 36104 <br /> Phone: 126-632-2345</p>
+                                <p>Address: Eli Vizel 2 Street <br /> City / State: Rishon Le Tzion <br /> Phone: 03-9634140</p>
                             </div>
-                            <div className="gazette-heading">
+                            {/* <div className="gazette-heading">
                                 <h4 className="font-bold">Phone</h4>
                             </div>
                             <div className="contact-address-info">
                                 <p>Phone #1: 126-632-2345 <br />Phone #2: 126-632-2345 <br />Phone #3: 126-632-2345 <br />Phone #4: 126-632-2345</p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </div>

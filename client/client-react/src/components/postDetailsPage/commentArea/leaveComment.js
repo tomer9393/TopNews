@@ -1,6 +1,10 @@
-import moment from "moment";
+import { useState } from "react";
+import { createComment } from "../../../api/CommentAPI";
 
-function LeaveComment() {
+function LeaveComment(props) {
+  const [contactName, setContactName] = useState(undefined);
+  const [message, setMessage] = useState(undefined);
+
   return (
     <>
       <div className="leave-comment-area clearfix">
@@ -9,7 +13,7 @@ function LeaveComment() {
             <h4 className="font-bold">leave a comment</h4>
           </div>
           {/* Comment Form */}
-          <form action="#" method="post">
+          <form>
             <div className="form-group">
               <input
                 type="text"
@@ -17,6 +21,7 @@ function LeaveComment() {
                 id="contactName"
                 name="contactName"
                 placeholder="Enter Your Full Name"
+                onChange={(event) => setContactName(event.target.value)}
               />
             </div>
             <div className="form-group">
@@ -28,18 +33,20 @@ function LeaveComment() {
                 rows={10}
                 placeholder="Message"
                 defaultValue={""}
+                onChange={(event) => setMessage(event.target.value)}
               />
             </div>
-            <button type="submit" className="btn leave-comment-btn">
-              SUBMIT <i className="fa fa-angle-right ml-2" />
-            </button>
-            <input
-              type="hidden"
-              id="postDate"
-              name="postDate"
-              value={moment().format('DD/MM/YYYY')}
-            ></input>
           </form>
+          <button
+            type="submit"
+            className="btn leave-comment-btn"
+            onClick={() => {
+              createComment(props.id, contactName, message);
+              window.location.reload();
+            }}
+          >
+            SUBMIT <i className="fa fa-angle-right ml-2" />
+          </button>
         </div>
       </div>
     </>
