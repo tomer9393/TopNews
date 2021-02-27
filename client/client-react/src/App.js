@@ -19,8 +19,8 @@ function App() {
         
         <Switch>
           <Route path="/" exact component={HomePage} />
-          <Route path="/Category" component={() => <CategoryPage />} />
-          <Route path="/PostDetails" component={() => <PostDetailsPage />} />
+          <Route path="/Category/:name" component={() => <CategoryPage />} />
+          <Route path="/PostDetails/:id" component={() => <PostDetailsPage />} />
           <Route path="/AboutUs" component={() => <AboutUsPage />} />
           <Route path="/Contact" component={() => <ContactPage />} />
         </Switch>

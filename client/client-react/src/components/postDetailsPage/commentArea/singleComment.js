@@ -1,5 +1,7 @@
-function SingleComment(comment) {
-  comment = comment.comment;
+function SingleComment(props) {
+  const comment = props.comment;
+  const published = new Date(comment.published);
+  console.log(published);
   return (
     <>
       {/* Single Comment Area */}
@@ -12,7 +14,9 @@ function SingleComment(comment) {
           {/* Comment Content */}
           <div className="comment-content">
             <h5>{comment.name}</h5>
-            <span className="comment-date font-pt">{comment.published}</span>
+            <span className="comment-date font-pt">
+              {published.toLocaleString("he-IL")}
+            </span>
             <p>{comment.body}</p>
           </div>
         </div>
