@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Article } from '../../models/article';
 import { ArticlesService } from '../../services/articles.service';
@@ -12,17 +12,34 @@ import { ArticlesService } from '../../services/articles.service';
 export class ArticlesListComponent implements OnInit {
 
   articles : Article[] = [];  
+  @Input() listFor: String = '';
 
   constructor(private articlesService : ArticlesService, private router: Router){}
 
   ngOnInit() {
-    this.load();
+    if(this.listFor === '')
+      this.loadAll();
+    else if (this.listFor !== '')
+    {
+      this.loadForCategory(this.listFor);
+    }
   }
 
-  load(){
+  loadAll(){
     this.articlesService.getArticles().subscribe(data => {
       this.articles = data;
     });
+  }
+
+  loadForCategory(category: String){
+    this.articlesService.getArticlesByCategory(category).subscribe(data => {
+      this.articles = data;
+    });
+  }
+
+  onCreate(){
+    //this.currentArticleService.changeCurrentArticle(article);
+    this.router.navigateByUrl('/CreateArticle', { state: {category: this.listFor}});
   }
 
   onEdit(article : Article){
@@ -41,6 +58,6 @@ export class ArticlesListComponent implements OnInit {
   }
 
   handlePanel(action : string){
-    this.load();
+    this.loadAll();
   }
 }

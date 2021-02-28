@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Category } from '../../models/category';
 import { CategoriesService } from '../../services/categories.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-categories-list',
@@ -10,9 +11,9 @@ import { CategoriesService } from '../../services/categories.service';
 export class CategoriesListComponent implements OnInit {
 
   categories : Category[] = [];  
+  @Input() listFor: String = '';
 
-  constructor(private categoriesService : CategoriesService
-              ){}
+  constructor(private categoriesService : CategoriesService, private router: Router) {}
 
   ngOnInit() {
     this.load();
@@ -26,22 +27,22 @@ export class CategoriesListComponent implements OnInit {
 
   onCreate(){
     //this.currentArticleService.changeCurrentArticle(article);
-    console.log("t");
-  }
-
-  onEdit(category : Category){
-    //this.currentArticleService.changeCurrentArticle(article);
-    console.log("A");
-  }
-
-  onDelete(category : Category){
-    //this.currentArticleService.changeCurrentArticle(article);
-    console.log("b");
+    this.router.navigateByUrl('/CreateCategory', { state: {article: this.listFor}});
   }
   
+  onEdit(category : Category){
+    //this.currentArticleService.changeCurrentArticle(article);
+    this.router.navigateByUrl('/EditCategory', { state: category });
+  }
+  onDelete(category : Category){
+    //this.currentArticleService.changeCurrentArticle(article);
+    this.categoriesService.deleteCategory(category._id).subscribe(data => {
+            this.categories.splice(this.categories.indexOf(category),1);
+    });
+  }
   onDetails(category : Category){
     //this.currentArticleService.changeCurrentArticle(article);
-    console.log("c");
+    this.router.navigateByUrl('/DetailsCategory', { state: category });
   }
 
   handlePanel(action : string){

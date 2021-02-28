@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Comment } from '../../../models/comment';
 
-import { CommentsService } from '../../../services/Comments.service';
+import { CommentsService } from '../../../services/comments.service';
 import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 
 @Component({

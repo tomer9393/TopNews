@@ -8,6 +8,10 @@ import { CreateCommentComponent } from './comments-list/create-comment/create-co
 import { EditCommentComponent } from './comments-list/edit-comment/edit-comment.component';
 import { DetailsCommentComponent } from './comments-list/details-comment/details-comment.component';
 
+import { CreateCategoryComponent } from './categories-list/create-category/create-category.component';
+import { EditCategoryComponent } from './categories-list/edit-category/edit-category.component';
+import { DetailsCategoryComponent } from './categories-list/details-category/details-category.component';
+
 export const TableListRoutes: Routes = [
     // {
     //   path: '',
@@ -57,6 +61,9 @@ export const TableListRoutes: Routes = [
      { path: 'CreateComment',      component: CreateCommentComponent },
      { path: 'EditComment',      component: EditCommentComponent },
      { path: 'DetailsComment',      component: DetailsCommentComponent },
+     { path: 'CreateCategory',      component: CreateCategoryComponent },
+     { path: 'EditCategory',      component: EditCategoryComponent },
+     { path: 'DetailsCategory',      component: DetailsCategoryComponent },
 
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },

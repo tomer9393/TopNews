@@ -19,10 +19,15 @@ import { TableListRoutes } from './table-list.routing';
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
 import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
 import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
+
 import { CommentsListComponent } from './comments-list/comments-list.component';
 import { CreateCommentComponent } from './comments-list/create-comment/create-comment.component';
 import { EditCommentComponent } from './comments-list/edit-comment/edit-comment.component';
 import { DetailsCommentComponent } from './comments-list/details-comment/details-comment.component';
+
+import { EditCategoryComponent } from './categories-list/edit-category/edit-category.component';
+import { CreateCategoryComponent } from './categories-list/create-category/create-category.component';
+import { DetailsCategoryComponent } from './categories-list/details-category/details-category.component';
 
 
 
@@ -42,6 +47,9 @@ import { DetailsCommentComponent } from './comments-list/details-comment/details
     CreateCommentComponent,
     EditCommentComponent,
     DetailsCommentComponent,
+    EditCategoryComponent,
+    CreateCategoryComponent,
+    DetailsCategoryComponent,
     ],
   imports: [
     CommonModule,
