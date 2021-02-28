@@ -38,12 +38,17 @@ export class ArticlesService {
   }
 
   updateArticle(article: Article): Observable<Article> {
-    const url = `${this.articlesUrl}/${article._id}`;
-    return this.http.patch<Article>(url, { title: article.title });
+    const url = `${this.articlesUrl}/id/${article._id}`;
+    return this.http.patch<Article>(url, { 
+      title: article.title, 
+      subTitle: article.subTitle, 
+      category: article.category, 
+      img: article.img, 
+      body: article.body });
   }
 
   deleteArticle(id: String): Observable<Article> {
-    const url = `${this.articlesUrl}/${id}`;
+    const url = `${this.articlesUrl}/id/${id}`;
     return this.http.delete<Article>(url);
   }
 }

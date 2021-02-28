@@ -5,6 +5,9 @@ import { UserProfileComponent } from '../../user-profile/user-profile.component'
 import { TableListComponent } from '../../table-list/table-list.component';
 import { IconsComponent } from '../../icons/icons.component';
 
+import { CreateArticleComponent } from '../../table-list/articles-list/create-article/create-article.component';
+
+
 export const AdminLayoutRoutes: Routes = [
     // {
     //   path: '',
@@ -50,6 +53,10 @@ export const AdminLayoutRoutes: Routes = [
     // }
     { path: 'dashboard',      component: DashboardComponent },
     { path: 'user-profile',   component: UserProfileComponent },
-    { path: 'table-list',     component: TableListComponent },
+    { path: 'table-list',     component: TableListComponent ,
+    children: [
+        { path: 'CreateArticle',      component: CreateArticleComponent },
+
+    ]},
     { path: 'icons',          component: IconsComponent },
 ];

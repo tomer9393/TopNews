@@ -1,6 +1,8 @@
 import { Routes } from '@angular/router';
 
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
+import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
+import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
 
 
 export const TableListRoutes: Routes = [
@@ -47,6 +49,9 @@ export const TableListRoutes: Routes = [
     //     }]
     // }
      { path: 'CreateArticle',      component: CreateArticleComponent },
+     { path: 'EditArticle',      component: EditArticleComponent },
+     { path: 'DetailsArticle',      component: DetailsArticleComponent },
+
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'icons',          component: IconsComponent },

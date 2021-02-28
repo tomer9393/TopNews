@@ -20,19 +20,31 @@
           </thead>
           <tbody>
             <tr *ngFor="let article of articles">
-              <td>{{article.title}}</td>
-              <td>{{article.category}}</td>
-              <td>{{article.body.substring(0,20)}}</td>
-              <td class="text-primary">{{article.published | date: 'short'}}</td>
-              <td class="text-primary">{{article.lastUpdate | date: 'short'}}</td>
+              <td>{{ article.title }}</td>
+              <td>{{ article.category }}</td>
+              <td>{{ article.body.substring(0, 20) }}</td>
+              <td class="text-primary">
+                {{ article.published | date: "short" }}
+              </td>
+              <td class="text-primary">
+                {{ article.lastUpdate | date: "short" }}
+              </td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(article)">
                   <i class="material-icons">edit</i>
                 </a>
-                <a class="" href="javascript:void(0)" (click)="onDelete(article)">
+                <a
+                  class=""
+                  href="javascript:void(0)"
+                  (click)="onDelete(article)"
+                >
                   <i class="material-icons">delete</i>
                 </a>
-                <a class="" href="javascript:void(0)" (click)="onDetails(article)">
+                <a
+                  class=""
+                  href="javascript:void(0)"
+                  (click)="onDetails(article)"
+                >
                   <i class="material-icons">list</i>
                 </a>
               </td>

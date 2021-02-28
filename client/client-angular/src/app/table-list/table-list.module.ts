@@ -17,6 +17,9 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { TableListRoutes } from './table-list.routing';
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
+import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
+import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
+import { CommentsListComponent } from './comments-list/comments-list.component';
 
 
 
@@ -30,6 +33,9 @@ import { CreateArticleComponent } from './articles-list/create-article/create-ar
     ContactsListComponent,
     ArticlesListComponent,
     CreateArticleComponent,
+    EditArticleComponent,
+    DetailsArticleComponent,
+    CommentsListComponent,
     ],
   imports: [
     CommonModule,

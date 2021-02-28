@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Article } from '../../models/article';
 import { ArticlesService } from '../../services/articles.service';
 //import { CurrentArticleService } from 'src/app/services/current-article.service';
@@ -12,8 +13,7 @@ export class ArticlesListComponent implements OnInit {
 
   articles : Article[] = [];  
 
-  constructor(private articlesService : ArticlesService
-              ){}
+  constructor(private articlesService : ArticlesService, private router: Router){}
 
   ngOnInit() {
     this.load();
@@ -27,15 +27,17 @@ export class ArticlesListComponent implements OnInit {
 
   onEdit(article : Article){
     //this.currentArticleService.changeCurrentArticle(article);
-    console.log("A");
+    this.router.navigateByUrl('/EditArticle', { state: article });
   }
   onDelete(article : Article){
     //this.currentArticleService.changeCurrentArticle(article);
-    console.log("b");
+    this.articlesService.deleteArticle(article._id).subscribe(data => {
+            this.articles.splice(this.articles.indexOf(article),1);
+    });
   }
   onDetails(article : Article){
     //this.currentArticleService.changeCurrentArticle(article);
-    console.log("c");
+    this.router.navigateByUrl('/DetailsArticle', { state: article });
   }
 
   handlePanel(action : string){
