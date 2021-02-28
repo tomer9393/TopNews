@@ -4,6 +4,9 @@ import { CreateArticleComponent } from './articles-list/create-article/create-ar
 import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
 import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
 
+import { CreateCommentComponent } from './comments-list/create-comment/create-comment.component';
+import { EditCommentComponent } from './comments-list/edit-comment/edit-comment.component';
+import { DetailsCommentComponent } from './comments-list/details-comment/details-comment.component';
 
 export const TableListRoutes: Routes = [
     // {
@@ -51,6 +54,9 @@ export const TableListRoutes: Routes = [
      { path: 'CreateArticle',      component: CreateArticleComponent },
      { path: 'EditArticle',      component: EditArticleComponent },
      { path: 'DetailsArticle',      component: DetailsArticleComponent },
+     { path: 'CreateComment',      component: CreateCommentComponent },
+     { path: 'EditComment',      component: EditCommentComponent },
+     { path: 'DetailsComment',      component: DetailsCommentComponent },
 
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },

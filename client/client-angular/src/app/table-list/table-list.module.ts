@@ -20,6 +20,9 @@ import { CreateArticleComponent } from './articles-list/create-article/create-ar
 import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
 import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
 import { CommentsListComponent } from './comments-list/comments-list.component';
+import { CreateCommentComponent } from './comments-list/create-comment/create-comment.component';
+import { EditCommentComponent } from './comments-list/edit-comment/edit-comment.component';
+import { DetailsCommentComponent } from './comments-list/details-comment/details-comment.component';
 
 
 
@@ -36,6 +39,9 @@ import { CommentsListComponent } from './comments-list/comments-list.component';
     EditArticleComponent,
     DetailsArticleComponent,
     CommentsListComponent,
+    CreateCommentComponent,
+    EditCommentComponent,
+    DetailsCommentComponent,
     ],
   imports: [
     CommonModule,

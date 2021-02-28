@@ -11,13 +11,14 @@ import { Article } from '../../../models/article';
 export class DetailsArticleComponent implements OnInit {
 
   article: Article = null;
-
+  listFor: String;
   constructor(private articlesService : ArticlesService, private router:Router, private activatedRoute:ActivatedRoute) {
     //this.router.getCurrentNavigation().extras.state;
   }
 
   ngOnInit(): void {
     this.article=history.state;
+    this.listFor = this.article._id;
   }
 
   onEdit(){

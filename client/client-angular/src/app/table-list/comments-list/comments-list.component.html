@@ -1,8 +1,8 @@
 <div class="col-md-12">
   <div class="card">
     <div class="card-header card-header-danger">
-      <h4 class="card-title">Articles Table</h4>
-      <a class="" routerLink="/CreateArticle" href="javascript:void(0)">
+      <h4 class="card-title">Comments Table</h4>
+      <a class="" (click)="onCreate(listFor)" href="javascript:void(0)">
         <i class="material-icons">add_box</i>
         <!-- <p class="card-category">ADD NEW CATEGORY</p> -->
       </a>
@@ -11,39 +11,35 @@
       <div class="table-responsive">
         <table class="table">
           <thead class="text-primary">
-            <th>Title</th>
-            <th>Category</th>
+            <th>Name</th>
+            <th>Article ID</th>
             <th>body</th>
             <th>Published</th>
-            <th>Last Update</th>
             <th>Actions</th>
           </thead>
           <tbody>
-            <tr *ngFor="let article of articles">
-              <td>{{ article.title }}</td>
-              <td>{{ article.category }}</td>
-              <td>{{ article.body.substring(0, 20) }}</td>
+            <tr *ngFor="let comment of comments">
+              <td>{{ comment.name }}</td>
+              <td>{{ comment.articleId }}</td>
+              <td>{{ comment.body.substring(0, 20) }}</td>
               <td class="text-primary">
-                {{ article.published | date: "short" }}
-              </td>
-              <td class="text-primary">
-                {{ article.lastUpdate | date: "short" }}
+                {{ comment.published | date: "short" }}
               </td>
               <td>
-                <a class="" href="javascript:void(0)" (click)="onEdit(article)">
+                <a class="" href="javascript:void(0)" (click)="onEdit(comment)">
                   <i class="material-icons">edit</i>
                 </a>
                 <a
                   class=""
                   href="javascript:void(0)"
-                  (click)="onDelete(article)"
+                  (click)="onDelete(comment)"
                 >
                   <i class="material-icons">delete</i>
                 </a>
                 <a
                   class=""
                   href="javascript:void(0)"
-                  (click)="onDetails(article)"
+                  (click)="onDetails(comment)"
                 >
                   <i class="material-icons">list</i>
                 </a>
