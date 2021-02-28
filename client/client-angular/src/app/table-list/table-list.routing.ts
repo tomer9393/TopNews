@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
+import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
 
 
 export const TableListRoutes: Routes = [
@@ -47,6 +48,7 @@ export const TableListRoutes: Routes = [
     //     }]
     // }
      { path: 'CreateArticle',      component: CreateArticleComponent },
+     { path: 'CreateScrape',      component: CreateScrapeComponent },
     // { path: 'user-profile',   component: UserProfileComponent },
     // { path: 'table-list',     component: TableListComponent },
     // { path: 'icons',          component: IconsComponent },

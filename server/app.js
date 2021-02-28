@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const categoryRoutes = require('./routes/category');
 const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
+const scrapeRoutes = require('./routes/scrape');
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -23,6 +24,7 @@ console.log(process.env.PORT);
 app.use('/categories',categoryRoutes);
 app.use('/articles',articleRoutes);
 app.use('/comments',commentRoutes);
+app.use('/scrapes',scrapeRoutes); 
 
 
 

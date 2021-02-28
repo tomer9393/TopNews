@@ -6,6 +6,7 @@ import { CategoriesListComponent } from './categories-list/categories-list.compo
 import { UsersListComponent } from './users-list/users-list.component';
 import { ContactsListComponent } from './contacts-list/contacts-list.component';
 import { ArticlesListComponent } from './articles-list/articles-list.component';
+import { ScrapesListComponent } from './scrapes-list/scrapes-list.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatButtonModule} from '@angular/material/button';
@@ -17,6 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { TableListRoutes } from './table-list.routing';
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
+import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
 
 
 
@@ -29,7 +31,9 @@ import { CreateArticleComponent } from './articles-list/create-article/create-ar
     UsersListComponent,
     ContactsListComponent,
     ArticlesListComponent,
+    ScrapesListComponent,
     CreateArticleComponent,
+    CreateScrapeComponent,
     ],
   imports: [
     CommonModule,

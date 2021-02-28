@@ -1,0 +1,49 @@
+<div class="col-md-12">
+  <div class="card">
+    <div class="card-header card-header-danger">
+      <h4 class="card-title">Scrapes Table</h4>
+      <a class="" (click)="onScrape()" href="javascript:void(0)">
+        <i class="material-icons">cloud_download</i>
+      </a>
+      <a class="" (click)="onScrape()" href="javascript:void(0)">
+        <i class="material-icons">delete</i>
+      </a>
+    </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table class="table">
+          <thead class="text-primary">
+            <th>Title</th>
+            <th>Link</th>
+            <th>Rating</th>
+            <th>Genre</th>
+            <th>Duration</th>
+            <th>Image URL</th>
+            <th>Actions</th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let scrape of scrapes">
+              <td>{{scrape.title}}</td>
+              <td>{{scrape.link}}</td>
+              <td>{{scrape.rating}}</td>
+              <td>{{scrape.genre}}</td>
+              <td>{{scrape.duration}}</td>
+              <td>{{scrape.img}}</td>
+              <td>
+                <a class="" href="javascript:void(0)" (click)="onEdit(scrape)">
+                  <i class="material-icons">edit</i>
+                </a>
+                <a class="" href="javascript:void(0)" (click)="onDelete(scrape)">
+                  <i class="material-icons">delete</i>
+                </a>
+                <a class="" href="javascript:void(0)" (click)="onDetails(scrape)">
+                  <i class="material-icons">list</i>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,11 +9,12 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 
 import { AppComponent } from './app.component';
+//import { ScrapesListComponent } from './table-list/scrapes-list/scrapes-list.component';
 
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { UserProfileComponent } from './user-profile/user-profile.component';
-import { TableListComponent } from './table-list/table-list.component';
-import { IconsComponent } from './icons/icons.component';
+//import { DashboardComponent } from './dashboard/dashboard.component';
+//import { UserProfileComponent } from './user-profile/user-profile.component';
+//import { TableListComponent } from './table-list/table-list.component';
+//import { IconsComponent } from './icons/icons.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
@@ -30,6 +31,7 @@ const config: SocketIoConfig = { url: 'http://localhost:8081', options: {} };
     RouterModule,
     AppRoutingModule,
     SocketIoModule.forRoot(config),
+    //ScrapesListComponent,
 
   ],
   declarations: [
