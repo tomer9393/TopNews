@@ -11,7 +11,7 @@ export class UsersCounterComponent implements OnInit {
   counter : Number = 0;
 
   constructor(private service : RealTimeService){
-    //service.currentCounter.subscribe(counter => this.counter = counter);
+    service.currentCounter.subscribe(counter => this.counter = counter);
   }
   ngOnInit(): void {
   } 
