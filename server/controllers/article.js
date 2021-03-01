@@ -62,6 +62,11 @@ const deleteArticle = async (req, res) => {
   res.send();
 };
 
+const getNumOfArticles = async (req,res)=>{
+  const count = await articleService.getNumOfArticles();
+  res.json(count);
+};
+
 module.exports = {
   createArticle,
   getArticles,
@@ -69,5 +74,6 @@ module.exports = {
   getLatestArticles,
   getArticlesByCategory,
   updateArticle,
-  deleteArticle
+  deleteArticle,
+  getNumOfArticles
 };
