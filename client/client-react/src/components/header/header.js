@@ -32,20 +32,13 @@ function Header() {
                                 <div id="stockNewsTicker" className="ticker">
                                     <ul>
                                         <li>
-                                            <SingleStockReport />
-                                            <SingleStockReport />
-                                            <SingleStockReport />
-                                            dodlvd
+                                            <SingleStockReport currSymbol={"USD"}/>
                                         </li>
                                         <li>
-                                            <SingleStockReport />
-                                            <SingleStockReport />
-                                            <SingleStockReport />
+                                            <SingleStockReport currSymbol={"EUR"}/>
                                         </li>
                                         <li>
-                                            <SingleStockReport />
-                                            <SingleStockReport />
-                                            <SingleStockReport />
+                                            <SingleStockReport currSymbol={"GBP"}/>
                                         </li>
                                     </ul>
                                 </div>
