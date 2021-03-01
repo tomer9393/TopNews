@@ -9,6 +9,9 @@ const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
 const contactRoutes = require('./routes/contact');
 const scrapeRoutes = require('./routes/scrape');
+const articleService = require('./services/article');
+const categoryService = require('./services/category');
+
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -50,13 +53,39 @@ var countActiveUsers = 0;
 io.on('connection', (socket) => {        
     if (socket.handshake.headers.origin === "http://localhost:3000") {
         countActiveUsers++;        
-        socket.broadcast.emit('countActiveUsers', countActiveUsers);     
-        console.log(countActiveUsers);          
+        socket.broadcast.emit('countActiveUsers', countActiveUsers);             
 
         socket.on('disconnect', () => {
             countActiveUsers--;                   
-            socket.broadcast.emit('countActiveUsers', countActiveUsers); 
-            console.log(countActiveUsers);           
+            socket.broadcast.emit('countActiveUsers', countActiveUsers);           
+        });
+    }   
+}); 
+
+var countCategories;
+var countArticles;
+
+io.on('createCategory', (socket) => {        
+    if (socket.handshake.headers.origin === "http://localhost:4200") {
+        countCategories = categoryService.getNumOfCategories();        
+        socket.emit('countCategories', countCategories);             
+
+        socket.on('deleteCategory', () => {
+            countCategories = categoryService.getNumOfCategories();                    
+            socket.emit('countCategories', countCategories);         
+        });
+    }   
+}); 
+
+
+io.on('createArticle', (socket) => {        
+    if (socket.handshake.headers.origin === "http://localhost:4200") {
+        countArticles = articleService.getNumOfArticles();        
+        socket.emit('countArticles', countArticles);           
+
+        socket.on('deleteArticle', () => {
+            countArticles = articleService.getNumOfArticles();                    
+            socket.emit('countArticles', countArticles);          
         });
     }   
 }); 

@@ -6,9 +6,14 @@ router.route('/')
     .get(articleController.getArticles)
     .post(articleController.createArticle);
 
+router.route('/latestArticles/:numOfArticles')
+    .get(articleController.getLatestArticles);
 
 router.route('/:category')
     .get(articleController.getArticlesByCategory);
+
+router.route('/articles/count')
+    .get(articleController.getNumOfArticles);
 
 
 router.route('/id/:id')

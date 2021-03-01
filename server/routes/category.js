@@ -7,6 +7,8 @@ router.route('/')
     .get(categoryController.getAllCategories)
     .post(categoryController.createCategory);
 
+router.route('/count')
+    .get(categoryController.getNumOfCategories);
 
 router.route('/:name')
     .get(categoryController.getCategoryByName)

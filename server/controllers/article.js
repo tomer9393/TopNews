@@ -21,8 +21,8 @@ const getArticleById = async (req, res) => {
 };
 
 const getLatestArticles = async (req, res) => {
-  const articles = await articleService.getLatestArticles();
-  if (!article) {
+  const articles = await articleService.getLatestArticles(req.params.numOfArticles);
+  if (!articles) {
     return res.status(404).json({ errors: ['No Articles To Display'] });
   }
 
@@ -62,6 +62,11 @@ const deleteArticle = async (req, res) => {
   res.send();
 };
 
+const getNumOfArticles = async (req,res)=>{
+  const count = await articleService.getNumOfArticles();
+  res.json(count);
+};
+
 module.exports = {
   createArticle,
   getArticles,
@@ -69,5 +74,6 @@ module.exports = {
   getLatestArticles,
   getArticlesByCategory,
   updateArticle,
-  deleteArticle
+  deleteArticle,
+  getNumOfArticles
 };

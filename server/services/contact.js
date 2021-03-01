@@ -33,7 +33,7 @@ const UpdateContact = async(id,fullName,email,message)=> {
 }
 
 const DeleteContact = async(id)=> {
-    const contact = await getContactBy(id);
+    const contact = await getContactByID(id);
     if(!contact)
         return null;
    
