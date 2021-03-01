@@ -19,9 +19,9 @@ export class ContactsListComponent implements OnInit {
   }
 
   load(){
-    this.contactsService.getContacts().subscribe(data => {
-      this.contacts = data;
-    });
+    // this.contactsService.getContacts().subscribe(data => {
+    //   this.contacts = data;
+    // });
   }
 
   onCreate(){

@@ -19,6 +19,17 @@ import {MatSelectModule} from '@angular/material/select';
 import { TableListRoutes } from './table-list.routing';
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
 import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
+import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
+import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
+
+import { CommentsListComponent } from './comments-list/comments-list.component';
+import { CreateCommentComponent } from './comments-list/create-comment/create-comment.component';
+import { EditCommentComponent } from './comments-list/edit-comment/edit-comment.component';
+import { DetailsCommentComponent } from './comments-list/details-comment/details-comment.component';
+
+import { EditCategoryComponent } from './categories-list/edit-category/edit-category.component';
+import { CreateCategoryComponent } from './categories-list/create-category/create-category.component';
+import { DetailsCategoryComponent } from './categories-list/details-category/details-category.component';
 
 
 
@@ -34,6 +45,15 @@ import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrap
     ScrapesListComponent,
     CreateArticleComponent,
     CreateScrapeComponent,
+    EditArticleComponent,
+    DetailsArticleComponent,
+    CommentsListComponent,
+    CreateCommentComponent,
+    EditCommentComponent,
+    DetailsCommentComponent,
+    EditCategoryComponent,
+    CreateCategoryComponent,
+    DetailsCategoryComponent,
     ],
   imports: [
     CommonModule,

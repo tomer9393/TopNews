@@ -18,13 +18,13 @@
             <tr *ngFor="let category of categories">
               <td>{{category.name}}</td>
               <td>
-                <a class="" href="javascript:void(0)" (click)="onEdit(article)">
+                <a class="" href="javascript:void(0)" (click)="onEdit(category)">
                   <i class="material-icons">edit</i>
                 </a>
-                <a class="" href="javascript:void(0)" (click)="onDelete(article)">
+                <a class="" href="javascript:void(0)" (click)="onDelete(category)">
                   <i class="material-icons">delete</i>
                 </a>
-                <a class="" href="javascript:void(0)" (click)="onDetails(article)">
+                <a class="" href="javascript:void(0)" (click)="onDetails(category)">
                   <i class="material-icons">list</i>
                 </a>
               </td>

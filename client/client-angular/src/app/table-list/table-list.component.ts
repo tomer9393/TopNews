@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TableListComponent implements OnInit {
 
-  constructor() { }
+  listFor: String;
+
+  constructor() {
+    this.listFor = '';
+   }
 
   ngOnInit() {
   }
