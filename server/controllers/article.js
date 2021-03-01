@@ -21,8 +21,8 @@ const getArticleById = async (req, res) => {
 };
 
 const getLatestArticles = async (req, res) => {
-  const articles = await articleService.getLatestArticles();
-  if (!article) {
+  const articles = await articleService.getLatestArticles(req.params.numOfArticles);
+  if (!articles) {
     return res.status(404).json({ errors: ['No Articles To Display'] });
   }
 

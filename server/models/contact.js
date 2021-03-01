@@ -11,7 +11,7 @@ const Contact = new Schema({
     message:{
         type: String
     },
-    publisehd:{
+    published:{
         type: Date,
         default: Date.now
     }

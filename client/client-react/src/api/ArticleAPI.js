@@ -15,3 +15,9 @@ export const getArticleByCategory = async (category) => {
     } catch (error) { throw new Error(error); }
 }
 
+export const getLatestArticles = async (numOfArticles) => {
+    try {
+        const articles = await axios.get(`${baseUrl}/articles/latestArticles/${numOfArticles}`);
+        return articles;
+    } catch (error) { throw new Error(error); }
+}
