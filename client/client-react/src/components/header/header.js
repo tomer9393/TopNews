@@ -1,9 +1,11 @@
 import SingleStockReport from './singleStockReport';
+import {Link} from "react-router-dom";
 
 
 function Header() {
     return (
         <header className="header-area">
+             <img src="src/img/core-img/ourLogo.jpg" alt="logo" />
             {/* Top Header Area */}
             <div className="top-header">
                 <div className="container h-100">
@@ -59,7 +61,7 @@ function Header() {
                         {/* Logo Area */}
                         <div className="col-12 col-md-4">
                             <div className="logo-area">
-                                <a href="/"><img src="img/core-img/logo.png" alt="logo" /></a>
+                                      
                             </div>
                         </div>
                     </div>
@@ -81,30 +83,31 @@ function Header() {
                                             <li className="nav-item dropdown">
                                                 <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Pages</a>
                                                 <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                    <a className="dropdown-item" href="/">Home</a>
-                                                    <a className="dropdown-item" href="/Category">Catagory</a>
-                                                    <a className="dropdown-item" href="/PostDetails">Single Post</a>
-                                                    <a className="dropdown-item" href="/AboutUs">About Us</a>
-                                                    <a className="dropdown-item" href="/Contact">Contact</a>
+                                                    <Link className="dropdown-item" to="/">Home</Link>
+                                                    {/* <a className="dropdown-item" href="/Category">Catagory</a>
+                                                    <a className="dropdown-item" href="/PostDetails">Single Post</a> */}
+                                                    <Link className="dropdown-item" to="/AboutUs">About Us</Link>
+                                                    <Link className="dropdown-item" to="/Contact">Contact</Link>
                                                 </div>
                                             </li>
+                                            {/* TODO change test to Politics */}
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#">Politics</a>
+                                                <Link className="nav-link" to="/Category/test">Politics</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#">Lifestyle</a>
+                                                <Link className="nav-link" to="/Category/Lifestyle">Lifestyle</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#">Travel</a>
+                                                <Link className="nav-link" to="/Category/Travel">Travel</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#">Health</a>
+                                                <Link className="nav-link" to="/Category/Health">Health</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#">Entertainment</a>
+                                                <Link className="nav-link" to="/Category/Entertainment">Entertainment</Link>
                                             </li>
                                             <li className="nav-item">
-                                                <a className="nav-link" href="#">sport</a>
+                                                <Link className="nav-link" to="/Category/Sport">sport</Link>
                                             </li>
                                         </ul>
                                         {/* Search Form */}
