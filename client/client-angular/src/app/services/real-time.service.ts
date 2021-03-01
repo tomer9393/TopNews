@@ -6,7 +6,9 @@ import { Socket } from 'ngx-socket-io';
 })
 export class RealTimeService {
 
-  currentCounter = this.socket.fromEvent<Number>('count');
+  currentActiveUsersCounter = this.socket.fromEvent<Number>('countActiveUsers');
+  currentCategoriesCounter = this.socket.fromEvent<Number>('countCategories');
+  currentArticlesCounter = this.socket.fromEvent<Number>('countArticles');
 
   constructor(private socket: Socket) { }
 }

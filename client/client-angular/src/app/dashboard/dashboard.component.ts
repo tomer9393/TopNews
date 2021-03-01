@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Chartist from 'chartist';
+import { RealTimeService } from '../services/real-time.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,7 +9,16 @@ import * as Chartist from 'chartist';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  activeUsersCounter : Number = 0;
+  categoriesCounter : Number = 0;
+  articlesCounter : Number = 0;
+
+  constructor(private service : RealTimeService){
+    service.currentActiveUsersCounter.subscribe(counter => this.activeUsersCounter = counter);
+    service.currentCategoriesCounter.subscribe(counter => this.categoriesCounter = counter);
+    service.currentArticlesCounter.subscribe(counter => this.articlesCounter = counter);
+  }
+
   startAnimationForLineChart(chart){
       let seq: any, delays: any, durations: any;
       seq = 0;
