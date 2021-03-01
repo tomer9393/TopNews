@@ -36,12 +36,19 @@ const getAllCategories = async () => {
     return await Category.find();
 }
 
+const getNumOfCategories = async () => {
+    return await Category.find().count(function(err, count){
+        console.log("Number of categories: ", count );
+    });
+}
+
 module.exports = {
     createCategory,
     getAllCategories,
     getCategoryByName,
     updateCategory,
-    removeCategory
+    removeCategory,
+    getNumOfCategories
 }
 
 

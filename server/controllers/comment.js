@@ -34,7 +34,7 @@ const UpdateComment = async (req,res)=> {
 
 
 const deleteComment = async (req,res)=> {
-    const comment = await commentService.deleteComment(req.params.id);
+    const comment = await commentService.DeleteComment(req.params.id);
 //params mean from the URL
     if (!comment) {
         return res.status(404).json({ errors: ['Comment not found'] });

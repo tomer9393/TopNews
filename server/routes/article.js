@@ -10,6 +10,9 @@ router.route('/')
 router.route('/:category')
     .get(articleController.getArticlesByCategory);
 
+router.route('/articles/count')
+    .get(articleController.getNumOfArticles);
+
 
 router.route('/id/:id')
     .get(articleController.getArticleById)

@@ -48,11 +48,17 @@ const getAllCategories = async (req,res)=>{
     res.json(categories);
 };
 
+const getNumOfCategories = async (req,res)=>{
+    const count = await categoryService.getNumOfCategories();
+    res.json(count);
+};
+
 module.exports = {
     createCategory,
     getAllCategories,
     getCategoryByName,
     updateCategory,
-    removeCategory
+    removeCategory,
+    getNumOfCategories
 }
 

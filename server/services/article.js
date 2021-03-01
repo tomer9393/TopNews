@@ -58,6 +58,12 @@ const deleteArticle = async (id) => {
     return article;
 };
 
+const getNumOfArticles = async () => {
+    return await Article.find().count(function(err, count){
+        console.log("Number of Articles: ", count );
+    });
+};
+
 
 
 module.exports = {
@@ -67,5 +73,6 @@ module.exports = {
     getLatestArticles,
     getArticlesByCategory,
     updateArticle,
-    deleteArticle
+    deleteArticle,
+    getNumOfArticles
 }
