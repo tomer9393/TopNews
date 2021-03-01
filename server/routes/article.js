@@ -6,6 +6,8 @@ router.route('/')
     .get(articleController.getArticles)
     .post(articleController.createArticle);
 
+router.route('/latestArticles/:numOfArticles')
+    .get(articleController.getLatestArticles);
 
 router.route('/:category')
     .get(articleController.getArticlesByCategory);
