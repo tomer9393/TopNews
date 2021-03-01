@@ -1,7 +1,8 @@
+const comment = require('../models/comment');
 const commentService = require('../services/comment');
 
 const createComment = async (req, res) =>{
-    const newComment = await commentService.createComment(req.body.articleId, req.body.name, req.body.body, req.body.publishd);
+    const newComment = await commentService.createComment(req.body.articleId, req.body.name, req.body.body, req.body.publisehd);
     res.json(newComment);
 
 };
@@ -41,10 +42,16 @@ const deleteComment = async (req,res)=> {
     res.send();
 };
 
+const getAllcomments = async (req, res) => {
+    const comments = await commentService.getAllComments();
+    res.json(comments);
+  };
+
 module.exports = {
     createComment,
     getCommentByID,
     getAllCommentsByArticleID,
     UpdateComment,
-    deleteComment
+    deleteComment,
+    getAllcomments
 };

@@ -3,6 +3,7 @@ var router = express.Router();
 const commentController = require ('../controllers/comment');
 
 router.route('/')
+    .get(commentController.getAllcomments)
     .post(commentController.createComment);
 
 

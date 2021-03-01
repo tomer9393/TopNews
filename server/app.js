@@ -7,6 +7,7 @@ const socketIo = require('socket.io');
 const categoryRoutes = require('./routes/category');
 const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
+const contactRoutes = require('./routes/contact');
 const scrapeRoutes = require('./routes/scrape');
 
 require('custom-env').env(process.env.NODE_ENV, './config');
@@ -38,6 +39,7 @@ console.log(process.env.PORT);
 app.use('/categories',categoryRoutes);
 app.use('/articles',articleRoutes);
 app.use('/comments',commentRoutes);
+app.use('/contacts',contactRoutes); 
 app.use('/scrapes',scrapeRoutes); 
 
 const server = http.createServer(app);
@@ -48,12 +50,12 @@ var countActiveUsers = 0;
 io.on('connection', (socket) => {        
     if (socket.handshake.headers.origin === "http://localhost:3000") {
         countActiveUsers++;        
-        socket.broadcast.emit('count', countActiveUsers);     
+        socket.broadcast.emit('countActiveUsers', countActiveUsers);     
         console.log(countActiveUsers);          
 
         socket.on('disconnect', () => {
             countActiveUsers--;                   
-            socket.broadcast.emit('count', countActiveUsers); 
+            socket.broadcast.emit('countActiveUsers', countActiveUsers); 
             console.log(countActiveUsers);           
         });
     }   
