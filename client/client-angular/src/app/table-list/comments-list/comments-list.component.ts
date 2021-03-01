@@ -16,7 +16,7 @@ export class CommentsListComponent implements OnInit {
   constructor(private commentsService :  CommentsService, private router: Router){}
 
   ngOnInit() {
-    if(this.listFor === "table-list")
+    if(this.listFor === '')
       this.loadAll();
     else if (this.listFor !== '')
     {
