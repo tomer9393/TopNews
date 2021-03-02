@@ -1,3 +1,5 @@
+import {Link} from "react-router-dom";
+
 
 function Footer(){
     return (
@@ -11,56 +13,47 @@ function Footer(){
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Regions</h4>
+                      <h4 className="font-pt">Categories</h4>
                     </div>
                     <ul className="footer-widget-menu">
-                      <li><a href="#">U.S.</a></li>
-                      <li><a href="#">Africa</a></li>
-                      <li><a href="#">Americas</a></li>
-                      <li><a href="#">Asia</a></li>
-                      <li><a href="#">China</a></li>
-                      <li><a href="#">Europe</a></li>
-                      <li><a href="#">Middle</a></li>
+                      <li><Link to="/Category/test">Politics</Link></li>
+                      <li><Link to="/Category/Lifestyle">Lifestyle</Link></li>
+                      <li><Link to="/Category/Travel">Travel</Link></li>
+                      <li><Link to="/Category/Health">Health</Link></li>
+                      <li><Link to="/Category/Entertainment">Entertainment</Link></li>
+                      <li><Link to="/Category/Sport">Sport</Link></li>
+                      {/* <li><a href="#">Middle</a></li>
                       <li><a href="#">East</a></li>
-                      <li><a href="#">Opinion</a></li>
+                      <li><a href="#">Opinion</a></li> */}
                     </ul>
                   </div>
                 </div>
-                {/* Single Footer Widget */}
-                <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                
+                 {/* Single Footer Widget */}
+                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Fashion</h4>
+                      <h4 className="font-pt">About Us</h4>
                     </div>
                     <ul className="footer-widget-menu">
-                      <li><a href="#">Election 2016</a></li>
-                      <li><a href="#">Nation</a></li>
-                      <li><a href="#">World</a></li>
-                      <li><a href="#">Our Team</a></li>
+                      <li><Link to="/AboutUs">About us page</Link></li>
+                      {/* <li><a href="#">Business</a></li>
+                      <li><a href="#">Traveller</a></li>
+                      <li><a href="#">Destinations</a></li>
+                      <li><a href="#">Features</a></li>
+                      <li><a href="#">Food/Drink</a></li>
+                      <li><a href="#">Hotels</a></li>
+                      <li><a href="#">Partner Hotels</a></li> */}
                     </ul>
                   </div>
                 </div>
-                {/* Single Footer Widget */}
-                <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                 {/* Single Footer Widget */}
+                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Politics</h4>
+                      {/* <h4 className="font-pt">Featured</h4> */}
                     </div>
-                    <ul className="footer-widget-menu">
-                      <li><a href="#">Business</a></li>
-                      <li><a href="#">Markets</a></li>
-                      <li><a href="#">Tech</a></li>
-                      <li><a href="#">Luxury</a></li>
-                    </ul>
-                  </div>
-                </div>
-                {/* Single Footer Widget */}
-                <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-                  <div className="single-footer-widget">
-                    <div className="footer-widget-title">
-                      <h4 className="font-pt">Featured</h4>
-                    </div>
-                    <ul className="footer-widget-menu">
+                    {/* <ul className="footer-widget-menu">
                       <li><a href="#">Football</a></li>
                       <li><a href="#">Golf</a></li>
                       <li><a href="#">Tennis</a></li>
@@ -69,41 +62,70 @@ function Footer(){
                       <li><a href="#">Equestrian</a></li>
                       <li><a href="#">Sailing</a></li>
                       <li><a href="#">Skiing</a></li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
                 {/* Single Footer Widget */}
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">FAQ</h4>
+                      <h4 className="font-pt">Our vision</h4>
                     </div>
                     <ul className="footer-widget-menu">
-                      <li><a href="#">Aviation</a></li>
-                      <li><a href="#">Business</a></li>
-                      <li><a href="#">Traveller</a></li>
-                      <li><a href="#">Destinations</a></li>
-                      <li><a href="#">Features</a></li>
-                      <li><a href="#">Food/Drink</a></li>
-                      <li><a href="#">Hotels</a></li>
-                      <li><a href="#">Partner Hotels</a></li>
+                      <li><a href="#">Our vision is to provide the best news in the world, and the most interesting content while providing the best service possible</a></li>
+                      {/* <li><a href="#">Our Team</a></li> */}
                     </ul>
+                  </div>
+                </div>
+                 {/* Single Footer Widget */}
+                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                  <div className="single-footer-widget">
+                    <div className="footer-widget-title">
+                      {/* <h4 className="font-pt">Featured</h4> */}
+                    </div>
+                    {/* <ul className="footer-widget-menu">
+                      <li><a href="#">Football</a></li>
+                      <li><a href="#">Golf</a></li>
+                      <li><a href="#">Tennis</a></li>
+                      <li><a href="#">Motorsport</a></li>
+                      <li><a href="#">Horseracing</a></li>
+                      <li><a href="#">Equestrian</a></li>
+                      <li><a href="#">Sailing</a></li>
+                      <li><a href="#">Skiing</a></li>
+                    </ul> */}
                   </div>
                 </div>
                 {/* Single Footer Widget */}
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
+                    {/* <div className="footer-widget-title">
+                      <h4 className="font-pt"></h4>
+                    </div> */}
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">+More</h4>
+                      <h4 className="font-pt">Contact Us</h4>
                     </div>
                     <ul className="footer-widget-menu">
+                      <img src="https://www.merhofcu.org/wp-content/uploads/2018/07/time-to-update-website.jpg" class="lazyloaded" data-ll-status="loaded"></img>
+                      <li><Link to="/Contact">For contact info press here</Link></li>
+                    </ul>
+                  </div>
+                </div>
+                  
+               
+                {/* Single Footer Widget */}
+                <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                  <div className="single-footer-widget">
+                    <div className="footer-widget-title">
+                      {/* <h4 className="font-pt">+More</h4> */}
+                    </div>
+                    {/* <ul className="footer-widget-menu">
                       <li><a href="#">Fashion</a></li>
                       <li><a href="#">Design</a></li>
                       <li><a href="#">Architecture</a></li>
                       <li><a href="#">Arts</a></li>
                       <li><a href="#">Autos</a></li>
                       <li><a href="#">Luxury</a></li>
-                    </ul>
+                    </ul> */}
                   </div>
                 </div>
               </div>
@@ -116,7 +138,7 @@ function Footer(){
                 <div className="col-12">
                   <div className="copywrite-text">
                     <p>{/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
-                      Copyright © All rights reserved | This template is made with <i className="fa fa-heart-o" aria-hidden="true" /> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                      Copyright ©️ All rights reserved | This template is made with <i className="fa fa-heart-o" aria-hidden="true" /> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                       {/* Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. */}
                     </p>
                   </div>
