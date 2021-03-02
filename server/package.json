@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "SET NODE_ENV=test&& nodemon app.js",
-    "start": "SET NODE_ENV=local&& nodemon app.js"
+    "start": "SET NODE_ENV=local&& nodemon app.js",
+    "startLinux":"NODE_ENV=development PORT=8081 CONNECTION_STRING='mongodb+srv://dbUser:dbUser@cluster0.rstrx.mongodb.net/WEBAPPS2?retryWrites=true&w=majority' nodemon app.js"
   },
   "keywords": [],
   "author": "",

@@ -16,8 +16,8 @@ export class ContactsService {
     return this.http.get<Contact[]>(this.contactsUrl);
   }
 
-  addContact(subject: string): Observable<Contact> {
-    return this.http.post<Contact>(this.contactsUrl, { subject: subject });
+  addContact(fullName: String, email: String, message: String): Observable<Contact> {
+    return this.http.post<Contact>(this.contactsUrl, { fullName: fullName, email: email, message: message });
   }
 
   getContact(id: String): Observable<Contact> {
@@ -27,7 +27,7 @@ export class ContactsService {
 
   updateContact(contact: Contact): Observable<Contact> {
     const url = `${this.contactsUrl}/${contact._id}`;
-    return this.http.patch<Contact>(url, { subject: contact.body });
+    return this.http.patch<Contact>(url, { fullName: contact.fullName, email: contact.email, message: contact.message });
   }
 
   deleteContact(id: String): Observable<Contact> {

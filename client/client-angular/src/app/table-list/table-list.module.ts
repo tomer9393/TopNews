@@ -30,6 +30,9 @@ import { DetailsCommentComponent } from './comments-list/details-comment/details
 import { EditCategoryComponent } from './categories-list/edit-category/edit-category.component';
 import { CreateCategoryComponent } from './categories-list/create-category/create-category.component';
 import { DetailsCategoryComponent } from './categories-list/details-category/details-category.component';
+import { DetailsContactComponent } from './contacts-list/details-contact/details-contact.component';
+import { EditContactComponent } from './contacts-list/edit-contact/edit-contact.component';
+import { CreateContactComponent } from './contacts-list/create-contact/create-contact.component';
 
 
 
@@ -54,6 +57,9 @@ import { DetailsCategoryComponent } from './categories-list/details-category/det
     EditCategoryComponent,
     CreateCategoryComponent,
     DetailsCategoryComponent,
+    DetailsContactComponent,
+    EditContactComponent,
+    CreateContactComponent,
     ],
   imports: [
     CommonModule,
