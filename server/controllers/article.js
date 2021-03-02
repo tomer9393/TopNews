@@ -38,6 +38,17 @@ const getArticlesByCategory = async (req, res) => {
   res.json(articles);
 };
 
+
+const getNumOfArticlesByCategory = async (req, res) => {
+  const articles = await articleService.getNumOfArticlesByCategory(req.params.category,req.params.num);
+  if (!articles) {
+    return res.status(404).json({ errors: ['No Articles To Display For' + req.params.category] });
+  }
+
+  res.json(articles);
+};
+
+
 const updateArticle = async (req, res) => {
   if (!req.params.id) {
     res.status(400).json({
@@ -73,6 +84,7 @@ module.exports = {
   getArticleById,
   getLatestArticles,
   getArticlesByCategory,
+  getNumOfArticlesByCategory,
   updateArticle,
   deleteArticle,
   getNumOfArticles
