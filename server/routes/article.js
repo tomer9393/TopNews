@@ -12,6 +12,9 @@ router.route('/latestArticles/:numOfArticles')
 router.route('/:category')
     .get(articleController.getArticlesByCategory);
 
+router.route('/:category/:num')
+    .get(articleController.getNumOfArticlesByCategory);
+
 router.route('/articles/count')
     .get(articleController.getNumOfArticles);
 
