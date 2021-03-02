@@ -14,6 +14,10 @@ import { CreateCategoryComponent } from './categories-list/create-category/creat
 import { EditCategoryComponent } from './categories-list/edit-category/edit-category.component';
 import { DetailsCategoryComponent } from './categories-list/details-category/details-category.component';
 
+import { CreateContactComponent } from './contacts-list/create-contact/create-contact.component';
+import { EditContactComponent } from './contacts-list/edit-contact/edit-contact.component';
+import { DetailsContactComponent } from './contacts-list/details-contact/details-contact.component';
+
 export const TableListRoutes: Routes = [
     // {
     //   path: '',
@@ -69,6 +73,10 @@ export const TableListRoutes: Routes = [
      { path: 'CreateCategory',      component: CreateCategoryComponent },
      { path: 'EditCategory',      component: EditCategoryComponent },
      { path: 'DetailsCategory',      component: DetailsCategoryComponent },
+
+     { path: 'CreateContact',      component: CreateContactComponent },
+     { path: 'EditContact',      component: EditContactComponent },
+     { path: 'DetailsContact',      component: DetailsContactComponent },
 
 
     // { path: 'user-profile',   component: UserProfileComponent },
