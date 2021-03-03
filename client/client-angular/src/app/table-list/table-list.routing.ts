@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
-import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
+//import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
 import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
 import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
 
@@ -17,6 +17,12 @@ import { DetailsCategoryComponent } from './categories-list/details-category/det
 import { CreateContactComponent } from './contacts-list/create-contact/create-contact.component';
 import { EditContactComponent } from './contacts-list/edit-contact/edit-contact.component';
 import { DetailsContactComponent } from './contacts-list/details-contact/details-contact.component';
+
+import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
+import { EditScrapeComponent } from './scrapes-list/edit-scrape/edit-scrape.component';
+import { DetailsScrapeComponent } from './scrapes-list/details-scrape/details-scrape.component';
+
+
 
 export const TableListRoutes: Routes = [
     // {
@@ -64,6 +70,8 @@ export const TableListRoutes: Routes = [
      { path: 'CreateArticle',      component: CreateArticleComponent },
 
      { path: 'CreateScrape',      component: CreateScrapeComponent },
+     { path: 'EditScrape',      component: EditScrapeComponent },
+     { path: 'DetailsScrape',      component: DetailsScrapeComponent },
 
      { path: 'EditArticle',      component: EditArticleComponent },
      { path: 'DetailsArticle',      component: DetailsArticleComponent },

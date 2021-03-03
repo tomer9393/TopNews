@@ -23,13 +23,14 @@ const getScrapes = async () => {
     return await Scrape.find({});
 };
 
-const updateScrape = async (id, title, year, rating, genre, duration, img) => {
+const updateScrape = async (id, title, link, year, rating, genre, duration, img) => {
     const scrape = await getScrapeById(id);
     if (!scrape)
         return null;
 
     scrape.title = title;
     scrape.year = year;
+    scrape.link = link;
     scrape.rating = rating;
     scrape.genre = genre;
     scrape.duration = duration;
@@ -47,10 +48,20 @@ const deleteScrape = async (id) => {
     return scrape;
 };
 
+const deleteAllScrape = async () => {
+    try {
+        await Scrape.deleteMany();
+        console.log('All Data successfully deleted');
+      } catch (err) {
+        console.log(err);
+      }
+};
+
 module.exports = {
     createScrape,
     getScrapeById,
     getScrapes,
     updateScrape,
-    deleteScrape
+    deleteScrape,
+    deleteAllScrape
 }

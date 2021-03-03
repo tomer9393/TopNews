@@ -5,8 +5,8 @@
       <a class="" (click)="onScrape()" href="javascript:void(0)">
         <i class="material-icons">cloud_download</i>
       </a>
-      <a class="" (click)="onScrape()" href="javascript:void(0)">
-        <i class="material-icons">delete</i>
+      <a class="" (click)="onDeleteAll()" href="javascript:void(0)">
+        <i class="material-icons">delete_sweep</i>
       </a>
     </div>
     <div class="card-body">
@@ -18,7 +18,7 @@
             <th>Rating</th>
             <th>Genre</th>
             <th>Duration</th>
-            <th>Image URL</th>
+            <th>Year</th>
             <th>Actions</th>
           </thead>
           <tbody>
@@ -28,7 +28,7 @@
               <td>{{scrape.rating}}</td>
               <td>{{scrape.genre}}</td>
               <td>{{scrape.duration}}</td>
-              <td>{{scrape.img}}</td>
+              <td>{{scrape.year}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(scrape)">
                   <i class="material-icons">edit</i>
