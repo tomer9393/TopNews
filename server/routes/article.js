@@ -12,7 +12,7 @@ router.route('/latestArticles/:numOfArticles')
 router.route('/:category')
     .get(articleController.getArticlesByCategory);
 
-router.route('/:category/:num')
+router.route('/homeArticles/:category/:num')
     .get(articleController.getNumOfArticlesByCategory);
 
 router.route('/articles/count')

@@ -10,6 +10,7 @@ const getArticles = async (req, res) => {
   res.json(articles);
 };
 
+
 const getArticleById = async (req, res) => {
   console.log(`req with articleId: ${req.params.id} `);
   const article = await articleService.getArticleById(req.params.id);

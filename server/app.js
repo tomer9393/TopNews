@@ -7,6 +7,7 @@ const socketIo = require('socket.io');
 const categoryRoutes = require('./routes/category');
 const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
+const filterRoutes = require('./routes/filter');
 const contactRoutes = require('./routes/contact');
 const scrapeRoutes = require('./routes/scrape');
 const articleService = require('./services/article');
@@ -42,6 +43,7 @@ console.log(process.env.PORT);
 app.use('/categories',categoryRoutes);
 app.use('/articles',articleRoutes);
 app.use('/comments',commentRoutes);
+app.use('/filters',filterRoutes); 
 app.use('/contacts',contactRoutes); 
 app.use('/scrapes',scrapeRoutes); 
 
