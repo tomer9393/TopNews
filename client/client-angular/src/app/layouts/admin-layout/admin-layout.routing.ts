@@ -6,6 +6,7 @@ import { TableListComponent } from '../../table-list/table-list.component';
 import { IconsComponent } from '../../icons/icons.component';
 
 import { CreateArticleComponent } from '../../table-list/articles-list/create-article/create-article.component';
+import { GraphsComponent } from '../../graphs/graphs.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -59,4 +60,5 @@ export const AdminLayoutRoutes: Routes = [
 
     ]},
     { path: 'icons',          component: IconsComponent },
+    { path: 'graphs',          component: GraphsComponent },
 ];
