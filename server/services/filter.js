@@ -59,7 +59,7 @@ const getSumOfCommentsByArticle= async () => {
         {
           $group: {
             _id: "$articleId",
-            sum_of_comments: { $sum: 1 }
+            count: { $sum: 1 }
           }
         }
       ] );
@@ -70,7 +70,7 @@ const getSumOfArticlesByCategory= async () => {
         {
           $group: {
             _id: "$category",
-            sum_of_articles: { $sum: 1 }
+            count: { $sum: 1 }
           }
         }
       ] );
