@@ -16,6 +16,11 @@ export class ArticlesService {
     return this.http.get<Article[]>(this.articlesUrl);
   }
 
+  getNumOfArticles(): Observable<Number> {
+    const url = `${this.articlesUrl}/articles/count`;
+    return this.http.get<Number>(url);
+  }
+
   getArticlesByCategory(category: String): Observable<Article[]> {
     const url = `${this.articlesUrl}/${category}`;
     return this.http.get<Article[]>(url);
