@@ -65,9 +65,7 @@ const deleteArticle = async (id) => {
 
 
 const getNumOfArticles = async () => {
-    return await Article.find().count(function(err, count){
-        console.log("Number of Articles: ", count );
-    });
+    return await Article.countDocuments();
 };
 
 

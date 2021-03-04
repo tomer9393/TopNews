@@ -9,14 +9,17 @@ import { RealTimeService } from '../services/real-time.service';
 })
 export class DashboardComponent implements OnInit {
 
-  activeUsersCounter : Number = 0;
-  categoriesCounter : Number = 0;
-  articlesCounter : Number = 0;
+  activeUsersCounter : Number;
+  categoriesCounter : Number;
+  articlesCounter : Number;
 
   constructor(private service : RealTimeService){
-    service.currentActiveUsersCounter.subscribe(counter => this.activeUsersCounter = counter);
-    service.currentCategoriesCounter.subscribe(counter => this.categoriesCounter = counter);
-    service.currentArticlesCounter.subscribe(counter => this.articlesCounter = counter);
+    this.service.currentActiveUsersCounter.subscribe(counter => this.activeUsersCounter = counter);
+    this.service.currentCategoriesCounter.subscribe(counter => {
+      this.categoriesCounter = counter
+    });
+    this.service.currentArticlesCounter.subscribe(counter => this.articlesCounter = counter);
+
   }
 
   startAnimationForLineChart(chart){
@@ -76,6 +79,13 @@ export class DashboardComponent implements OnInit {
       seq2 = 0;
   };
   ngOnInit() {
+    this.service.init();
+    // this.service.currentActiveUsersCounter.subscribe(counter => this.activeUsersCounter = counter);
+    // this.service.currentCategoriesCounter.subscribe(counter => {
+    //   this.categoriesCounter = counter
+    // });
+    // this.service.currentArticlesCounter.subscribe(counter => this.articlesCounter = counter);
+
       /* ----------==========     Daily Sales Chart initialization For Documentation    ==========---------- */
 
       const dataDailySalesChart: any = {
@@ -157,4 +167,7 @@ export class DashboardComponent implements OnInit {
       this.startAnimationForBarChart(websiteViewsChart);
   }
 
+  onInit() {
+    this.service.init(); 
+  }
 }

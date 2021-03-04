@@ -5,10 +5,15 @@ import { Socket } from 'ngx-socket-io';
   providedIn: 'root'
 })
 export class RealTimeService {
-
+  
   currentActiveUsersCounter = this.socket.fromEvent<Number>('countActiveUsers');
   currentCategoriesCounter = this.socket.fromEvent<Number>('countCategories');
   currentArticlesCounter = this.socket.fromEvent<Number>('countArticles');
+  
+  constructor(private socket: Socket) {
+  }
 
-  constructor(private socket: Socket) { }
+  init(){
+    this.socket.emit('init');
+  }
 }
