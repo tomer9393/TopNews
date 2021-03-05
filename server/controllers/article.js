@@ -1,7 +1,11 @@
 const articleService = require('../services/article');
+var emitter = require('../common/emitter')
+
+var myEmitter = emitter.myEmitter
 
 const createArticle = async (req, res) => {
   const newArticle = await articleService.createArticle(req.body.title, req.body.subTitle, req.body.img, req.body.category, req.body.body, req.body.published, req.body.lastUpdate);
+  myEmitter.emit('createArticle');
   res.json(newArticle);
 };
 
@@ -9,6 +13,7 @@ const getArticles = async (req, res) => {
   const articles = await articleService.getArticles();
   res.json(articles);
 };
+
 
 const getArticleById = async (req, res) => {
   console.log(`req with articleId: ${req.params.id} `);
@@ -69,6 +74,7 @@ const deleteArticle = async (req, res) => {
   if (!article) {
     return res.status(404).json({ errors: ['Article not found'] });
   }
+  myEmitter.emit('deleteArticle');
 
   res.send();
 };

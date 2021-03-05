@@ -1,11 +1,14 @@
 const Category = require('../models/category');
 
 const createCategory = async (name) => {
+    const isExist = await getCategoryByName(name);
+    if(isExist.length > 0) {
+        return null;
+    }
+
     const category = new Category({ name: name });
 
     let categoryDocument = await category.save();
-    console.log('category:');
-    console.log(categoryDocument);
 
     return categoryDocument;
 }
@@ -19,7 +22,7 @@ const updateCategory = async (name) => {
     if (!category)
         return null;
 
-    category.name = name;
+    category.name = name; 
     return await category.save();
 }
 
@@ -37,11 +40,9 @@ const getAllCategories = async () => {
 }
 
 const getNumOfCategories = async () => {
-    return await Category.find().count(function(err, count){
-        console.log("Number of categories: ", count );
-    });
+    return await Category.countDocuments();
 }
-
+ 
 module.exports = {
     createCategory,
     getAllCategories,

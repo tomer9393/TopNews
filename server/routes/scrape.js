@@ -4,7 +4,8 @@ const scrapeController = require('../controllers/scrape');
 
 router.route('/')
     .get(scrapeController.getScrapes)
-    .post(scrapeController.createScrape);
+    .post(scrapeController.createScrape)
+    .delete(scrapeController.deleteAllScrape);
 
 router.route('/scrape')
     .get(scrapeController.scraper);

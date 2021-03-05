@@ -16,6 +16,12 @@ export class CategoriesService {
     return this.http.get<Category[]>(this.categoriesUrl);
   }
 
+  getNumOfCategories(): Observable<Number> {
+    const url = `${this.categoriesUrl}/count`;
+    return this.http.get<Number>(url);
+  }
+
+
   addCategory(name: string): Observable<Category> {
     return this.http.post<Category>(this.categoriesUrl, { name: name });
   }

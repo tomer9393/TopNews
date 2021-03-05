@@ -7,11 +7,14 @@ const socketIo = require('socket.io');
 const categoryRoutes = require('./routes/category');
 const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
+const filterRoutes = require('./routes/filter');
 const contactRoutes = require('./routes/contact');
 const scrapeRoutes = require('./routes/scrape');
 const articleService = require('./services/article');
 const categoryService = require('./services/category');
+var EventEmitter = require('./common/emitter')
 
+var myEmitter = EventEmitter.myEmitter;
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -42,6 +45,7 @@ console.log(process.env.PORT);
 app.use('/categories',categoryRoutes);
 app.use('/articles',articleRoutes);
 app.use('/comments',commentRoutes);
+app.use('/filters',filterRoutes); 
 app.use('/contacts',contactRoutes); 
 app.use('/scrapes',scrapeRoutes); 
 
@@ -50,6 +54,40 @@ const server = http.createServer(app);
 const io = socketIo(server);
 
 var countActiveUsers = 0;
+var countCategories = 0;
+var countArticles = 0;
+
+categoryService.getNumOfCategories().then((docs) => {
+    countCategories= docs;
+    myEmitter.emit('emitCat');
+});
+
+articleService.getNumOfArticles().then((docs) => {
+    countArticles= docs;
+    myEmitter.emit('emitArt');
+});
+
+myEmitter.on('createCategory', () => {
+    countCategories++;
+    myEmitter.emit('emitCat');
+});
+
+myEmitter.on('deleteCategory', () => {
+    countCategories--;
+    myEmitter.emit('emitCat');
+});
+
+
+myEmitter.on('createArticle', () => {
+    countArticles++;
+    myEmitter.emit('emitArt');
+});
+
+myEmitter.on('deleteArticle', () => {
+    countArticles--;
+    myEmitter.emit('emitArt');
+});
+
 io.on('connection', (socket) => {        
     if (socket.handshake.headers.origin === "http://localhost:3000") {
         countActiveUsers++;        
@@ -59,36 +97,25 @@ io.on('connection', (socket) => {
             countActiveUsers--;                   
             socket.broadcast.emit('countActiveUsers', countActiveUsers);           
         });
-    }   
-}); 
+    }
+    else if (socket.handshake.headers.origin === "http://localhost:4200") {
+        socket.broadcast.emit('countActiveUsers', countActiveUsers);           
+        socket.broadcast.emit('countCategories', countCategories);
+        socket.broadcast.emit('countArticles', countArticles);
 
-var countCategories;
-var countArticles;
-
-io.on('createCategory', (socket) => {        
-    if (socket.handshake.headers.origin === "http://localhost:4200") {
-        countCategories = categoryService.getNumOfCategories();        
-        socket.emit('countCategories', countCategories);             
-
-        socket.on('deleteCategory', () => {
-            countCategories = categoryService.getNumOfCategories();                    
-            socket.emit('countCategories', countCategories);         
+        myEmitter.on('emitCat', () => {
+            socket.broadcast.emit('countCategories', countCategories);
         });
-    }   
-}); 
-
-
-io.on('createArticle', (socket) => {        
-    if (socket.handshake.headers.origin === "http://localhost:4200") {
-        countArticles = articleService.getNumOfArticles();        
-        socket.emit('countArticles', countArticles);           
-
-        socket.on('deleteArticle', () => {
-            countArticles = articleService.getNumOfArticles();                    
-            socket.emit('countArticles', countArticles);          
+        myEmitter.on('emitArt', () => {
+            socket.broadcast.emit('countArticles', countArticles);
         });
-    }   
+    }
 }); 
 
+io.on('init', (socket) => {        
+    socket.broadcast.emit('countActiveUsers', countActiveUsers);           
+    socket.broadcast.emit('countCategories', countCategories);
+    socket.broadcast.emit('countArticles', countArticles);
+});
 
 server.listen(process.env.PORT);

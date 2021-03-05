@@ -13,6 +13,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import { TableListModule } from '../../table-list/table-list.module';
+import { GraphsComponent } from '../../graphs/graphs.component';
+
+import { ChartsModule } from 'ng2-charts';
+import { HighlightDirective } from '../../graphs/highlight.directive';
+
+    
 
 
 @NgModule({
@@ -28,11 +34,14 @@ import { TableListModule } from '../../table-list/table-list.module';
     MatSelectModule,
     MatTooltipModule,
     TableListModule,
+    ChartsModule,
   ],
   declarations: [
     UserProfileComponent,
     IconsComponent,
     DashboardComponent,
+    GraphsComponent,
+    HighlightDirective,
   ]
 })
 

@@ -20,13 +20,19 @@ const getScrape = async (req, res) => {
     res.json(scrape);
 };
 
+const deleteAllScrape = async (req, res) => {
+  const scrape = await scrapeService.deleteAllScrape();
+
+  res.send();
+};
+
 const updateScrape = async (req, res) => {
     if (!req.body.title) {
       res.status(400).json({
         message: "title is required",
       });
     }
-  
+
     const scrape = await scrapeService.updateScrape(req.params.id, req.body.title, req.body.link, req.body.year, req.body.rating, req.body.genre, req.body.duration, req.body.img);
     if (!scrape) {
       return res.status(404).json({ errors: ['Scrape not found'] });
@@ -44,8 +50,9 @@ const updateScrape = async (req, res) => {
     res.send();
   };
 
+
   const scraper = async (req, res) => {
-    scraperService.scraper();  
+    await scraperService.scraper();  
     res.send();
   };
 
@@ -55,5 +62,6 @@ const updateScrape = async (req, res) => {
     getScrape,
     updateScrape,
     deleteScrape,
-    scraper
+    scraper, 
+    deleteAllScrape
   };
