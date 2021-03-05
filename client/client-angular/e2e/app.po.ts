@@ -1,8 +1,8 @@
 import { browser, element, by } from 'protractor';
 
 export class MaterialDashboardAngularPage {
-  navigateTo() {
-    return browser.get('/');
+  async navigateTo(): Promise<unknown> {
+    return browser.get(browser.baseUrl);
   }
 
   getParagraphText() {

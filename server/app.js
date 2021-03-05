@@ -8,6 +8,7 @@ const categoryRoutes = require('./routes/category');
 const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
 const scrapeRoutes = require('./routes/scrape');
+const userRoutes = require('./routes/user');
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -39,6 +40,7 @@ app.use('/categories',categoryRoutes);
 app.use('/articles',articleRoutes);
 app.use('/comments',commentRoutes);
 app.use('/scrapes',scrapeRoutes); 
+app.use("/user", userRoutes);
 
 const server = http.createServer(app);
 

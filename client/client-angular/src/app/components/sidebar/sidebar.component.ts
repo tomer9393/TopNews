@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { User } from '../../models/user';
+import { LoginService } from '../../services/login.service';
 
 declare const $: any;
 declare interface RouteInfo {
@@ -21,16 +24,23 @@ export const ROUTES: RouteInfo[] = [
 })
 export class SidebarComponent implements OnInit {
   menuItems: any[];
+  loggedUser: User;
 
-  constructor() { }
+  constructor(private router: Router, private login: LoginService) { }
 
-  ngOnInit() {
+  ngOnInit(): void {
+    this.loggedUser = this.login.getConnectedUser();
+    console.log(this.loggedUser)
     this.menuItems = ROUTES.filter(menuItem => menuItem);
   }
-  isMobileMenu() {
-      if ($(window).width() > 991) {
-          return false;
-      }
-      return true;
-  };
+
+  // ngOnInit() {
+  //   this.menuItems = ROUTES.filter(menuItem => menuItem);
+  // }
+  // isMobileMenu() {
+  //     if ($(window).width() > 991) {
+  //         return false;
+  //     }
+  //     return true;
+  // };
 }
