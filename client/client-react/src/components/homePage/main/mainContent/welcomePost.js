@@ -22,7 +22,7 @@ function MainContent() {
                 {/* Reading More */}
                 <div className="post-continue-reading-share d-sm-flex align-items-center justify-content-between mt-30">
                     <div className="post-continue-btn">
-                    <Link to={`/PostDetails/603e4f944f92c208040fad6c`} className="font-pt">
+                    <Link to={`/PostDetails/60438fb5824ab66b3c103b90`} className="font-pt">
                 Continue Reading{" "}
                 <i className="fa fa-chevron-right" aria-hidden="true" />
               </Link>

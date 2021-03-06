@@ -134,9 +134,8 @@ function Header() {
                             </Link>
                           </div>
                         </li>
-                        {/* TODO change test to Politics */}
                         <li className="nav-item">
-                          <Link className="nav-link" to="/Category/test">
+                          <Link className="nav-link" to="/Category/Politics">
                             Politics
                           </Link>
                         </li>

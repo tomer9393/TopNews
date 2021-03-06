@@ -44,7 +44,7 @@ function SingleTodayPosts(props) {
                 : `${comments.length} comments`
               : ""}
           </Link>
-          <p>{article.body}</p>
+          <p>{article.subTitle}</p>
         </div>
       </div>
     </>
