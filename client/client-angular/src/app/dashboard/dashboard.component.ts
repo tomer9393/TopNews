@@ -11,11 +11,11 @@ import { CategoriesService } from '../services/categories.service';
 })
 export class DashboardComponent implements OnInit {
 
-  activeUsersCounter : Number = 0;
+  activeUsersCounter : Number;
   categoriesCounter : Number;
   articlesCounter : Number;
 
-  constructor(private service : RealTimeService, private articlesService : ArticlesService, private categoriesService : CategoriesService){
+  constructor(private realTimeservice : RealTimeService, private articlesService : ArticlesService, private categoriesService : CategoriesService){
 
   }
 
@@ -26,12 +26,16 @@ export class DashboardComponent implements OnInit {
     this.categoriesService.getNumOfCategories().subscribe((count) => {
       this.categoriesCounter = count;
     });
+    this.realTimeservice.getNumOfActiveUsers().subscribe((count) => {
+      console.log(count);
+      this.activeUsersCounter = count;
+    });
     this.load();
   }
 
   load() {
-    this.service.currentActiveUsersCounter.subscribe(counter => this.activeUsersCounter = counter);
-    this.service.currentCategoriesCounter.subscribe(counter => this.categoriesCounter = counter);
-    this.service.currentArticlesCounter.subscribe(counter => this.articlesCounter = counter);
-  }
+    this.realTimeservice.currentActiveUsersCounter.subscribe(counter => this.activeUsersCounter = counter);
+    this.realTimeservice.currentCategoriesCounter.subscribe(counter => this.categoriesCounter = counter);
+    this.realTimeservice.currentArticlesCounter.subscribe(counter => this.articlesCounter = counter);
+  } 
 }

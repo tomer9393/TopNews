@@ -1,5 +1,10 @@
 const filterService = require('../services/filter');
+var ActiveUsers = require('../common/realTime')
 
+const activeUsers = (req, res) => {
+  var countActiveUsers = ActiveUsers.countActiveUsers;
+  res.json(countActiveUsers);
+}
 
 const homePageSearch = async (req, res) => {
     const articles = await filterService.homePageSearch(req.params.category ,req.params.title ,req.params.gt ,req.params.lt);
@@ -34,5 +39,6 @@ module.exports = {
     func,
     getArticlesId,
     getSumOfCommentsByArticle,
-    getSumOfArticlesByCategory
+    getSumOfArticlesByCategory,
+    activeUsers
 };

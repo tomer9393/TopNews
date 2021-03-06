@@ -13,6 +13,7 @@ const scrapeRoutes = require('./routes/scrape');
 const articleService = require('./services/article');
 const categoryService = require('./services/category');
 var EventEmitter = require('./common/emitter')
+var ActiveUsers = require('./common/realTime')
 
 var myEmitter = EventEmitter.myEmitter;
 
@@ -53,7 +54,7 @@ const server = http.createServer(app);
 
 const io = socketIo(server);
 
-var countActiveUsers = 0;
+var countActiveUsers = ActiveUsers.countActiveUsers;
 var countCategories = 0;
 var countArticles = 0;
 
@@ -90,16 +91,16 @@ myEmitter.on('deleteArticle', () => {
 
 io.on('connection', (socket) => {        
     if (socket.handshake.headers.origin === "http://localhost:3000") {
-        countActiveUsers++;        
-        socket.broadcast.emit('countActiveUsers', countActiveUsers);             
+        ActiveUsers.countActiveUsers++;        
+        socket.broadcast.emit('countActiveUsers', ActiveUsers.countActiveUsers);             
 
         socket.on('disconnect', () => {
-            countActiveUsers--;                   
-            socket.broadcast.emit('countActiveUsers', countActiveUsers);           
+            ActiveUsers.countActiveUsers--;                   
+            socket.broadcast.emit('countActiveUsers', ActiveUsers.countActiveUsers);           
         });
     }
     else if (socket.handshake.headers.origin === "http://localhost:4200") {
-        socket.broadcast.emit('countActiveUsers', countActiveUsers);           
+        socket.broadcast.emit('countActiveUsers', ActiveUsers.countActiveUsers);           
         socket.broadcast.emit('countCategories', countCategories);
         socket.broadcast.emit('countArticles', countArticles);
 
@@ -111,11 +112,5 @@ io.on('connection', (socket) => {
         });
     }
 }); 
-
-io.on('init', (socket) => {        
-    socket.broadcast.emit('countActiveUsers', countActiveUsers);           
-    socket.broadcast.emit('countCategories', countCategories);
-    socket.broadcast.emit('countArticles', countArticles);
-});
 
 server.listen(process.env.PORT);
