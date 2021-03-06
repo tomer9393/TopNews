@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,Input, OnInit } from '@angular/core';
 import { Contact } from '../../models/contact';
 import { ContactsService } from '../../services/contacts.service';
 import { Router } from '@angular/router';
@@ -11,11 +11,26 @@ import { Router } from '@angular/router';
 export class ContactsListComponent implements OnInit {
 
   contacts : Contact[] = [];  
+  @Input() search: string = '';
 
   constructor(private contactsService : ContactsService,  private router: Router){}
 
   ngOnInit() {
     this.loadAll();
+  }
+
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.search === "")
+    { 
+      this.loadAll();
+    }
+    else
+    { 
+      this.contactsService.filter(this.search).subscribe(data =>{
+        this.contacts = data;
+      })
+    }
   }
 
   loadAll(){

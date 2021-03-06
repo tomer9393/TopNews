@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Scrape } from '../../models/scrape';
 import { ScrapesService } from '../../services/scrapes.service';
 import { Router } from '@angular/router';
@@ -11,11 +11,26 @@ import { Router } from '@angular/router';
 export class ScrapesListComponent implements OnInit {
 
   scrapes : Scrape[] = [];  
+  @Input() search: string = '';
 
   constructor(private scrapesService : ScrapesService,  private router: Router){}
 
   ngOnInit() {
     this.loadAll();
+  }
+
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.search === "")
+    { 
+      this.loadAll();
+    }
+    else
+    { 
+      this.scrapesService.filter(this.search).subscribe(data =>{
+        this.scrapes = data;
+      })
+    }
   }
 
   loadAll(){

@@ -12,6 +12,7 @@ export class CommentsListComponent implements OnInit {
 
   comments :  Comment[] = [];  
   @Input() listFor: String = '';
+  @Input() search: string = '';
 
   constructor(private commentsService :  CommentsService, private router: Router){}
 
@@ -21,6 +22,20 @@ export class CommentsListComponent implements OnInit {
     else if (this.listFor !== '')
     {
       this.loadForArticle(this.listFor);
+    }
+  }
+
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.listFor === "" || this.search === "")
+    { 
+      this.loadAll();
+    }
+    else if(this.listFor === "search")
+    { 
+      this.commentsService.filter(this.search).subscribe(data =>{
+        this.comments = data;
+      })
     }
   }
 

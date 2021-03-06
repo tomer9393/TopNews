@@ -1,12 +1,45 @@
 <div class="main-content">
+  <div class="col-md-4">
+    <form class="navbar-form">
+      <span class="bmd-form-group">
+        <div class="input-group no-border">
+          <input
+            #inp
+            type="text"
+            class="form-control"
+            placeholder="Search..."
+            (input)="onSearch(inp.value)"
+          />
+          <button
+            mat-raised-button
+            type="submit"
+            (click)="onSearch(inp.value)"
+            class="btn btn-white btn-round btn-just-icon"
+          >
+            <i class="material-icons">search</i>
+            <div class="ripple-container"></div>
+          </button>
+        </div>
+      </span>
+    </form>
+  </div>
   <div class="container-fluid">
     <div class="row">
-      <app-categories-list></app-categories-list>
-      <app-articles-list [listFor]="listFor"></app-articles-list>
-      <app-comments-list [listFor]="listFor"></app-comments-list>
-      <app-users-list></app-users-list>
-      <app-contacts-list></app-contacts-list>
-      <app-scrapes-list></app-scrapes-list>
+      <app-categories-list
+        [listFor]="listFor"
+        [search]="search"
+      ></app-categories-list>
+      <app-articles-list
+        [listFor]="listFor"
+        [search]="search"
+      ></app-articles-list>
+      <app-comments-list
+        [listFor]="listFor"
+        [search]="search"
+      ></app-comments-list>
+      <app-users-list [search]="search"></app-users-list>
+      <app-contacts-list [search]="search"></app-contacts-list>
+      <app-scrapes-list [search]="search"></app-scrapes-list>
     </div>
   </div>
 </div>

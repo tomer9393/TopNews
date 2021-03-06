@@ -12,11 +12,26 @@ export class CategoriesListComponent implements OnInit {
 
   categories : Category[] = [];  
   @Input() listFor: String = '';
+  @Input() search: string = '';
 
   constructor(private categoriesService : CategoriesService, private router: Router) {}
 
   ngOnInit() {
     this.load();
+  }
+
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.listFor === "" || this.search === "")
+    { 
+      this.load();
+    }
+    else if(this.listFor === "search")
+    { 
+      this.categoriesService.filter(this.search).subscribe(data =>{
+        this.categories = data;
+      })
+    }
   }
 
   load(){
@@ -26,22 +41,18 @@ export class CategoriesListComponent implements OnInit {
   }
 
   onCreate(){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.router.navigateByUrl('/CreateCategory', { state: {article: this.listFor}});
   }
   
   onEdit(category : Category){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.router.navigateByUrl('/EditCategory', { state: category });
   }
   onDelete(category : Category){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.categoriesService.deleteCategory(category._id).subscribe(data => {
             this.categories.splice(this.categories.indexOf(category),1);
     });
   }
   onDetails(category : Category){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.router.navigateByUrl('/DetailsCategory', { state: category });
   }
 
