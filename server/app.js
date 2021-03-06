@@ -10,10 +10,11 @@ const commentRoutes = require('./routes/comment');
 const filterRoutes = require('./routes/filter');
 const contactRoutes = require('./routes/contact');
 const scrapeRoutes = require('./routes/scrape');
+const userRoutes = require('./routes/user');
 const articleService = require('./services/article');
 const categoryService = require('./services/category');
-var EventEmitter = require('./common/emitter')
-var ActiveUsers = require('./common/realTime')
+var EventEmitter = require('./common/emitter');
+var ActiveUsers = require('./common/realTime');
 
 var myEmitter = EventEmitter.myEmitter;
 
@@ -49,6 +50,7 @@ app.use('/comments',commentRoutes);
 app.use('/filters',filterRoutes); 
 app.use('/contacts',contactRoutes); 
 app.use('/scrapes',scrapeRoutes); 
+app.use("/user", userRoutes);
 
 const server = http.createServer(app);
 
