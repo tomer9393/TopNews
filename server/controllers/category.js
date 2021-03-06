@@ -1,8 +1,12 @@
 const categoryService = require('../services/category');
+var emitter = require('../common/emitter')
+
+var myEmitter = emitter.myEmitter
 
 const createCategory = async (req, res) =>{
-    console.log(req.body);
     const newCategory = await categoryService.createCategory(req.body.name);
+    if(newCategory !== null)
+        myEmitter.emit('createCategory');
     res.json(newCategory);
 };
 
@@ -39,7 +43,7 @@ const removeCategory = async (req, res) =>{
     {
         return res.status(404).json({errors : ['Category not found']});
     }
-
+    myEmitter.emit('deleteCategory');
     res.send();
 };
 
@@ -48,11 +52,17 @@ const getAllCategories = async (req,res)=>{
     res.json(categories);
 };
 
+const getNumOfCategories = async (req,res)=>{
+    const count = await categoryService.getNumOfCategories();
+    res.json(count);
+};
+
 module.exports = {
     createCategory,
     getAllCategories,
     getCategoryByName,
     updateCategory,
-    removeCategory
+    removeCategory,
+    getNumOfCategories
 }
 

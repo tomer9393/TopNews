@@ -29,8 +29,12 @@ const getArticlesByCategory = async (category) => {
     return await Article.find({category : category});
 };
 
+const getNumOfArticlesByCategory = async (category,num) => {
+    return await Article.find({category : category}).sort({ published: 'desc' }).limit(parseInt(num));
+};
+
 const getLatestArticles = async (numOfArticles) => {
-    return await Article.find().sort({ published: -1 }).limit(numOfArticles);
+    return await Article.find().sort({ published: 'desc' }).limit(parseInt(numOfArticles));
 };
 
 const updateArticle = async (id, title, subTitle, category, body ,img) => {
@@ -60,12 +64,20 @@ const deleteArticle = async (id) => {
 
 
 
+const getNumOfArticles = async () => {
+    return await Article.countDocuments();
+};
+
+
+
 module.exports = {
     createArticle,
     getArticleById,
     getArticles,
     getLatestArticles,
     getArticlesByCategory,
+    getNumOfArticlesByCategory,
     updateArticle,
-    deleteArticle
+    deleteArticle,
+    getNumOfArticles
 }

@@ -1,7 +1,8 @@
+const comment = require('../models/comment');
 const commentService = require('../services/comment');
 
 const createComment = async (req, res) =>{
-    const newComment = await commentService.createComment(req.body.articleId, req.body.name, req.body.body, req.body.publishd);
+    const newComment = await commentService.createComment(req.body.articleId, req.body.name, req.body.body, req.body.publisehd);
     res.json(newComment);
 
 };
@@ -33,7 +34,7 @@ const UpdateComment = async (req,res)=> {
 
 
 const deleteComment = async (req,res)=> {
-    const comment = await commentService.deleteComment(req.params.id);
+    const comment = await commentService.DeleteComment(req.params.id);
 //params mean from the URL
     if (!comment) {
         return res.status(404).json({ errors: ['Comment not found'] });
@@ -41,10 +42,16 @@ const deleteComment = async (req,res)=> {
     res.send();
 };
 
+const getAllcomments = async (req, res) => {
+    const comments = await commentService.getAllComments();
+    res.json(comments);
+  };
+
 module.exports = {
     createComment,
     getCommentByID,
     getAllCommentsByArticleID,
     UpdateComment,
-    deleteComment
+    deleteComment,
+    getAllcomments
 };

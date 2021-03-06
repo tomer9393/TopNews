@@ -7,8 +7,16 @@ const socketIo = require('socket.io');
 const categoryRoutes = require('./routes/category');
 const articleRoutes = require('./routes/article');
 const commentRoutes = require('./routes/comment');
+const filterRoutes = require('./routes/filter');
+const contactRoutes = require('./routes/contact');
 const scrapeRoutes = require('./routes/scrape');
 const userRoutes = require('./routes/user');
+const articleService = require('./services/article');
+const categoryService = require('./services/category');
+var EventEmitter = require('./common/emitter');
+var ActiveUsers = require('./common/realTime');
+
+var myEmitter = EventEmitter.myEmitter;
 
 require('custom-env').env(process.env.NODE_ENV, './config');
 
@@ -39,6 +47,8 @@ console.log(process.env.PORT);
 app.use('/categories',categoryRoutes);
 app.use('/articles',articleRoutes);
 app.use('/comments',commentRoutes);
+app.use('/filters',filterRoutes); 
+app.use('/contacts',contactRoutes); 
 app.use('/scrapes',scrapeRoutes); 
 app.use("/user", userRoutes);
 
@@ -46,20 +56,63 @@ const server = http.createServer(app);
 
 const io = socketIo(server);
 
-var countActiveUsers = 0;
+var countActiveUsers = ActiveUsers.countActiveUsers;
+var countCategories = 0;
+var countArticles = 0;
+
+categoryService.getNumOfCategories().then((docs) => {
+    countCategories= docs;
+    myEmitter.emit('emitCat');
+});
+
+articleService.getNumOfArticles().then((docs) => {
+    countArticles= docs;
+    myEmitter.emit('emitArt');
+});
+
+myEmitter.on('createCategory', () => {
+    countCategories++;
+    myEmitter.emit('emitCat');
+});
+
+myEmitter.on('deleteCategory', () => {
+    countCategories--;
+    myEmitter.emit('emitCat');
+});
+
+
+myEmitter.on('createArticle', () => {
+    countArticles++;
+    myEmitter.emit('emitArt');
+});
+
+myEmitter.on('deleteArticle', () => {
+    countArticles--;
+    myEmitter.emit('emitArt');
+});
+
 io.on('connection', (socket) => {        
     if (socket.handshake.headers.origin === "http://localhost:3000") {
-        countActiveUsers++;        
-        socket.broadcast.emit('count', countActiveUsers);     
-        console.log(countActiveUsers);          
+        ActiveUsers.countActiveUsers++;        
+        socket.broadcast.emit('countActiveUsers', ActiveUsers.countActiveUsers);             
 
         socket.on('disconnect', () => {
-            countActiveUsers--;                   
-            socket.broadcast.emit('count', countActiveUsers); 
-            console.log(countActiveUsers);           
+            ActiveUsers.countActiveUsers--;                   
+            socket.broadcast.emit('countActiveUsers', ActiveUsers.countActiveUsers);           
         });
-    }   
-}); 
+    }
+    else if (socket.handshake.headers.origin === "http://localhost:4200") {
+        socket.broadcast.emit('countActiveUsers', ActiveUsers.countActiveUsers);           
+        socket.broadcast.emit('countCategories', countCategories);
+        socket.broadcast.emit('countArticles', countArticles);
 
+        myEmitter.on('emitCat', () => {
+            socket.broadcast.emit('countCategories', countCategories);
+        });
+        myEmitter.on('emitArt', () => {
+            socket.broadcast.emit('countArticles', countArticles);
+        });
+    }
+}); 
 
 server.listen(process.env.PORT);

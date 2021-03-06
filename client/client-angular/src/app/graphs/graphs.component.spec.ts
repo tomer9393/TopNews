@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsersCounterComponent } from './users-counter.component';
+import { GraphsComponent } from './graphs.component';
 
-describe('UsersCounterComponent', () => {
-  let component: UsersCounterComponent;
-  let fixture: ComponentFixture<UsersCounterComponent>;
+describe('GraphsComponent', () => {
+  let component: GraphsComponent;
+  let fixture: ComponentFixture<GraphsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UsersCounterComponent ]
+      declarations: [ GraphsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsersCounterComponent);
+    fixture = TestBed.createComponent(GraphsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

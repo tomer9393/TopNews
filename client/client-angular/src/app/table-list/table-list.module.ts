@@ -18,7 +18,6 @@ import {MatSelectModule} from '@angular/material/select';
 
 import { TableListRoutes } from './table-list.routing';
 import { CreateArticleComponent } from './articles-list/create-article/create-article.component';
-import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
 import { EditArticleComponent } from './articles-list/edit-article/edit-article.component';
 import { DetailsArticleComponent } from './articles-list/details-article/details-article.component';
 
@@ -30,6 +29,17 @@ import { DetailsCommentComponent } from './comments-list/details-comment/details
 import { EditCategoryComponent } from './categories-list/edit-category/edit-category.component';
 import { CreateCategoryComponent } from './categories-list/create-category/create-category.component';
 import { DetailsCategoryComponent } from './categories-list/details-category/details-category.component';
+
+import { DetailsContactComponent } from './contacts-list/details-contact/details-contact.component';
+import { EditContactComponent } from './contacts-list/edit-contact/edit-contact.component';
+import { CreateContactComponent } from './contacts-list/create-contact/create-contact.component';
+
+import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
+import { EditScrapeComponent } from './scrapes-list/edit-scrape/edit-scrape.component';
+import { DetailsScrapeComponent } from './scrapes-list/details-scrape/details-scrape.component';
+import { CreateUserComponent } from './users-list/create-user/create-user.component';
+import { EditUserComponent } from './users-list/edit-user/edit-user.component';
+import { DetailsUserComponent } from './users-list/details-user/details-user.component';
 
 
 
@@ -44,7 +54,6 @@ import { DetailsCategoryComponent } from './categories-list/details-category/det
     ArticlesListComponent,
     ScrapesListComponent,
     CreateArticleComponent,
-    CreateScrapeComponent,
     EditArticleComponent,
     DetailsArticleComponent,
     CommentsListComponent,
@@ -54,6 +63,15 @@ import { DetailsCategoryComponent } from './categories-list/details-category/det
     EditCategoryComponent,
     CreateCategoryComponent,
     DetailsCategoryComponent,
+    DetailsContactComponent,
+    EditContactComponent,
+    CreateContactComponent,
+    CreateScrapeComponent,
+    EditScrapeComponent,
+    DetailsScrapeComponent,
+    CreateUserComponent,
+    EditUserComponent,
+    DetailsUserComponent,
     ],
   imports: [
     CommonModule,

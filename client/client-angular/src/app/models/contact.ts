@@ -1,6 +1,7 @@
 export interface Contact {
     _id: String,
-    name: String,
+    fullName: String,
     email: String,
-    body: String,
+    message: String,
+    published: Date,
 }

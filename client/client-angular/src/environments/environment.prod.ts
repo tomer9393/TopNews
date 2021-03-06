@@ -6,4 +6,7 @@ export const environment = {
   commentsUrl : 'http://localhost:8081/comments',
   contactsUrl : 'http://localhost:8081/contacts',
   scrapesUrl : 'http://localhost:8081/scrapes',
+  filtersUrl : 'http://localhost:8081/filters',
+  userssUrl : 'http://localhost:8081/users',
+
 };

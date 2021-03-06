@@ -9,15 +9,21 @@ import { environment } from '../../environments/environment';
 })
 export class ContactsService {
   private contactsUrl = environment.contactsUrl;
+  private filterUrl = environment.filtersUrl;
 
   constructor(private http: HttpClient) {}
+  
+  filter(key: string): Observable<Contact[]> {
+    const url = `${this.filterUrl}/contacts/${key}`;
+    return this.http.get<Contact[]>(url);
+  }
 
   getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.contactsUrl);
   }
 
-  addContact(subject: string): Observable<Contact> {
-    return this.http.post<Contact>(this.contactsUrl, { subject: subject });
+  addContact(fullName: String, email: String, message: String): Observable<Contact> {
+    return this.http.post<Contact>(this.contactsUrl, { fullName: fullName, email: email, message: message });
   }
 
   getContact(id: String): Observable<Contact> {
@@ -27,7 +33,7 @@ export class ContactsService {
 
   updateContact(contact: Contact): Observable<Contact> {
     const url = `${this.contactsUrl}/${contact._id}`;
-    return this.http.patch<Contact>(url, { subject: contact.body });
+    return this.http.patch<Contact>(url, { fullName: contact.fullName, email: contact.email, message: contact.message });
   }
 
   deleteContact(id: String): Observable<Contact> {

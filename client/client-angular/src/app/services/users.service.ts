@@ -3,51 +3,57 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { User } from '../models/user';
 import { filter } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 export class UsersService {
-
-  users: User[];
-  filteredUsers: Subject<User[]> = new Subject<User[]>();
   
-  constructor(private http: HttpClient) { 
-    this.getAllUsers().subscribe(
-      {next: (response: any) => {
-        (this.users = response.user);
-       (this.filteredUsers.next(response.user)) },
-        error: (error) => console.log(error)});
-  }
-
-  filterUsers( filters: Partial<User>){
-    let tempFilter=this.users.filter((user)=>{
-      let flag = true;
-      Object.keys(filters).forEach((key)=>{
-        if(!(user[key].toLowerCase().includes(filters[key].toLowerCase())))
-          return flag = false;
+    private usersUrl = environment.usersUrl;
+    private filterUrl = environment.filtersUrl;
+  
+    constructor(private http: HttpClient) { }
+    
+    filter(key: string): Observable<User[]> {
+      const url = `${this.filterUrl}/users/${key}`;
+      return this.http.get<User[]>(url);
+    }
+  
+    getUsers(): Observable<User[]> {
+      return this.http.get<User[]>(this.usersUrl);
+    }
+  
+    addUser(firstname: String, lastname: String, email: String, password: String, phone: String, isAdmin: Boolean): Observable<User> {
+      return this.http.post<User>(this.usersUrl, { 
+        email: email, 
+        firstname: firstname, 
+        lastname: lastname, 
+        password: password, 
+        phone: phone,
+        isAdmin: isAdmin
       });
-      
-        return flag;
-        
-    });
-    this.filteredUsers.next(tempFilter);
-
-  }
-
-  getAllUsers() {
-    return this.http.get('http://localhost:8081/user');
-  }
-  createNewUser(form) {
-    return this.http.post('http://localhost:8081/user/signup', form);
-  }
-  deleteUser(userId) {
-    return this.http.delete(`http://localhost:8081/user/deleteUserByAdmin/${userId}`);
-  }
-  updateUser(user) {
-    console.log(typeof(user));
-    return this.http.put(`http://localhost:8081/user/updateByUserId`, user);
-  }
-  getUser(userId) {
-    return this.http.get(`http://localhost:8081/user/${userId}`);
-  }
+  
+    }
+  
+    getUser(id: String): Observable<User> {
+      const url = `${this.usersUrl}/${id}`;
+      return this.http.get<User>(url);
+    }
+  
+    updateUser(user: User): Observable<User> {
+      const url = `${this.usersUrl}/id/${user._id}`;
+      return this.http.patch<User>(url, { 
+        email: user.email, 
+        firstname: user.firstname, 
+        lastname: user.lastname, 
+        password: user.password, 
+        phone: user.phone,
+        isAdmin: user.isAdmin });
+    }
+  
+    deleteUser(id: String): Observable<User> {
+      const url = `${this.usersUrl}/id/${id}`;
+      return this.http.delete<User>(url);
+    }
 }

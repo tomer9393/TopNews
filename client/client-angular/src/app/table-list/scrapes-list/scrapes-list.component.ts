@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Scrape } from '../../models/scrape';
 import { ScrapesService } from '../../services/scrapes.service';
-//import { CurrentScrapeService } from 'src/app/services/current-scrape.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-scrapes-list',
@@ -11,39 +11,59 @@ import { ScrapesService } from '../../services/scrapes.service';
 export class ScrapesListComponent implements OnInit {
 
   scrapes : Scrape[] = [];  
+  @Input() search: string = '';
 
-  constructor(private scrapesService : ScrapesService){}
+  constructor(private scrapesService : ScrapesService,  private router: Router){}
 
   ngOnInit() {
-    this.load();
+    this.loadAll();
   }
 
-  load(){
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.search === "")
+    { 
+      this.loadAll();
+    }
+    else
+    { 
+      this.scrapesService.filter(this.search).subscribe(data =>{
+        this.scrapes = data;
+      })
+    }
+  }
+
+  loadAll(){
     this.scrapesService.getScrapes().subscribe(data => {
       this.scrapes = data;
     });
   }
 
-  onEdit(scrape : Scrape){
-    //this.currentScrapeService.changeCurrentScrape(scrape);
-    console.log("A");
-  }
-  onDelete(scrape : Scrape){
-    //this.currentScrapeService.changeCurrentScrape(scrape);
-    console.log("b");
-  }
-  onDetails(scrape : Scrape){
-    //this.currentScrapeService.changeCurrentScrape(scrape);
-    console.log("c");
+  onCreate(){
+    this.router.navigateByUrl('/CreateScrape');
   }
 
-  handlePanel(action : string){
-    this.load();
+  onEdit(scrape : Scrape){
+    this.router.navigateByUrl('/EditScrape', { state: scrape });
+  }
+  onDelete(scrape : Scrape){
+    this.scrapesService.deleteScrape(scrape._id).subscribe(data => {
+            this.scrapes.splice(this.scrapes.indexOf(scrape),1);
+    });
+  }
+  onDetails(scrape : Scrape){
+    this.router.navigateByUrl('/DetailsScrape', { state: scrape });
+  }
+
+  onDeleteAll(){
+    this.scrapesService.deleteAllScrape().subscribe(data => {
+      this.loadAll();
+    });
   }
 
   onScrape(){
-    this.scrapesService.scrape().subscribe(() => {
-      this.load();
+    this.scrapesService.scrape().subscribe(data => {
+      this.loadAll();
     });
   }
 }
