@@ -19,13 +19,4 @@ export class UsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClickSearch(){
-
-    this.usersService.filterUsers({
-      firstname: this.firstNameSearch,
-      lastname: this.lastNameSearch,
-      email: this.emailSearch,
-    });
-    console.log(this.firstNameSearch);
-  }
 }

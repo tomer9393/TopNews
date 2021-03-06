@@ -17,7 +17,7 @@ export class CreateUserComponent implements OnInit {
     ngOnInit(): void {
     }
     
-    onCreate(firstName: String, lastName: String, email: String, password: String, phone: String){
+    onCreate(firstName: string, lastName: string, email: string, password: string, phone: string){
       this.usersService.addUser(firstName, lastName, email, password, phone, true).subscribe(data => {
         this.user = data;
         this.router.navigate(['/table-list']);

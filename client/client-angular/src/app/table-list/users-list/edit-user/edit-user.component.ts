@@ -23,7 +23,7 @@ export class EditUserComponent implements OnInit {
     this.user = history.state;
   }
 
-  onUpdate(firstname: String, lastname: String, email: String, password: String, phone: String ) {
+  onUpdate(firstname: string, lastname: string, email: string, password: string, phone: string ) {
     this.user.firstname = firstname;
     this.user.lastname = lastname;
     this.user.email = email;

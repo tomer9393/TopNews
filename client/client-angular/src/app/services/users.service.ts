@@ -24,7 +24,7 @@ export class UsersService {
       return this.http.get<User[]>(this.usersUrl);
     }
   
-    addUser(firstname: String, lastname: String, email: String, password: String, phone: String, isAdmin: Boolean): Observable<User> {
+    addUser(firstname: string, lastname: string, email: string, password: string, phone: string, isAdmin: boolean): Observable<User> {
       return this.http.post<User>(this.usersUrl, { 
         email: email, 
         firstname: firstname, 
@@ -36,7 +36,7 @@ export class UsersService {
   
     }
   
-    getUser(id: String): Observable<User> {
+    getUser(id: string): Observable<User> {
       const url = `${this.usersUrl}/${id}`;
       return this.http.get<User>(url);
     }
@@ -52,7 +52,7 @@ export class UsersService {
         isAdmin: user.isAdmin });
     }
   
-    deleteUser(id: String): Observable<User> {
+    deleteUser(id: string): Observable<User> {
       const url = `${this.usersUrl}/id/${id}`;
       return this.http.delete<User>(url);
     }
