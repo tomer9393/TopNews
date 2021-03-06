@@ -37,6 +37,9 @@ import { CreateContactComponent } from './contacts-list/create-contact/create-co
 import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrape.component';
 import { EditScrapeComponent } from './scrapes-list/edit-scrape/edit-scrape.component';
 import { DetailsScrapeComponent } from './scrapes-list/details-scrape/details-scrape.component';
+import { CreateUserComponent } from './users-list/create-user/create-user.component';
+import { EditUserComponent } from './users-list/edit-user/edit-user.component';
+import { DetailsUserComponent } from './users-list/details-user/details-user.component';
 
 
 
@@ -66,6 +69,9 @@ import { DetailsScrapeComponent } from './scrapes-list/details-scrape/details-sc
     CreateScrapeComponent,
     EditScrapeComponent,
     DetailsScrapeComponent,
+    CreateUserComponent,
+    EditUserComponent,
+    DetailsUserComponent,
     ],
   imports: [
     CommonModule,

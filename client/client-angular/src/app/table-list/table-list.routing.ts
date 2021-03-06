@@ -22,6 +22,9 @@ import { CreateScrapeComponent } from './scrapes-list/create-scrape/create-scrap
 import { EditScrapeComponent } from './scrapes-list/edit-scrape/edit-scrape.component';
 import { DetailsScrapeComponent } from './scrapes-list/details-scrape/details-scrape.component';
 
+import { CreateUserComponent } from './users-list/create-user/create-user.component';
+import { EditUserComponent } from './users-list/edit-user/edit-user.component';
+import { DetailsUserComponent } from './users-list/details-user/details-user.component';
 
 
 export const TableListRoutes: Routes = [
@@ -85,6 +88,10 @@ export const TableListRoutes: Routes = [
      { path: 'CreateContact',      component: CreateContactComponent },
      { path: 'EditContact',      component: EditContactComponent },
      { path: 'DetailsContact',      component: DetailsContactComponent },
+
+     { path: 'CreateUser',      component: CreateUserComponent },
+     { path: 'EditUser',      component: EditUserComponent },
+     { path: 'DetailsUser',      component: DetailsUserComponent },
 
 
     // { path: 'user-profile',   component: UserProfileComponent },
