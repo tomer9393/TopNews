@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   imports: [
@@ -13,6 +14,7 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   declarations: [
     NavbarComponent,
     SidebarComponent,
+    LogoutComponent,
   ],
   exports: [
     NavbarComponent,

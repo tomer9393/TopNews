@@ -8,7 +8,7 @@
 .box{
     width: 600px;
     height: 500px;
-    background: linear-gradient(to right bottom,#1f45cc,#8592ae, #3f547b,  #a7699b);
+    background: linear-gradient(to right bottom,#1f9bcc,#8595ae, #5b3f7b,  #8a1cca);
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;

@@ -42,6 +42,7 @@ export class LoginComponent implements OnInit {
     }
   }
   onSubmit(formData) {
+    console.log(formData);
     if (this.login) {
       this.ls.onLogin(formData.form.value).subscribe(
         (res: any) => {
@@ -67,5 +68,6 @@ export class LoginComponent implements OnInit {
         }
       );
     }
+    this.ls.setShowLoginComp(false)
   }
 }

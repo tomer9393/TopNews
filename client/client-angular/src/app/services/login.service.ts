@@ -10,11 +10,12 @@ import { User } from '../models/user';
 export class LoginService {
   private token = '';
   public isLogin = new BehaviorSubject(false);
+  public showLoginComponent = new BehaviorSubject(false);
   public loginUserDetails = new Subject<User>();
   private connectedUser: User;
+  error;
 
   constructor(private http: HttpClient) { }
-  error;
   onLogin(data) {
     return this.http.post('http://localhost:8081/user/adminLogin', data);
   }
@@ -33,5 +34,12 @@ export class LoginService {
   }
   getConnectedUser() {
     return this.connectedUser;
+  }
+
+  showLogin(data: boolean) {
+      this.showLoginComponent.next(data);
+  }
+  setShowLoginComp(data: boolean){
+    this.showLoginComponent.next(data);
   }
 }

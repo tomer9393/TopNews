@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LoginService } from '../../services/login.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { LoginService } from '../../services/login.service';
 })
 export class ContainerComponent implements OnInit {
   private isLogin: any;
-  constructor(private ls: LoginService) { }
+  private loginBtn =  false;
+  constructor(private ls: LoginService, private route:ActivatedRoute, private router: Router) { }
 
   ngOnInit(): void {
     if (localStorage.getItem('user')) {
@@ -19,5 +21,13 @@ export class ContainerComponent implements OnInit {
   logout() {
     localStorage.removeItem('user');
     this.ls.setIsLogin(false, null);
-   }
+    this.ls.showLogin(false);
+    this.loginBtn = !this.loginBtn
+    this.router.navigate(['logout'])
+  }
+
+  showLogin() {
+    this.loginBtn = !this.loginBtn
+    this.ls.showLogin(this.loginBtn);
+  }
 }

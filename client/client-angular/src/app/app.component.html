@@ -1,5 +1,7 @@
 <app-container></app-container>
-<div *ngIf="show">
-   <app-admin-layout></app-admin-layout>
+<div *ngIf="showLogin">
+   <app-login></app-login>
 </div>
-<router-outlet></router-outlet>
+<div *ngIf="show">
+   <router-outlet></router-outlet>
+</div>
