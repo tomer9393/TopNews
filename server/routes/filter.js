@@ -18,5 +18,7 @@ router.route('/categories')
 router.route('/func')
     .get(filterController.func);
 
+router.route('/activeUsers')
+    .get(filterController.activeUsers);
 
 module.exports = router;

@@ -9,8 +9,14 @@ import { environment } from '../../environments/environment';
 })
 export class ScrapesService {
   private scrapesUrl = environment.scrapesUrl;
+  private filterUrl = environment.filtersUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
+  
+  filter(key: string): Observable<Scrape[]> {
+    const url = `${this.filterUrl}/scrapes/${key}`;
+    return this.http.get<Scrape[]>(url);
+  }
 
   getScrapes(): Observable<Scrape[]> {
     return this.http.get<Scrape[]>(this.scrapesUrl);

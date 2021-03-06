@@ -9,8 +9,14 @@ import { environment } from '../../environments/environment';
 })
 export class ContactsService {
   private contactsUrl = environment.contactsUrl;
+  private filterUrl = environment.filtersUrl;
 
   constructor(private http: HttpClient) {}
+  
+  filter(key: string): Observable<Contact[]> {
+    const url = `${this.filterUrl}/contacts/${key}`;
+    return this.http.get<Contact[]>(url);
+  }
 
   getContacts(): Observable<Contact[]> {
     return this.http.get<Contact[]>(this.contactsUrl);

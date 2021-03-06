@@ -13,6 +13,7 @@ export class ArticlesListComponent implements OnInit {
 
   articles : Article[] = [];  
   @Input() listFor: String = '';
+  @Input() search: string = '';
 
   constructor(private articlesService : ArticlesService, private router: Router){}
 
@@ -22,6 +23,20 @@ export class ArticlesListComponent implements OnInit {
     else if (this.listFor !== '')
     {
       this.loadForCategory(this.listFor);
+    }
+  }
+
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.listFor === "" || this.search === "")
+    { 
+      this.loadAll();
+    }
+    else if(this.listFor === "search")
+    { 
+      this.articlesService.filter(this.search).subscribe(data =>{
+        this.articles = data;
+      })
     }
   }
 

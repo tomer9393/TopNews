@@ -9,8 +9,14 @@ import { environment } from '../../environments/environment';
 })
 export class ArticlesService {
   private articlesUrl = environment.articlesUrl;
+  private filterUrl = environment.filtersUrl;
 
   constructor(private http: HttpClient) { }
+  
+  filter(key: string): Observable<Article[]> {
+    const url = `${this.filterUrl}/articles/${key}`;
+    return this.http.get<Article[]>(url);
+  }
 
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(this.articlesUrl);

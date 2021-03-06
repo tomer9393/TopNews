@@ -9,6 +9,7 @@ import { environment } from '../../environments/environment';
 })
 export class CategoriesService {
   private categoriesUrl = environment.categoriesUrl;
+  private filtersUrl = environment.filtersUrl;
 
   constructor(private http: HttpClient) {}
 
@@ -21,6 +22,10 @@ export class CategoriesService {
     return this.http.get<Number>(url);
   }
 
+  filter(key: string): Observable<Category[]> {
+    const url = `${this.filtersUrl}/categories/${key}`;
+    return this.http.get<Category[]>(url);
+  }
 
   addCategory(name: string): Observable<Category> {
     return this.http.post<Category>(this.categoriesUrl, { name: name });

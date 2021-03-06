@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { User } from '../../models/user';
 import { CategoriesService } from '../../services/categories.service';
 
@@ -9,9 +9,24 @@ import { CategoriesService } from '../../services/categories.service';
 })
 export class UsersListComponent implements OnInit {
 
+  @Input() search: string = '';
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  ngOnChanges(changes: String) {
+    // changes.prop contains the old and the new value...
+    if(this.search === "")
+    { 
+      //this.loadAll();
+    }
+    else
+    { 
+      // this.scrapesService.filter(this.search).subscribe(data =>{
+      //   this.scrapes = data;
+      // })
+    }
+  }
 }
