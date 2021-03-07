@@ -3,6 +3,7 @@ import moment from "moment";
 import { useParams } from "react-router-dom";
 import { getArticleByCategory } from "../../api/ArticleAPI";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function CategoryPage() {
   const { name } = useParams();
@@ -10,9 +11,11 @@ function CategoryPage() {
 
   useEffect(() => {
     getArticleByCategory(name).then((res) => setArticles(res.data));
-  }, []);
+  }, [name]);
 
-  const singleCategoriesPosts = articles?.map((article) => <SingleCategoryPost article={article}/>);
+  const singleCategoriesPosts = articles?.map((article) => (
+    <SingleCategoryPost article={article} />
+  ));
 
   return !articles ? (
     <div>Loading...</div>
@@ -26,7 +29,9 @@ function CategoryPage() {
               <div className="breacumb-content d-flex align-items-center justify-content-between">
                 {/* Post Tag */}
                 <div className="gazette-post-tag">
-                  <a href="#">{articles[0].category.name}</a>
+                  <Link to={`/Category/${articles[0].category}`}>
+                    {articles[0].category}
+                  </Link>
                 </div>
                 <p className="editorial-post-date text-dark mb-0">
                   {moment().format("DD/MM/YYYY")}

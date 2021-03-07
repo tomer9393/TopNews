@@ -1,22 +1,33 @@
-import SingleTodayPosts from './singleTodayPosts';
-
+import SingleTodayPosts from "./singleTodayPosts";
+import { getLatestArticles } from "../../../../../api/ArticleAPI";
+import { useEffect, useState } from "react";
 
 function TodayPosts() {
-    return (
-        <>
-            <div className="gazette-todays-post section_padding_100_50">
-                <div className="gazette-heading">
-                    <h4>today’s most popular</h4>
-                </div>
-                
-                {/* Single Today Post */}
-                <SingleTodayPosts/>
-                {/* Single Today Post */}
-                <SingleTodayPosts/>
+  const [articles, setArticles] = useState();
+  useEffect(
+    () =>
+      getLatestArticles(2)
+        .then((res) => res.data)
+        .then((res) => setArticles(res)),
+    []
+  );
 
-            </div>
-        </>
-    );
+  return !articles ? (
+    <div>Loading...</div>
+  ) : (
+    <>
+      <div className="gazette-todays-post section_padding_100_50">
+        <div className="gazette-heading">
+          <h4>today’s most popular</h4>
+        </div>
+
+        {/* Single Today Post */}
+        <SingleTodayPosts article={articles[0]} />
+        {/* Single Today Post */}
+        <SingleTodayPosts article={articles[1]} />
+      </div>
+    </>
+  );
 }
 
 export default TodayPosts;

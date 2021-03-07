@@ -1,6 +1,5 @@
-import { useParams } from "react-router-dom";
-import { getArticleByCategory } from "../../api/ArticleAPI";
-import React, { useEffect, useState } from "react";
+import React from "react";
+import {Link} from "react-router-dom";
 
 function SingleCategoryPost(props) {
   const article = props.article;
@@ -13,7 +12,7 @@ function SingleCategoryPost(props) {
         <div className="gazette-welcome-post">
           {/* Post Tag */}
           <div className="gazette-post-tag">
-            <a href="#">{article.category.name}</a>
+            <a href="#">{article.category}</a>
           </div>
           <h2 className="font-pt">{article.title}</h2>
           <p className="gazette-post-date">{article.lastUpdate}</p>
@@ -26,10 +25,10 @@ function SingleCategoryPost(props) {
           {/* {Reading More */}
           <div className="post-continue-reading-share mt-30">
             <div className="post-continue-btn">
-              <a href={`/PostDetails/${article._id}`} className="font-pt">
+              <Link to={`/PostDetails/${article._id}`} className="font-pt">
                 Continue Reading{" "}
                 <i className="fa fa-chevron-right" aria-hidden="true" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
