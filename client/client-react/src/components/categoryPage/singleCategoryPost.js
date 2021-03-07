@@ -15,7 +15,7 @@ function SingleCategoryPost(props) {
             <a href="#">{article.category}</a>
           </div>
           <h2 className="font-pt">{article.title}</h2>
-          <p className="gazette-post-date">{article.lastUpdate}</p>
+          <p>{new Date(article.lastUpdate).toLocaleString("he-IL")}</p>
           {/* Post Thumbnail */}
           <div className="blog-post-thumbnail my-5">
             <img src={article.img} alt="post-thumb" />
