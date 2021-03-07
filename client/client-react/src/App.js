@@ -7,6 +7,7 @@ import CategoryPage from './components/categoryPage/categoryPage';
 import PostDetailsPage from './components/postDetailsPage/postDetailsPage';
 import AboutUsPage from './components/aboutUsPage/aboutUsPage';
 import ContactPage from './components/contactPage/contactPage';
+import SearchPage from './components/searchPage/searchPage'
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -23,6 +24,7 @@ function App() {
           <Route path="/PostDetails/:id" component={() => <PostDetailsPage />} />
           <Route path="/AboutUs" component={() => <AboutUsPage />} />
           <Route path="/Contact" component={() => <ContactPage />} />
+          <Route path="/Search" component={(props) => <SearchPage {...props}/>} />
         </Switch>
 
         <Footer />

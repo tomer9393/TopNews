@@ -7,7 +7,7 @@ function Header() {
   const [showSearch, setShowSearch] = useState();
 
   return (
-    <header className="header-area">
+    <header className="header-area" style={{marginBottom: '30px'}}>
       <img src="src/img/core-img/ourLogo.jpg" alt="logo" />
       {/* Top Header Area */}
       <div className="top-header">
