@@ -8,19 +8,19 @@ const activeUsers = (req, res) => {
 }
 
 const homePageSearch = async (req, res) => {
-    const articles = await filterService.homePageSearch(req.params.category ,req.params.title ,req.params.gt ,req.params.lt);
-    if (!articles) {
-      return res.status(404).json({ errors: ['articles not found'] });
-    }
-    res.json(articles);
-  };
+  const articles = await filterService.homePageSearch(req.params.category, req.params.title, req.params.gt, req.params.lt);
+  if (!articles) {
+    return res.status(404).json({ errors: ['articles not found'] });
+  }
+  res.json(articles);
+};
 
 const articlesSearch = async (req, res) => {
-    const articles = await filterService.articlesSearch(req.params.string);
-    if (!articles) {
-      return res.status(404).json({ errors: ['Articles not found'] });
-    }
-    res.json(articles);
+  const articles = await filterService.articlesSearch(req.params.string);
+  if (!articles) {
+    return res.status(404).json({ errors: ['Articles not found'] });
+  }
+  res.json(articles);
 };
 
 const categoriesSearch = async (req, res) => {
@@ -63,40 +63,40 @@ const usersSearch = async (req, res) => {
   res.json(users);
 };
 
-const func = async (req,res)=> {
-    await filterService.func();
-//params mean from the URL
-    res.send();
+const func = async (req, res) => {
+  await filterService.func();
+  //params mean from the URL
+  res.send();
 };
 
 const getArticlesId = async (req, res) => {
-    const articles = await filterService.getArticlesId();
-    res.json(articles);
-  };
+  const articles = await filterService.getArticlesId();
+  res.json(articles);
+};
 
 const getSumOfCommentsByArticle = async (req, res) => {
-    const comments = await filterService.getSumOfCommentsByArticle();
-    res.json(comments);
-  };
+  const comments = await filterService.getSumOfCommentsByArticle();
+  res.json(comments);
+};
 
 
 const getSumOfArticlesByCategory = async (req, res) => {
-    const categories = await filterService.getSumOfArticlesByCategory();
-    res.json(categories);
-  };
+  const categories = await filterService.getSumOfArticlesByCategory();
+  res.json(categories);
+};
 
-  
+
 module.exports = {
-    homePageSearch,
-    articlesSearch,
-    categoriesSearch,
-    commentsSearch,
-    contactsSearch,
-    scrapesSearch,
-    usersSearch,
-    func,
-    getArticlesId,
-    getSumOfCommentsByArticle,
-    getSumOfArticlesByCategory,
-    activeUsers
+  homePageSearch,
+  articlesSearch,
+  categoriesSearch,
+  commentsSearch,
+  contactsSearch,
+  scrapesSearch,
+  usersSearch,
+  func,
+  getArticlesId,
+  getSumOfCommentsByArticle,
+  getSumOfArticlesByCategory,
+  activeUsers
 };

@@ -1,6 +1,6 @@
-const express = require ('express');
+const express = require('express');
 var router = express.Router();
-const filterController = require ('../controllers/filter');
+const filterController = require('../controllers/filter');
 
 
 router.route('/:category/:title/:gt/:lt')
