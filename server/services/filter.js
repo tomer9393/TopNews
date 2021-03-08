@@ -1,7 +1,11 @@
 const Article = require('../models/article');
 const { emit } = require('../models/category');
 const Category = require('../models/category');
-const Comment=require ('../models/comment')
+const Comment=require ('../models/comment');
+const Contact=require ('../models/contact');
+const Scrape=require ('../models/scrape');
+const User=require ('../models/user');
+
 
 
 const func = async () => {
@@ -20,7 +24,6 @@ const func = async () => {
 
 const homePageSearch = async (category, title, gt, lt) => {
 
-
     if(!category){
         category = "";
     }
@@ -28,7 +31,7 @@ const homePageSearch = async (category, title, gt, lt) => {
         title = "";
     }
     if(!gt){ 
-        gt = new Date(Date.now());
+        gt = new Date(2021,1,1);
         console.log(gt);
     }
     if(!lt){ 
@@ -39,15 +42,128 @@ const homePageSearch = async (category, title, gt, lt) => {
     return await Article.aggregate( [
         {
             $match: {
-                $or: [
-                    {category : {$regex : category}},
-                    {title : {$regex : title}},
+                $and: [
+                    {category : {$regex : category, $options:'i'}},
+                    {title : {$regex : title, $options:'i'}},
                     {lastUpdate : {"$gte": new Date(gt), "$lt": new Date(lt)}}
               
               ]
           }
         }
       ] );
+};
+
+const articlesSearch = async (string) => {
+
+  if(!string){ 
+      string = "";
+  }
+
+  return await Article.aggregate( [
+      {
+          $match: {
+            $or: [
+                {title : {$regex : string, $options:'i'}},
+                {subTitle : {$regex : string, $options:'i' }},
+                {category : {$regex : string, $options:'i'}},
+                {img : {$regex : string, $options:'i'}},
+                {body : {$regex : string, $options:'i'}}
+          ]
+      }
+      }
+    ] );
+};
+
+
+const categoriesSearch = async (name) => {
+
+  if(!name){ 
+      name = "";
+  }
+
+  return await Category.aggregate( [
+      {
+          $match: {
+            name : {$regex : name, $options:'i'}
+          }
+      }
+    ] );
+};
+
+const commentsSearch = async (string) => {
+
+  if(!string){ 
+      string = "";
+  }
+
+  return await Comment.aggregate( [
+      {
+          $match: {
+            $or: [
+                    {articleId : {$regex : string, $options:'i'}},
+                    {name : {$regex : string, $options:'i'}},
+                    {body : {$regex : string, $options:'i'}}
+           ]
+         }
+      }
+    ] );
+};
+
+const contactsSearch = async (string) => {
+
+  if(!string){ 
+      string = "";
+  }
+
+  return await Contact.aggregate( [
+      {
+          $match: {
+            $or: [
+                  {fullName : {$regex : string, $options:'i'}},
+                  {email : {$regex : string, $options:'i'}},
+                  {message : {$regex : string, $options:'i'}}
+         ]
+}
+      }
+    ] );
+};
+
+const scrapesSearch = async (string) => {
+
+  if(!string){ 
+      string = "";
+  }
+
+  return await Scrape.aggregate( [
+      {
+          $match: {
+            $or: [
+                  {title : {$regex : string, $options:'i'}},
+                  {img : {$regex : string, $options:'i'}}
+         ]
+}
+      }
+    ] );
+};
+
+const usersSearch = async (string) => {
+
+  if(!string){ 
+      string = "";
+  }
+
+  return await User.aggregate( [
+      {
+          $match: {
+            $or: [
+                   {email : {$regex : string, $options:'i'}},
+                   {firstname : {$regex : string, $options:'i'}},
+                   {lastname : {$regex : string, $options:'i'}},
+                   {phone : {$regex : string, $options:'i'}}
+                 ]
+         }
+      }
+    ] );
 };
 
 const getArticlesId = async () => {
@@ -79,6 +195,12 @@ const getSumOfArticlesByCategory= async () => {
 
 module.exports = {
     homePageSearch,
+    articlesSearch,
+    categoriesSearch,
+    commentsSearch,
+    contactsSearch,
+    scrapesSearch,
+    usersSearch,
     func,
     getArticlesId,
     getSumOfCommentsByArticle,
