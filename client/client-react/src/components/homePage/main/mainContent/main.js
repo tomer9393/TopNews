@@ -15,7 +15,7 @@ function MainContent() {
                         {/* Today Posts */}
                         <TodayPosts />
                     </div>
-                    <Widgets />
+                   <Widgets />
                 </div>
             </div>
         </>

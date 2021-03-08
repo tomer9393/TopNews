@@ -14,21 +14,17 @@
         <table class="table">
           <thead class="text-primary">
             <th>Title</th>
-            <th>Link</th>
-            <th>Rating</th>
-            <th>Genre</th>
-            <th>Duration</th>
-            <th>Year</th>
+            <th>Img URL</th>
+            <th>Published</th>
+            <th>Scrape Time</th>
             <th>Actions</th>
           </thead>
           <tbody>
             <tr *ngFor="let scrape of scrapes">
               <td>{{scrape.title}}</td>
-              <td>{{scrape.link}}</td>
-              <td>{{scrape.rating}}</td>
-              <td>{{scrape.genre}}</td>
-              <td>{{scrape.duration}}</td>
-              <td>{{scrape.year}}</td>
+              <td >{{scrape.img }}</td>
+              <td>{{scrape.published}}</td>
+              <td>{{scrape.time}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(scrape)">
                   <i class="material-icons">edit</i>

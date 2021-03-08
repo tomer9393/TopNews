@@ -1,5 +1,5 @@
 import BreakingNews from './breakingNews/breakingNews';
-import DontMiss from './dontMiss/dontMiss';
+import WorldNews from './worldNews/worldNews';
 
 function MainContent() {
     return (
@@ -11,7 +11,7 @@ function MainContent() {
                     <BreakingNews/>
 
                     {/* Don't Miss Widget */}
-                    <DontMiss/>
+                    <WorldNews/>
  
                    
                     {/* Subscribe Widget */}

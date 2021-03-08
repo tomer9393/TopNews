@@ -22,8 +22,8 @@ export class ScrapesService {
     return this.http.get<Scrape[]>(this.scrapesUrl);
   }
 
-  addScrape(title: String, link: String, rating: String, genre: String, duration: String, img: String): Observable<Scrape> {
-    return this.http.post<Scrape>(this.scrapesUrl, { title: title, link: link, rating: rating, genre: genre, duration: duration, img: img  });
+  addScrape(title: String, img: String, published: String,time: Date): Observable<Scrape> {
+    return this.http.post<Scrape>(this.scrapesUrl, { title: title, img: img ,published: published ,time: time});
   }
 
   getScrape(id: number): Observable<Scrape> {
@@ -33,7 +33,7 @@ export class ScrapesService {
 
   updateScrape(scrape: Scrape): Observable<Scrape> {
     const url = `${this.scrapesUrl}/${scrape._id}`;
-    return this.http.patch<Scrape>(url, { title: scrape.title, link: scrape.link, year: scrape.year, rating: scrape.rating, genre: scrape.genre, duration: scrape.duration, img: scrape.img  });
+    return this.http.patch<Scrape>(url, { title: scrape.title, img: scrape.img  , published: scrape.published ,time: scrape.time});
   }
 
   deleteScrape(id: number): Observable<Scrape> {

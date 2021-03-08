@@ -2,7 +2,7 @@ const scrapeService = require('../services/scrape');
 const scraperService = require('../services/scraper');
 
 const createScrape = async (req, res) => {
-    const newScrape = await scrapeService.createScrape(req.body.title, req.body.link, req.body.year, req.body.rating, req.body.genre, req.body.duration, req.body.img);
+    const newScrape = await scrapeService.createScrape(req.body.title, req.body.img, req.body.published , req.body.time);
     res.json(newScrape);
 };
 
@@ -11,13 +11,28 @@ const getScrapes = async (req, res) => {
     res.json(scrapes);
 };
 
-const getScrape = async (req, res) => {
+const getScrapeById = async (req, res) => {
+    console.log(`req with scrapeId: ${req.params.id} `);
     const scrape = await scrapeService.getScrapeById(req.params.id);
     if (!scrape) {
         return res.status(404).json({ errors: ['Scrape not found'] });
     }
 
     res.json(scrape);
+};
+
+const getLatestScrapes = async (req, res) => {
+  const scrapes = await scrapeService.getLatestScrapes(req.params.numOfScrapes);
+  if (!scrapes) {
+    return res.status(404).json({ errors: ['No Scrapes To Display'] });
+  }
+
+  res.json(scrapes);
+};
+
+const getNumOfScrapes = async (req,res)=>{
+  const count = await scrapeService.getNumOfScrapes();
+  res.json(count);
 };
 
 const deleteAllScrape = async (req, res) => {
@@ -33,7 +48,7 @@ const updateScrape = async (req, res) => {
       });
     }
 
-    const scrape = await scrapeService.updateScrape(req.params.id, req.body.title, req.body.link, req.body.year, req.body.rating, req.body.genre, req.body.duration, req.body.img);
+    const scrape = await scrapeService.updateScrape(req.params.id, req.body.title, req.body.img, req.body.published, req.body.time);
     if (!scrape) {
       return res.status(404).json({ errors: ['Scrape not found'] });
     }
@@ -59,9 +74,11 @@ const updateScrape = async (req, res) => {
   module.exports = {
     createScrape,
     getScrapes,
-    getScrape,
+    getScrapeById,
     updateScrape,
     deleteScrape,
     scraper, 
-    deleteAllScrape
+    deleteAllScrape,
+    getLatestScrapes,
+    getNumOfScrapes
   };

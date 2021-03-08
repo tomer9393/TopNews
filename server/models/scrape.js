@@ -4,26 +4,19 @@ const Schema = mongoose.Schema;
 const Scrape = new Schema({
     title : {
         type: String,
-        required: true
-    },
-    link: {
-        type: String
-    },
-    year: {
-        type: String
-    },
-    duration: {
-        type: String
-    },
-    genre: {
-        type: String
-    },
-    rating: {
-        type: String
+        required: true,
+        unique: true
     },
     img: {
         type: String
-    }
+    },
+    published: {
+        type: String
+    },
+    time: {
+        type: Date,
+        default: Date.now
+    },
 });
 
 module.exports = mongoose.model('Scrape', Scrape);
