@@ -17,36 +17,26 @@
                 </div>
                 <div class="col-md-6">
                     <mat-form-field class="example-full-width">
-                      <input #link matInput placeholder="Link" />
+                      <input #Image matInput placeholder="Image Url" />
                     </mat-form-field>
                   </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input #rating matInput placeholder="Rating" />
+                    <input #published matInput placeholder="published" />
                   </mat-form-field>
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field class="example-full-width">
-                      <input #genre matInput placeholder="Genre" />
-                    </mat-form-field>
-                  </div>
               </div>
               <div class="row">
                 <div class="col-md-6">
                   <mat-form-field class="example-full-width">
-                    <input #duration matInput placeholder="Duration" />
+                    <input #published matInput placeholder="date" />
                   </mat-form-field>
                 </div>
-                <div class="col-md-6">
-                    <mat-form-field class="example-full-width">
-                      <input #img matInput placeholder="Image Url" />
-                    </mat-form-field>
-                  </div>
               </div>
               <button
-                (click)="onCreate(title.value, link.value, rating.value, genre.value, duration.value, img.value)"
+                (click)="onCreate(title.value, img.value, published.value, time.value)"
                 mat-raised-button
                 type="submit"
                 class="btn btn-danger pull-right"

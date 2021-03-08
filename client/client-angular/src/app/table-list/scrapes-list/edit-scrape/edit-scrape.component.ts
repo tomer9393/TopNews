@@ -23,14 +23,11 @@ export class EditScrapeComponent implements OnInit {
     this.scrape=history.state;
   }
 
-  onUpdate(title: String, link: String, year: String, rating: String, genre: String, duration: String, img: String){
+  onUpdate(title: String, img: String, published: String, time: Date){
     this.scrape.title = title;
-    this.scrape.link = link;
-    this.scrape.rating = rating;
-    this.scrape.year = year;
-    this.scrape.genre = genre;
-    this.scrape.duration = duration;
     this.scrape.img = img;
+    this.scrape.published = published;
+    this.scrape.time = time;
 
     this.scrapesService.updateScrape(this.scrape).subscribe(data => {
       this.scrape = data;

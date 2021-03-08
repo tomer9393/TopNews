@@ -3,22 +3,18 @@ let cheerio = require('cheerio');
 const scrapeService = require('./scrape');
 
 const scraper = async () => {
-    debugger
-    const page = await axios.get('https://www.imdb.com/list/ls000041191/')    
+    const page = await axios.get('https://www.jpost.com/international')    
     const $ = cheerio.load(page.data);
-    $('.lister-item.mode-detail').each(function () {
-        const div = $(this);
-        var img = $(div).children('div.lister-item-image.ribbonize').children('a').children('img').attr('src');
-        const imdb = "https://www.imdb.com/";
-        var title = $(div).children('div.lister-item-content').children('h3.lister-item-header').children('a').text();
-        var linkExt = $(div).children('div.lister-item-content').children('h3.lister-item-header').children('a').attr('href');
-        var link = imdb+linkExt;
-        var year = $(div).children('div.lister-item-content').children('h3.lister-item-header').children('span.lister-item-year.text-muted.unbold').text();
-        var rating = $(div).children('div.lister-item-content').children('div.ipl-rating-widget').children('div.ipl-rating-star.small').children('span.ipl-rating-star__rating').text();
-        var genre = $(div).children('div.lister-item-content').children('p.text-muted.text-small').children('span.genre').text().trim();
-        var duration = $(div).children('div.lister-item-content').children('p.text-muted.text-small').children('span.runtime').text();
-        scrapeService.createScrape(title, link, year, rating, genre, duration, img);
+    $('div.a-list').each(function () {
+        $('div.itc', this).each(function () {
+        const art = $(this);
+        const time = Date.now();
+        var published = $(art).children('div.itc-info').children('div.bottom-info').children('span').text(); 
+        var img= $(art).children('a').children('img.lazy').attr('data-original'); 
+        var title = $(art).children('a').attr('title');
+        scrapeService.createScrape(title, img, published, time);
         });
+    });
 };
 
 module.exports = {
