@@ -12,7 +12,6 @@ const getScrapes = async (req, res) => {
 };
 
 const getScrapeById = async (req, res) => {
-    console.log(`req with scrapeId: ${req.params.id} `);
     const scrape = await scrapeService.getScrapeById(req.params.id);
     if (!scrape) {
         return res.status(404).json({ errors: ['Scrape not found'] });

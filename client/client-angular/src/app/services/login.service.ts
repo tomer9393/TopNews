@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { User } from '../models/user';
+import { environment } from '../../environments/environment';
+
 
 @Injectable({
   providedIn: 'root'
@@ -13,17 +15,19 @@ export class LoginService {
   public showLoginComponent = new BehaviorSubject(false);
   public loginUserDetails = new Subject<User>();
   private connectedUser: User;
+  private usersUrl = environment.usersUrl;
   error;
 
   constructor(private http: HttpClient) { }
   onLogin(data) {
-    return this.http.post('http://localhost:8081/user/adminLogin', data);
+    const url = `${this.usersUrl}/adminLogin`;
+    return this.http.post(url, data);
   }
   onUpdate(data) {
-    return this.http.put('http://localhost:8081/user/updateAdmin', data);
+    const url = `${this.usersUrl}/updateAdmin`;
+    return this.http.put(url, data);
   }
   setIsLogin(isLoggedIn , userDetails) {
-    console.log(userDetails);
     this.connectedUser = userDetails;
     this.isLogin.next(isLoggedIn);
     if (isLoggedIn === false) {

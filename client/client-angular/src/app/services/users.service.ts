@@ -15,17 +15,17 @@ export class UsersService {
   
     constructor(private http: HttpClient) { }
     
-    filter(key: string): Observable<User[]> {
+    filter(key: string): Observable<any> {
       const url = `${this.filterUrl}/users/${key}`;
-      return this.http.get<User[]>(url);
+      return this.http.get<any>(url);
     }
   
-    getUsers(): Observable<User[]> {
-      return this.http.get<User[]>(this.usersUrl);
+    getUsers(): Observable<any> {
+      return this.http.get<any>(this.usersUrl);
     }
   
-    addUser(firstname: string, lastname: string, email: string, password: string, phone: string, isAdmin: boolean): Observable<User> {
-      return this.http.post<User>(this.usersUrl, { 
+    addUser(firstname: string, lastname: string, email: string, password: string, phone: string, isAdmin: boolean): Observable<any> {
+      return this.http.post<any>(this.usersUrl, { 
         email: email, 
         firstname: firstname, 
         lastname: lastname, 
@@ -36,14 +36,14 @@ export class UsersService {
   
     }
   
-    getUser(id: string): Observable<User> {
-      const url = `${this.usersUrl}/${id}`;
-      return this.http.get<User>(url);
+    getUser(id: string): Observable<any> {
+      const url = `${this.usersUrl}/id/${id}`;
+      return this.http.get<any>(url);
     }
   
-    updateUser(user: User): Observable<User> {
+    updateUser(user: User): Observable<any> {
       const url = `${this.usersUrl}/id/${user._id}`;
-      return this.http.patch<User>(url, { 
+      return this.http.patch<any>(url, { 
         email: user.email, 
         firstname: user.firstname, 
         lastname: user.lastname, 
@@ -52,8 +52,8 @@ export class UsersService {
         isAdmin: user.isAdmin });
     }
   
-    deleteUser(id: string): Observable<User> {
+    deleteUser(id: string): Observable<any> {
       const url = `${this.usersUrl}/id/${id}`;
-      return this.http.delete<User>(url);
+      return this.http.delete<any>(url);
     }
 }

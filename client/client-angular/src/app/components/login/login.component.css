@@ -1,19 +1,23 @@
 #email-icon{
     display: inline-block;
 }
+
+.placeholder::placeholder{
+    color:#000;
+}
 .link{
-    color: white;
+    color: rgb(19, 14, 14);
     align-self: flex-end;
 }
 .box{
-    width: 600px;
+    width: 600px; 
     height: 500px;
-    background: linear-gradient(to right bottom,#1f9bcc,#8595ae, #5b3f7b,  #8a1cca);
+    background: linear-gradient(to right bottom,#1f9bcc,#8595ae);
     background-size: cover;
     font-family: 'Montserrat', sans-serif;
     cursor: pointer;
     border-radius: 15px;
-    margin-bottom:"200px"
+    margin-bottom:"200px" 
 }
 .login{
     display: block;
