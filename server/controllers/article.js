@@ -22,7 +22,6 @@ const getArticles = async (req, res) => {
 
 
 const getArticleById = async (req, res) => {
-  console.log(`req with articleId: ${req.params.id} `);
   const article = await articleService.getArticleById(req.params.id);
   if (!article) {
     return res.status(404).json({ errors: ['Article not found'] });

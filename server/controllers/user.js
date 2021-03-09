@@ -18,7 +18,7 @@ exports.getUsers = (req, res, next) => {
     fetchUsers.then(documents => {
         res.status(200).json({
             message: "users fetch successfuly",
-            user: documents
+            users: documents
         })
     }).catch(error => {
         res.status(500).json({
@@ -28,7 +28,6 @@ exports.getUsers = (req, res, next) => {
     })
 }
 exports.createUser = (req, res, next) => {
-    console.log(req.body)
     const user = new User({
         isAdmin: req.body.isAdmin,
         email: req.body.email,
@@ -39,7 +38,6 @@ exports.createUser = (req, res, next) => {
     });
     user.save()
         .then(newUser => {
-            console.log(newUser)
             res.status(201).json({
                 message: "user created successfully",
                 user: {
@@ -98,7 +96,6 @@ exports.adminLogin = (req, res, next) => {
                     return uuid;
                 }
                 const token = create_UUID();
-                console.log(token);
                 res.status(200).json({
                     user: documents,
                     message: "succeed logging in",
@@ -121,16 +118,21 @@ exports.adminLogin = (req, res, next) => {
 }
 // update user
 exports.updateUser = (req, res, next) => {
-    console.log(req.body)
     //get the document by id
-    User.findOne({ email: req.body.email }).then(document => {  //get back the object from the database
+    User.findOne({ _id: req.params.id }).then(document => {  //get back the object from the database
         if (document) {
             //update the password
-            document.password = req.body.password
+            document.password = req.body.password;
+            document.firstname = req.body.firstname;
+            document.lastname = req.body.lastname;
+            document.email = req.body.email;
+            document.phone = req.body.phone;
+            document.isAdmin = req.body.isAdmin;
+
             User.updateOne({ _id: document._id }, document).then(doc => {
                 res.status(200).json({
                     user: doc,
-                    message: "user password updated"
+                    message: "user updated"
                 })
             })
         }
@@ -140,6 +142,7 @@ exports.updateUser = (req, res, next) => {
                 error: err,
                 message: 'somthing went wrong!'
             });
+            console.log(err);
         });
 }
 exports.updateAdmin = (req, res, next) => {
@@ -178,9 +181,7 @@ exports.updateByUserId = (req, res, next) => {
         });
 }
 exports.deleteUser = async (req, res, next) => {
-    console.log(req.body.email)
-    const user = await User.findOne({ email: req.body.email, password: req.body.password })
-    console.log(user)
+    const user = await User.findById(req.params.id);
     if (user) {
         User.deleteOne({ _id: user._id }).then(result => {
             if (result.n > 0) {
@@ -207,7 +208,6 @@ exports.deleteUser = async (req, res, next) => {
 
 
 exports.deleteUserByAdmin = (req, res, next) => {
-    console.log(req.params)
     User.deleteOne({ _id: req.params.id }).then(result => {
         if (result.n > 0) {
             res.status(200).json({
