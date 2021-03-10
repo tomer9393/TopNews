@@ -19,12 +19,6 @@ export class UserProfileComponent implements OnInit {
     this.user = this.login.getConnectedUser();
   }
 
-  onDelete(){
-    this.usersService.deleteUser(this.user._id).subscribe(data => {
-      this.router.navigate(['/user-profile']);
-    });
-  }
-
   onUpdate(firstname: string, lastname: string, email: string, password: string, phone: string ) {
     this.user.firstname = firstname;
     this.user.lastname = lastname;
