@@ -15,12 +15,12 @@ export class StatisticsService {
   constructor(private http: HttpClient) { }
 
   
-  getCategoriesStatistic(): Observable<Statistic[]> {
+  getCategoriesStatistic(): Observable<any> {
     const url = `${this.filtersUrl}/categories`;
-    return this.http.get<Statistic[]>(url);
+    return this.http.get<any>(url);
   }
-  getArticlesStatistic(): Observable<Statistic[]>{
+  getArticlesStatistic(): Observable<any>{
     const url = `${this.filtersUrl}/articleComments`;
-    return this.http.get<Statistic[]>(url);
+    return this.http.get<any>(url);
   }
 }

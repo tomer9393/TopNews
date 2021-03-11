@@ -13,36 +13,36 @@ export class CommentsService {
 
   constructor(private http: HttpClient) {}
   
-  filter(key: string): Observable<Comment[]> {
+  filter(key: string): Observable<any> {
     const url = `${this.filterUrl}/comments/${key}`;
-    return this.http.get<Comment[]>(url);
+    return this.http.get<any>(url);
   }
 
-  getComments(): Observable<Comment[]> {
-    return this.http.get<Comment[]>(this.CommentsUrl);
+  getComments(): Observable<any> {
+    return this.http.get<any>(this.CommentsUrl);
   }
 
-  getCommentsByArticleID(articleId: String): Observable<Comment[]> {
+  getCommentsByArticleID(articleId: String): Observable<any> {
     const url = `${this.CommentsUrl}/${articleId}`;
-    return this.http.get<Comment[]>(url);
+    return this.http.get<any>(url);
   }
 
-  addComment(name: String, articleId: String, body: String): Observable<Comment> {
-    return this.http.post<Comment>(this.CommentsUrl, { name: name, articleId: articleId, body: body });
+  addComment(name: String, articleId: String, body: String): Observable<any> {
+    return this.http.post<any>(this.CommentsUrl, { name: name, articleId: articleId, body: body });
   }
 
-  getComment(id: String): Observable<Comment> {
+  getComment(id: String): Observable<any> {
     const url = `${this.CommentsUrl}/id/${id}`;
-    return this.http.get<Comment>(url);
+    return this.http.get<any>(url);
   }
 
-  updateComment(comment: Comment): Observable<Comment> {
+  updateComment(comment: Comment): Observable<any> {
     const url = `${this.CommentsUrl}/id/${comment._id}`;
-    return this.http.patch<Comment>(url, { name: comment.name, body: comment.body });
+    return this.http.patch<any>(url, { name: comment.name, body: comment.body });
   }
 
-  deleteComment(id: String): Observable<Comment> {
+  deleteComment(id: String): Observable<any> {
     const url = `${this.CommentsUrl}/id/${id}`;
-    return this.http.delete<Comment>(url);
+    return this.http.delete<any>(url);
   }
 }

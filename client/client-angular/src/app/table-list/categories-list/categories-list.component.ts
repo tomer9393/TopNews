@@ -13,15 +13,19 @@ export class CategoriesListComponent implements OnInit {
   categories : Category[] = [];  
   @Input() listFor: String = '';
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private categoriesService : CategoriesService, private router: Router) {}
-
+  
   ngOnInit() {
     this.load();
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.load();
+      
     if(this.listFor === "" || this.search === "")
     { 
       this.load();
@@ -30,6 +34,8 @@ export class CategoriesListComponent implements OnInit {
     { 
       this.categoriesService.filter(this.search).subscribe(data =>{
         this.categories = data;
+      }, err => {
+        window.alert(err.error);
       })
     }
   }
@@ -37,6 +43,8 @@ export class CategoriesListComponent implements OnInit {
   load(){
     this.categoriesService.getCategories().subscribe(data => {
       this.categories = data;
+    }, err => {
+      window.alert(err.error);
     });
   }
 
@@ -49,7 +57,10 @@ export class CategoriesListComponent implements OnInit {
   }
   onDelete(category : Category){
     this.categoriesService.deleteCategory(category._id).subscribe(data => {
-            this.categories.splice(this.categories.indexOf(category),1);
+      this.categories.splice(this.categories.indexOf(category),1);
+    }, err => {
+      window.alert(err.error);
+      this.categories.splice(this.categories.indexOf(category),1);
     });
   }
   onDetails(category : Category){

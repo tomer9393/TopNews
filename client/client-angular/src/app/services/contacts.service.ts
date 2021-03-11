@@ -13,31 +13,31 @@ export class ContactsService {
 
   constructor(private http: HttpClient) {}
   
-  filter(key: string): Observable<Contact[]> {
+  filter(key: string): Observable<any> {
     const url = `${this.filterUrl}/contacts/${key}`;
-    return this.http.get<Contact[]>(url);
+    return this.http.get<any>(url);
   }
 
-  getContacts(): Observable<Contact[]> {
-    return this.http.get<Contact[]>(this.contactsUrl);
+  getContacts(): Observable<any> {
+    return this.http.get<any>(this.contactsUrl);
   }
 
-  addContact(fullName: String, email: String, message: String): Observable<Contact> {
-    return this.http.post<Contact>(this.contactsUrl, { fullName: fullName, email: email, message: message });
+  addContact(fullName: String, email: String, message: String): Observable<any> {
+    return this.http.post<any>(this.contactsUrl, { fullName: fullName, email: email, message: message });
   }
 
-  getContact(id: String): Observable<Contact> {
+  getContact(id: String): Observable<any> {
     const url = `${this.contactsUrl}/${id}`;
-    return this.http.get<Contact>(url);
+    return this.http.get<any>(url);
   }
 
-  updateContact(contact: Contact): Observable<Contact> {
+  updateContact(contact: Contact): Observable<any> {
     const url = `${this.contactsUrl}/${contact._id}`;
-    return this.http.patch<Contact>(url, { fullName: contact.fullName, email: contact.email, message: contact.message });
+    return this.http.patch<any>(url, { fullName: contact.fullName, email: contact.email, message: contact.message });
   }
 
-  deleteContact(id: String): Observable<Contact> {
+  deleteContact(id: String): Observable<any> {
     const url = `${this.contactsUrl}/${id}`;
-    return this.http.delete<Contact>(url);
+    return this.http.delete<any>(url);
   }
 }

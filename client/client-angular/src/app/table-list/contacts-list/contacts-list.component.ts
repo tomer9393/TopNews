@@ -12,15 +12,18 @@ export class ContactsListComponent implements OnInit {
 
   contacts : Contact[] = [];  
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private contactsService : ContactsService,  private router: Router){}
-
+  
   ngOnInit() {
     this.loadAll();
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.loadAll();
     if(this.search === "")
     { 
       this.loadAll();
@@ -29,6 +32,8 @@ export class ContactsListComponent implements OnInit {
     { 
       this.contactsService.filter(this.search).subscribe(data =>{
         this.contacts = data;
+      }, err => {
+        window.alert(err.error);
       })
     }
   }
@@ -36,6 +41,8 @@ export class ContactsListComponent implements OnInit {
   loadAll(){
     this.contactsService.getContacts().subscribe(data => {
       this.contacts = data;
+    }, err => {
+      window.alert(err.error);
     });
   }
 
@@ -51,7 +58,10 @@ export class ContactsListComponent implements OnInit {
   onDelete(contact : Contact){
     //this.currentArticleService.changeCurrentArticle(article);
     this.contactsService.deleteContact(contact._id).subscribe(data => {
-            this.contacts.splice(this.contacts.indexOf(contact),1);
+      this.contacts.splice(this.contacts.indexOf(contact),1);
+    }, err => {
+      window.alert(err.error);
+      this.contacts.splice(this.contacts.indexOf(contact),1);
     });
   }
   onDetails(contact : Contact){

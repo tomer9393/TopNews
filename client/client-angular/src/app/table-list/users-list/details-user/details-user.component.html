@@ -49,6 +49,7 @@
                 Edit
               </button>
               <button
+              *ngIf="isLoggedIn(user)"
                 (click)="onDelete()"
                 mat-raised-button
                 type="submit"

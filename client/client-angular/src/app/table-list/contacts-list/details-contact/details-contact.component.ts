@@ -27,6 +27,9 @@ export class DetailsContactComponent implements OnInit {
   onDelete(){
     this.contactsService.deleteContact(this.contact._id).subscribe(data => {
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

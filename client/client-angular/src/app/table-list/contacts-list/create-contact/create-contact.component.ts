@@ -21,6 +21,9 @@ export class CreateContactComponent implements OnInit {
     this.contactsService.addContact(fullName, email, message).subscribe(data => {
       this.contact = data;
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

@@ -33,6 +33,9 @@ export class DetailsCategoryComponent implements OnInit {
     onDelete(){
       this.categoriesService.deleteCategory(this.category._id).subscribe(data => {
         this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
       });
     }
 }
