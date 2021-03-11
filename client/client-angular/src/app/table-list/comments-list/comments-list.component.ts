@@ -35,6 +35,8 @@ export class CommentsListComponent implements OnInit {
     { 
       this.commentsService.filter(this.search).subscribe(data =>{
         this.comments = data;
+      }, err => {
+        window.alert(err.error);
       })
     }
   }
@@ -42,12 +44,17 @@ export class CommentsListComponent implements OnInit {
   loadAll(){
     this.commentsService.getComments().subscribe(data => {
       this.comments = data;
+    }, err => {
+      window.alert(err.error);
     });
   }
 
   loadForArticle(articleId: String){
     this.commentsService.getCommentsByArticleID(articleId).subscribe(data => {
       this.comments = data;
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 
@@ -63,7 +70,10 @@ export class CommentsListComponent implements OnInit {
   onDelete(comment : Comment){
     //this.currentArticleService.changeCurrentArticle(article);
     this.commentsService.deleteComment(comment._id).subscribe(data => {
-            this.comments.splice(this.comments.indexOf(comment),1);
+      this.comments.splice(this.comments.indexOf(comment),1);
+    }, err => {
+      window.alert(err.error);
+      this.comments.splice(this.comments.indexOf(comment),1);
     });
   }
   onDetails(comment : Comment){

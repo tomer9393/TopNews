@@ -22,27 +22,27 @@ export class CategoriesService {
     return this.http.get<Number>(url);
   }
 
-  filter(key: string): Observable<Category[]> {
+  filter(key: string): Observable<any> {
     const url = `${this.filtersUrl}/categories/${key}`;
-    return this.http.get<Category[]>(url);
+    return this.http.get<any>(url);
   }
 
-  addCategory(name: string): Observable<Category> {
-    return this.http.post<Category>(this.categoriesUrl, { name: name });
+  addCategory(name: string): Observable<any> {
+    return this.http.post<any>(this.categoriesUrl, { name: name });
   }
 
-  getCategory(id: String): Observable<Category> {
+  getCategory(id: String): Observable<any> {
     const url = `${this.categoriesUrl}/${id}`;
-    return this.http.get<Category>(url);
+    return this.http.get<any>(url);
   }
 
-  updateCategory(category: Category): Observable<Category> {
+  updateCategory(category: Category): Observable<any> {
     const url = `${this.categoriesUrl}/${category._id}`;
-    return this.http.patch<Category>(url, { name: category.name });
+    return this.http.patch<any>(url, { name: category.name });
   }
 
-  deleteCategory(id: String): Observable<Category> {
+  deleteCategory(id: String): Observable<any> {
     const url = `${this.categoriesUrl}/${id}`;
-    return this.http.delete<Category>(url);
+    return this.http.delete<any>(url);
   }
 }

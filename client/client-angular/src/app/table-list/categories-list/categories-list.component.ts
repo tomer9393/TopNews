@@ -30,6 +30,8 @@ export class CategoriesListComponent implements OnInit {
     { 
       this.categoriesService.filter(this.search).subscribe(data =>{
         this.categories = data;
+      }, err => {
+        window.alert(err.error);
       })
     }
   }
@@ -37,6 +39,8 @@ export class CategoriesListComponent implements OnInit {
   load(){
     this.categoriesService.getCategories().subscribe(data => {
       this.categories = data;
+    }, err => {
+      window.alert(err.error);
     });
   }
 
@@ -49,7 +53,10 @@ export class CategoriesListComponent implements OnInit {
   }
   onDelete(category : Category){
     this.categoriesService.deleteCategory(category._id).subscribe(data => {
-            this.categories.splice(this.categories.indexOf(category),1);
+      this.categories.splice(this.categories.indexOf(category),1);
+    }, err => {
+      window.alert(err.error);
+      this.categories.splice(this.categories.indexOf(category),1);
     });
   }
   onDetails(category : Category){

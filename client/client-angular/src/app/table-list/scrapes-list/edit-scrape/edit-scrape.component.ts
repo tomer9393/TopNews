@@ -32,6 +32,9 @@ export class EditScrapeComponent implements OnInit {
     this.scrapesService.updateScrape(this.scrape).subscribe(data => {
       this.scrape = data;
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

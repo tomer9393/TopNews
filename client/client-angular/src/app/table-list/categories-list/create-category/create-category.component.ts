@@ -21,6 +21,9 @@ export class CreateCategoryComponent implements OnInit {
       this.categoriesService.addCategory(name).subscribe(data => {
         this.category = data;
         this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
       });
     }
 }

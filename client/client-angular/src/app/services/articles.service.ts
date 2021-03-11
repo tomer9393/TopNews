@@ -13,13 +13,13 @@ export class ArticlesService {
 
   constructor(private http: HttpClient) { }
   
-  filter(key: string): Observable<Article[]> {
+  filter(key: string): Observable<any> {
     const url = `${this.filterUrl}/articles/${key}`;
-    return this.http.get<Article[]>(url);
+    return this.http.get<any>(url);
   }
 
-  getArticles(): Observable<Article[]> {
-    return this.http.get<Article[]>(this.articlesUrl);
+  getArticles(): Observable<any> {
+    return this.http.get<any>(this.articlesUrl);
   }
 
   getNumOfArticles(): Observable<Number> {
@@ -27,13 +27,13 @@ export class ArticlesService {
     return this.http.get<Number>(url);
   }
 
-  getArticlesByCategory(category: String): Observable<Article[]> {
+  getArticlesByCategory(category: String): Observable<any> {
     const url = `${this.articlesUrl}/${category}`;
-    return this.http.get<Article[]>(url);
+    return this.http.get<any>(url);
   }
 
-  addArticle(title: String, subTitle: String, img: String, category: String, body: String): Observable<Article> {
-    return this.http.post<Article>(this.articlesUrl, { 
+  addArticle(title: String, subTitle: String, img: String, category: String, body: String): Observable<any> {
+    return this.http.post<any>(this.articlesUrl, { 
       title: title, 
       subTitle: subTitle, 
       category: category, 
@@ -42,14 +42,14 @@ export class ArticlesService {
 
   }
 
-  getArticle(id: String): Observable<Article> {
+  getArticle(id: String): Observable<any> {
     const url = `${this.articlesUrl}/${id}`;
-    return this.http.get<Article>(url);
+    return this.http.get<any>(url);
   }
 
-  updateArticle(article: Article): Observable<Article> {
+  updateArticle(article: Article): Observable<any> {
     const url = `${this.articlesUrl}/id/${article._id}`;
-    return this.http.patch<Article>(url, { 
+    return this.http.patch<any>(url, { 
       title: article.title, 
       subTitle: article.subTitle, 
       category: article.category, 
@@ -57,8 +57,8 @@ export class ArticlesService {
       body: article.body });
   }
 
-  deleteArticle(id: String): Observable<Article> {
+  deleteArticle(id: String): Observable<any> {
     const url = `${this.articlesUrl}/id/${id}`;
-    return this.http.delete<Article>(url);
+    return this.http.delete<any>(url);
   }
 }

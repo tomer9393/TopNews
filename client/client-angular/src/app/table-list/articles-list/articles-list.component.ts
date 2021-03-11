@@ -36,6 +36,8 @@ export class ArticlesListComponent implements OnInit {
     { 
       this.articlesService.filter(this.search).subscribe(data =>{
         this.articles = data;
+      }, err => {
+        window.alert(err.error);
       })
     }
   }
@@ -43,32 +45,36 @@ export class ArticlesListComponent implements OnInit {
   loadAll(){
     this.articlesService.getArticles().subscribe(data => {
       this.articles = data;
+    }, err => {
+      window.alert(err.error);
     });
   }
 
   loadForCategory(category: String){
     this.articlesService.getArticlesByCategory(category).subscribe(data => {
       this.articles = data;
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 
   onCreate(){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.router.navigateByUrl('/CreateArticle', { state: {category: this.listFor}});
   }
 
   onEdit(article : Article){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.router.navigateByUrl('/EditArticle', { state: article });
   }
   onDelete(article : Article){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.articlesService.deleteArticle(article._id).subscribe(data => {
-            this.articles.splice(this.articles.indexOf(article),1);
+      this.articles.splice(this.articles.indexOf(article),1);
+    }, err => {
+      window.alert(err.error);
+      this.articles.splice(this.articles.indexOf(article),1);
     });
   }
   onDetails(article : Article){
-    //this.currentArticleService.changeCurrentArticle(article);
     this.router.navigateByUrl('/DetailsArticle', { state: article });
   }
 

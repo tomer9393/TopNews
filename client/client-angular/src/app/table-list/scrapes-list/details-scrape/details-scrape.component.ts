@@ -31,6 +31,9 @@ export class DetailsScrapeComponent implements OnInit {
   onDelete(){
     this.scrapesService.deleteScrape(this.scrape._id).subscribe(data => {
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

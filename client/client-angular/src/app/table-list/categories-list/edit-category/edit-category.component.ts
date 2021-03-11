@@ -26,6 +26,9 @@ export class EditCategoryComponent implements OnInit {
       this.categoriesService.updateCategory(this.category).subscribe(data => {
         this.category = data;
         this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
       });
     }
 
