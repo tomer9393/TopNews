@@ -15,6 +15,8 @@ export class UsersListComponent implements OnInit {
   users : User[] = [];  
   @Input() search: string = '';
   isLogin = false;
+  @Input() refresh: string = "false";
+
 
   constructor(private usersService : UsersService,  private router: Router, private loginService : LoginService){}
 
@@ -37,7 +39,10 @@ export class UsersListComponent implements OnInit {
         window.alert(err.error);
       })
     }
-  }
+
+    if(this.refresh === "true")
+      this.loadAll();
+  } 
 
   loadAll(){
     this.usersService.getUsers().subscribe(data => {

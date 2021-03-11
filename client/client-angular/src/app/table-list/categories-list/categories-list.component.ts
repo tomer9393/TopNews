@@ -13,15 +13,19 @@ export class CategoriesListComponent implements OnInit {
   categories : Category[] = [];  
   @Input() listFor: String = '';
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private categoriesService : CategoriesService, private router: Router) {}
-
+  
   ngOnInit() {
     this.load();
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.load();
+      
     if(this.listFor === "" || this.search === "")
     { 
       this.load();

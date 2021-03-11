@@ -12,15 +12,18 @@ export class ScrapesListComponent implements OnInit {
 
   scrapes : Scrape[] = [];  
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private scrapesService : ScrapesService,  private router: Router){}
-
+  
   ngOnInit() {
     this.loadAll();
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.loadAll();
     if(this.search === "")
     { 
       this.loadAll();

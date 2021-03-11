@@ -13,20 +13,23 @@ export class CommentsListComponent implements OnInit {
   comments :  Comment[] = [];  
   @Input() listFor: String = '';
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private commentsService :  CommentsService, private router: Router){}
-
+  
   ngOnInit() {
     if(this.listFor === '')
-      this.loadAll();
+    this.loadAll();
     else if (this.listFor !== '')
     {
       this.loadForArticle(this.listFor);
     }
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.loadAll();
     if(this.listFor === "" || this.search === "")
     { 
       this.loadAll();

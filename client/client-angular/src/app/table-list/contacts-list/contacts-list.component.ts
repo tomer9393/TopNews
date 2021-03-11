@@ -12,15 +12,18 @@ export class ContactsListComponent implements OnInit {
 
   contacts : Contact[] = [];  
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private contactsService : ContactsService,  private router: Router){}
-
+  
   ngOnInit() {
     this.loadAll();
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.loadAll();
     if(this.search === "")
     { 
       this.loadAll();

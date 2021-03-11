@@ -14,20 +14,23 @@ export class ArticlesListComponent implements OnInit {
   articles : Article[] = [];  
   @Input() listFor: String = '';
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private articlesService : ArticlesService, private router: Router){}
-
+  
   ngOnInit() {
     if(this.listFor === '')
-      this.loadAll();
+    this.loadAll();
     else if (this.listFor !== '')
     {
       this.loadForCategory(this.listFor);
-    }
+    } 
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.loadAll();
     if(this.listFor === "" || this.search === "")
     { 
       this.loadAll();
