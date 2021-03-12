@@ -27,7 +27,10 @@ export class CreateArticleComponent implements OnInit {
   onCreate(title: String, subTitle: String, img: String, category: String, body: String){
     this.articlesService.addArticle(title, subTitle, img, category, body).subscribe(data => {
       this.article = data;
+      this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
-    this.router.navigate(['/table-list']);
   }
 }

@@ -28,6 +28,9 @@ export class DetailsArticleComponent implements OnInit {
   onDelete(){
     this.articlesService.deleteArticle(this.article._id).subscribe(data => {
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

@@ -50,7 +50,7 @@ app.use('/comments',commentRoutes);
 app.use('/filters',filterRoutes); 
 app.use('/contacts',contactRoutes); 
 app.use('/scrapes',scrapeRoutes); 
-app.use("/user", userRoutes);
+app.use("/users", userRoutes);
 
 const server = http.createServer(app);
 

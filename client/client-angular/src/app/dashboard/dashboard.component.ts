@@ -27,7 +27,6 @@ export class DashboardComponent implements OnInit {
       this.categoriesCounter = count;
     });
     this.realTimeservice.getNumOfActiveUsers().subscribe((count) => {
-      console.log(count);
       this.activeUsersCounter = count;
     });
     this.load();

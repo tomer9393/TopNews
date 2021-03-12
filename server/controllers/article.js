@@ -6,17 +6,22 @@ var myEmitter = emitter.myEmitter
 const createArticle = async (req, res) => {
   const newArticle = await articleService.createArticle(req.body.title, req.body.subTitle, req.body.img, req.body.category, req.body.body, req.body.published, req.body.lastUpdate);
   myEmitter.emit('createArticle');
+  if (!newArticle) {
+    return res.status(404).json({ errors: ['No article created'] });
+  }
   res.json(newArticle);
 };
 
 const getArticles = async (req, res) => {
   const articles = await articleService.getArticles();
+  if (!articles) {
+    return res.status(404).json({ errors: ['Articles not found'] });
+  }
   res.json(articles);
 };
 
 
 const getArticleById = async (req, res) => {
-  console.log(`req with articleId: ${req.params.id} `);
   const article = await articleService.getArticleById(req.params.id);
   if (!article) {
     return res.status(404).json({ errors: ['Article not found'] });

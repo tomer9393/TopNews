@@ -29,6 +29,9 @@ export class EditArticleComponent implements OnInit {
     this.articlesService.updateArticle(this.article).subscribe(data => {
       this.article = data;
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

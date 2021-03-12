@@ -22,7 +22,7 @@
               <td>{{contact.fullName}}</td>
               <td>{{contact.email}}</td>
               <td>{{contact.published | date:"short"}}</td>
-              <td class="text-primary">{{contact.message.substring(0,50)}}</td>
+              <td class="text-primary">{{contact.message}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(contact)">
                   <i class="material-icons">edit</i>

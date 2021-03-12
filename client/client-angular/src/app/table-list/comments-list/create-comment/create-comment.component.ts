@@ -29,6 +29,9 @@ export class CreateCommentComponent implements OnInit {
       this.commentsService.addComment(name, articleId, body).subscribe(data => {
         this.comment = data;
         this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
       });
     }
 }

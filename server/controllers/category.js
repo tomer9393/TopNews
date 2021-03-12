@@ -49,6 +49,10 @@ const removeCategory = async (req, res) =>{
 
 const getAllCategories = async (req,res)=>{
     const categories = await categoryService.getAllCategories();
+    if (!categories)
+    {
+        return res.status(404).json({errors : ['Categories not found']});
+    }
     res.json(categories);
 };
 
