@@ -8,6 +8,7 @@ import PostDetailsPage from './components/postDetailsPage/postDetailsPage';
 import AboutUsPage from './components/aboutUsPage/aboutUsPage';
 import ContactPage from './components/contactPage/contactPage';
 import SearchPage from './components/searchPage/searchPage'
+import PageNotFound from './components/404PageNotFound/404PageNotFound';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -25,6 +26,7 @@ function App() {
           <Route path="/AboutUs" component={() => <AboutUsPage />} />
           <Route path="/Contact" component={() => <ContactPage />} />
           <Route path="/Search" component={(props) => <SearchPage {...props}/>} />
+          <Route path="*" component={() => <PageNotFound />} />
         </Switch>
 
         <Footer />

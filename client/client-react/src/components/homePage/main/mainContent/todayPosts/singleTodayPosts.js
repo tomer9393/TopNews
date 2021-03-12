@@ -35,7 +35,7 @@ function SingleTodayPosts(props) {
               {article.title}
             </Link>
           </h3>
-          <p className="gazette-post-date mb-2">{article.published}</p>
+          <p>{new Date(article.published).toLocaleString("he-IL")}</p>
           {/* TODO: Add link to */}
           <Link to="#" className="post-total-comments">
             {comments

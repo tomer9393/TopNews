@@ -1,10 +1,12 @@
 import { createContact } from "../../api/ContactAPI";
 import { useState } from "react";
+import { useAlert, withAlert } from "react-alert";
 
 function ContactForm() {
   const [fullName, setFullName] = useState(undefined);
   const [email, setEmail] = useState(undefined);
   const [message, setMessage] = useState(undefined);
+  const alert = useAlert();
 
   return (
     <>
@@ -42,8 +44,9 @@ function ContactForm() {
       </form>
       <button
         onClick={() => {
-          createContact(fullName, email, message);
-          window.location.reload();
+          // createContact(fullName, email, message);
+          alert.success("Message was sent successfuly");
+          // window.location.reload();
         }}
         type="submit"
         className="btn contact-btn"
@@ -54,4 +57,4 @@ function ContactForm() {
   );
 }
 
-export default ContactForm;
+export default withAlert()(ContactForm);
