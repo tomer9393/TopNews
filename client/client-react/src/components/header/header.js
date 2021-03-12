@@ -16,35 +16,7 @@ function Header() {
             {/* Breaking News Area */}
             <div className="col-12 col-md-6">
               <div className="breaking-news-area">
-                <h5 className="breaking-news-title">Breaking news</h5>
-                <div id="breakingNewsTicker" className="ticker">
-                  <ul>
-                    <li>
-                      <a href="#">
-                        Brexit breakthrough in Brussels comes after week of
-                        drama
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">Brexit breakthrough in Brussels</a>
-                    </li>
-                    <li>
-                      <a href="#">
-                        Brexit breakthrough in Brussels comes after week of
-                        drama
-                      </a>
-                    </li>
-                    <li>
-                      <a href="#">Brex comes after week of drama</a>
-                    </li>
-                    <li>
-                      <a href="#">Brexit breakthrough in Bweek of drama</a>
-                    </li>
-                    <li>
-                      <a href="#">Brexit bssels comes after week of drama</a>
-                    </li>
-                  </ul>
-                </div>
+                <h5 className="breaking-news-title">Exchange Rate</h5>
               </div>
             </div>
             {/* Stock News Area */}
@@ -53,13 +25,19 @@ function Header() {
                 <div id="stockNewsTicker" className="ticker">
                   <ul>
                     <li>
-                      <SingleStockReport currSymbol={"USD"} />
-                    </li>
-                    <li>
+                      <SingleStockReport currSymbol={"ILS"} />
                       <SingleStockReport currSymbol={"EUR"} />
+                      <SingleStockReport currSymbol={"GBP"} />
                     </li>
                     <li>
-                      <SingleStockReport currSymbol={"GBP"} />
+                      <SingleStockReport currSymbol={"CAD"} />
+                      <SingleStockReport currSymbol={"RON"} />
+                      <SingleStockReport currSymbol={"AUD"} />
+                    </li>
+                    <li>
+                      <SingleStockReport currSymbol={"DKK"} />
+                      <SingleStockReport currSymbol={"CHF"} />
+                      <SingleStockReport currSymbol={"PLN"} />
                     </li>
                   </ul>
                 </div>
