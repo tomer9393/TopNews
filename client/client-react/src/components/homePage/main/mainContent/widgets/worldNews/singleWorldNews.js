@@ -7,7 +7,7 @@ function SingleWorldNews(props) {
     <>
           <div className="single-dont-miss-post d-flex mb-30">
               <div className="dont-miss-post-thumb">
-                  <img src={scrape.img} alt />             
+                  <img src={scrape.img} alt="" />             
               </div>
               <div className="dont-miss-post-content">
                   <a href="#" className="font-pt">{scrape.title}</a>

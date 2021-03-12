@@ -102,7 +102,7 @@ function SerachBox(props) {
       />
       {props.showSearch && (
         <i
-          class="fa fa-times btn"
+          className="fa fa-times btn"
           aria-hidden="true"
           onClick={() => props.setShowSearch(false)}
           style={{ marginLeft: MARGIN }}

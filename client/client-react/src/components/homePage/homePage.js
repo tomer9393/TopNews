@@ -11,7 +11,7 @@ function HomePage() {
             {/* Welcome Blog Slide Area End */}
 
             {/* Latest News Marquee Area Start */}
-            <LatestNewsSlide/>
+            {/* <LatestNewsSlide/> */}
             {/* Latest News Marquee Area End */}
 
             {/* Main Content Area Start */}

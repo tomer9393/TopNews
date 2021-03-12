@@ -14,7 +14,7 @@ function CategoryPage() {
   }, [name]);
 
   const singleCategoriesPosts = articles?.map((article) => (
-    <SingleCategoryPost article={article} />
+    <SingleCategoryPost key={article._id} article={article} />
   ));
 
   return !articles ? (
@@ -29,8 +29,8 @@ function CategoryPage() {
               <div className="breacumb-content d-flex align-items-center justify-content-between">
                 {/* Post Tag */}
                 <div className="gazette-post-tag">
-                  <Link to={`/Category/${articles[0].category}`}>
-                    {articles[0].category}
+                  <Link to={`/Category/${name}`}>
+                    {name}
                   </Link>
                 </div>
                 <p className="editorial-post-date text-dark mb-0">
@@ -45,25 +45,9 @@ function CategoryPage() {
 
       <section className="catagory-welcome-post-area section_padding_100">
         <div className="container">
-          <div className="row">{singleCategoriesPosts}</div>
-          {/* <div className="row">
-                        <div className="col-12">
-                            <div className="gazette-pagination-area">
-                                <nav aria-label="Page navigation example">
-                                    <ul className="pagination">
-                                        <li className="page-item"><a className="page-link" href="#">1</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">2</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">3</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">4</a></li>
-                                        <li className="page-item"><a className="page-link" href="#">5</a></li>
-                                        <li className="page-item">
-                                            <a className="page-link" href="#" aria-label="Next"><i className="fa fa-angle-right" /></a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div> */}
+          <div className="row">
+            {singleCategoriesPosts}
+          </div>
         </div>
       </section>
     </>

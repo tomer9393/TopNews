@@ -5,7 +5,7 @@ function SingleBreakingNews() {
         <>
 
             <div className="single-breaking-news-widget">
-                <img src="img/blog-img/bn-1.jpg" alt />
+                <img src="img/blog-img/bn-1.jpg" alt="" />
                 <div className="breakingnews-title">
                     <p>breaking news</p>
                 </div>

@@ -4,7 +4,7 @@ import CommentsArea from "./commentArea/commentsArea";
 import { getArticleById } from "../../api/ArticleAPI";
 
 function PostDetailsPage(props) {
-  const published = props.published;
+  //const published = props.published;
   const { id } = useParams();
   const [article, setArticle] = useState(undefined);
 
@@ -20,7 +20,7 @@ function PostDetailsPage(props) {
         {/* Single Post Title */}
         <div
           className="single-post-title bg-img background-overlay"
-          style={{ backgroundImage: "url(img/bg-img/1.jpg)" }}
+          style={{ backgroundImage: "url(./img/bg-img/1.jpg)" }}
         >
           <div className="container h-100">
             <div className="row h-100 align-items-end">
@@ -38,14 +38,22 @@ function PostDetailsPage(props) {
             </div>
           </div>
         </div>
-        <p>
-          <center>
-            <img src={article.img} />
-          </center>
-        </p>
+        <div class="col-12">
+          <div class="single-post-thumb">
+            <center>
+              <img style={{marginTop:"50px"}} src={article.img} alt=""/>
+            </center>
+          </div>
+        </div>
         <div className="single-post-contents">
           <div className="container">
-            <div className="row justify-content-center">{article.body}</div>
+            <div className="row justify-content-center">
+              <div class="col-12 col-md-8">
+                  <div class="single-post-text">
+                      <p>{article.body}</p>
+                  </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

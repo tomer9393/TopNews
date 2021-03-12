@@ -4,6 +4,7 @@ import LeeTeamMember from './LeeTeamMember';
 import MeitalTeamMember from './MeitalTeamMember';
 import TomerTeamMember from './TomerTeamMember';
 import moment from "moment";
+import {Link} from "react-router-dom";
 
 function AboutUsPage() 
 {
@@ -64,8 +65,8 @@ function AboutUsPage()
                         <div className="col-12 col-md-8">
                             <div className="cta-content text-center">
                                 <h2 className="font-pt">Join Our Team</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor, elit vel pellentesque faucibus, massa ligula rutrum erat, id aliquam orci urna in ante.</p>
-                                <a href="#" className="btn gazette-btn font-pt">Contact Us <i className="fa fa-angle-right" /></a>
+                                <p>Join the best team the world ever had. We are waiting to join you to the family</p>
+                                <Link to="/Contact" className="btn gazette-btn font-pt">Contact Us <i className="fa fa-angle-right" /></Link>
                             </div>
                         </div>
                     </div>

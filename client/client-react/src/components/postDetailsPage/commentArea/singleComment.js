@@ -1,7 +1,6 @@
 function SingleComment(props) {
   const comment = props.comment;
   const published = new Date(comment.published);
-  console.log(published);
   return (
     <>
       {/* Single Comment Area */}

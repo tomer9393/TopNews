@@ -52,7 +52,7 @@ function ContactForm() {
       </form>
       <button
         onClick={() => {
-          if(fullName == undefined || email == undefined ||message == undefined )
+          if(fullName === undefined || email === undefined ||message === undefined )
             window.alert("Please fill all fields");
           else{
             createContact(fullName, email, message);
