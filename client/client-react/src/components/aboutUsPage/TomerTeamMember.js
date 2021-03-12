@@ -7,7 +7,7 @@ function TomerTeamMember()
                     <div className="team-member-data">
                         <div className="team-member-designation-social-info  align-items-cente justify-content-between">
 
-                        <img src="../img/bg-img/Tomer.jpeg" alt/>
+                        <img src="../img/bg-img/Tomer.jpeg" alt=""/>
                         {/* <img src="https://scontent.ftlv6-1.fna.fbcdn.net/v/t1.0-9/46917295_10215645492083306_1667698619504918528_n.jpg?_nc_cat=100&ccb=3&_nc_sid=09cbfe&_nc_ohc=PVSXQ8bxnQwAX9M0s2t&_nc_ht=scontent.ftlv6-1.fna&oh=7dc6556077f8bc3d4eadef3cd0212b79&oe=605B1C33" alt /> */}
                         <h4 className="font-pt">Tomer Israel</h4>
                             <h5 className="font-pt mb-0">Public relation person</h5>

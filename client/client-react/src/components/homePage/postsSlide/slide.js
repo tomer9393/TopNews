@@ -62,7 +62,7 @@ function Slide() {
       infinite={true}
     >
       {articles.map((article) => (
-        <SinglePostSlide article={article} />
+        <SinglePostSlide key={article.id} article={article} />
       ))}
     </Carousel>
   );

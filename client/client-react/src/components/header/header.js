@@ -79,38 +79,9 @@ function Header() {
                     {!showSearch && (
                       <ul className="navbar-nav mr-auto">
                         <li className="nav-item active">
-                          <a className="nav-link" href="#">
-                            Today <span className="sr-only">(current)</span>
-                          </a>
-                        </li>
-                        <li className="nav-item dropdown">
-                          <a
-                            className="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdown"
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                          >
-                            Pages
-                          </a>
-                          <div
-                            className="dropdown-menu"
-                            aria-labelledby="navbarDropdown"
-                          >
-                            <Link className="dropdown-item" to="/">
-                              Home
-                            </Link>
-                            {/* <a className="dropdown-item" href="/Category">Catagory</a>
-                                                    <a className="dropdown-item" href="/PostDetails">Single Post</a> */}
-                            <Link className="dropdown-item" to="/AboutUs">
-                              About Us
-                            </Link>
-                            <Link className="dropdown-item" to="/Contact">
-                              Contact
-                            </Link>
-                          </div>
+                          <Link className="nav-link" to="/">
+                            Home
+                          </Link>
                         </li>
                         <li className="nav-item">
                           <Link className="nav-link" to="/Category/Politics">
@@ -143,6 +114,11 @@ function Header() {
                         <li className="nav-item">
                           <Link className="nav-link" to="/Category/Sport">
                             sport
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link className="nav-link" to="/Contact">
+                            contact
                           </Link>
                         </li>
                       </ul>

@@ -27,12 +27,6 @@ function MainContent() {
                 <i className="fa fa-chevron-right" aria-hidden="true" />
               </Link>
                     </div>
-                    <div className="post-share-btn-group">
-                        <a href="#"><i className="fa fa-pinterest" aria-hidden="true" /></a>
-                        <a href="#"><i className="fa fa-linkedin" aria-hidden="true" /></a>
-                        <a href="#"><i className="fa fa-facebook" aria-hidden="true" /></a>
-                        <a href="#"><i className="fa fa-twitter" aria-hidden="true" /></a>
-                    </div>
                 </div>
             </div>
         </>
