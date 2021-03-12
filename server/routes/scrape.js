@@ -7,11 +7,14 @@ router.route('/')
     .post(scrapeController.createScrape)
     .delete(scrapeController.deleteAllScrape);
 
+router.route('/latestScrapes/:numOfScrapes')
+    .get(scrapeController.getLatestScrapes);
+
 router.route('/scrape')
     .get(scrapeController.scraper);
 
 router.route('/:id')
-    .get(scrapeController.getScrape)
+    .get(scrapeController.getScrapeById)
     .patch(scrapeController.updateScrape)
     .delete(scrapeController.deleteScrape);
 

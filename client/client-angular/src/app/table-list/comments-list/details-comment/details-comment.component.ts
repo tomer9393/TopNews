@@ -28,6 +28,9 @@ export class DetailsCommentComponent implements OnInit {
   onDelete(){
     this.commentsService.deleteComment(this.comment._id).subscribe(data => {
       this.router.navigate(['/table-list']);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

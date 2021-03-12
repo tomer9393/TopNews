@@ -32,11 +32,9 @@ const homePageSearch = async (category, title, gt, lt) => {
   }
   if (!gt) {
     gt = new Date(2021, 1, 1);
-    console.log(gt);
   }
   if (!lt) {
     lt = new Date(Date.now());
-    console.log(lt);
   }
 
   return await Article.aggregate([

@@ -29,31 +29,27 @@ export class LoginComponent implements OnInit {
 
   }
   toggle() {
-    console.log(this.delete);
     this.login = !this.login;
-    console.log(this.login);
     if (!this.login) {
       this.btnLogin = 'Reset';
       this.toggleLink = 'Login?';
     }
-    else {
+    else { 
       this.btnLogin = 'Login';
       this.toggleLink = 'Forgot Password?';
     }
   }
   onSubmit(formData) {
-    console.log(formData);
     if (this.login) {
       this.ls.onLogin(formData.form.value).subscribe(
         (res: any) => {
-          console.log(res);
           localStorage.setItem('token', res.sessionToken);
           localStorage.setItem('user', JSON.stringify(res.user));
          // this.ls.setToken(res.sessionToken);
           // this.ls.setIsLogin(true);
           this.ls.setIsLogin(true, res.user);
 
-          this.router.navigate(['/'], { relativeTo: this.route });
+          this.router.navigate(['/dashboard'], { relativeTo: this.route });
         }, (error: any) => {
           console.log(error);
           alert('email and password did not match');
@@ -63,7 +59,7 @@ export class LoginComponent implements OnInit {
       this.ls.onUpdate(formData.form.value).subscribe(
         (res: any) => alert('Your password is updated'),
         (error: any) => {
-          console.log(error);
+          console.log(error); 
           alert('email and password did not match');
         }
       );

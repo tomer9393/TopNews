@@ -33,6 +33,9 @@ export class EditUserComponent implements OnInit {
     this.usersService.updateUser(this.user).subscribe((data) => {
       this.user = data;
       this.router.navigate(["/table-list"]);
+    }, err => {
+      window.alert(err.error);
+      this.router.navigate(['/table-list']);
     });
   }
 }

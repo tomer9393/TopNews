@@ -22,6 +22,7 @@ const getArticles = async (req, res) => {
 
 
 const getArticleById = async (req, res) => {
+  
   console.log(`req with articleId: ${req.params.id} `);
   if (!req.params.id) {
     res.status(400).json("id is required");

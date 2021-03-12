@@ -13,40 +13,40 @@ export class ScrapesService {
 
   constructor(private http: HttpClient) {}
   
-  filter(key: string): Observable<Scrape[]> {
+  filter(key: string): Observable<any> {
     const url = `${this.filterUrl}/scrapes/${key}`;
-    return this.http.get<Scrape[]>(url);
+    return this.http.get<any>(url);
   }
 
-  getScrapes(): Observable<Scrape[]> {
-    return this.http.get<Scrape[]>(this.scrapesUrl);
+  getScrapes(): Observable<any> {
+    return this.http.get<any>(this.scrapesUrl);
   }
 
-  addScrape(title: String, link: String, rating: String, genre: String, duration: String, img: String): Observable<Scrape> {
-    return this.http.post<Scrape>(this.scrapesUrl, { title: title, link: link, rating: rating, genre: genre, duration: duration, img: img  });
+  addScrape(title: String, img: String, published: String,time: Date): Observable<any> {
+    return this.http.post<any>(this.scrapesUrl, { title: title, img: img ,published: published ,time: time});
   }
 
-  getScrape(id: number): Observable<Scrape> {
+  getScrape(id: number): Observable<any> {
     const url = `${this.scrapesUrl}/${id}`;
-    return this.http.get<Scrape>(url);
+    return this.http.get<any>(url);
   }
 
-  updateScrape(scrape: Scrape): Observable<Scrape> {
+  updateScrape(scrape: Scrape): Observable<any> {
     const url = `${this.scrapesUrl}/${scrape._id}`;
-    return this.http.patch<Scrape>(url, { title: scrape.title, link: scrape.link, year: scrape.year, rating: scrape.rating, genre: scrape.genre, duration: scrape.duration, img: scrape.img  });
+    return this.http.patch<any>(url, { title: scrape.title, img: scrape.img  , published: scrape.published ,time: scrape.time});
   }
 
-  deleteScrape(id: number): Observable<Scrape> {
+  deleteScrape(id: number): Observable<any> {
     const url = `${this.scrapesUrl}/${id}`;
-    return this.http.delete<Scrape>(url);
+    return this.http.delete<any>(url);
   }
 
-  deleteAllScrape(): Observable<Scrape> {
-    return this.http.delete<Scrape>(this.scrapesUrl);
+  deleteAllScrape(): Observable<any> {
+    return this.http.delete<any>(this.scrapesUrl);
   }
 
-  scrape(): Observable<Scrape[]> {
+  scrape(): Observable<any> {
     const url = `${this.scrapesUrl}/scrape`;
-    return this.http.get<Scrape[]>(url);
+    return this.http.get<any>(url);
   }
 }

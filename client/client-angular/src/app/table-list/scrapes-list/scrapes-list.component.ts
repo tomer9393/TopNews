@@ -12,15 +12,18 @@ export class ScrapesListComponent implements OnInit {
 
   scrapes : Scrape[] = [];  
   @Input() search: string = '';
+  @Input() refresh: string = "false";
 
   constructor(private scrapesService : ScrapesService,  private router: Router){}
-
+  
   ngOnInit() {
     this.loadAll();
   }
-
+  
   ngOnChanges(changes: String) {
     // changes.prop contains the old and the new value...
+    if(this.refresh === "true")
+      this.loadAll();
     if(this.search === "")
     { 
       this.loadAll();
@@ -29,6 +32,8 @@ export class ScrapesListComponent implements OnInit {
     { 
       this.scrapesService.filter(this.search).subscribe(data =>{
         this.scrapes = data;
+      }, err => {
+        window.alert(err.error);
       })
     }
   }
@@ -36,6 +41,8 @@ export class ScrapesListComponent implements OnInit {
   loadAll(){
     this.scrapesService.getScrapes().subscribe(data => {
       this.scrapes = data;
+    }, err => {
+      window.alert(err.error);
     });
   }
 
@@ -48,7 +55,10 @@ export class ScrapesListComponent implements OnInit {
   }
   onDelete(scrape : Scrape){
     this.scrapesService.deleteScrape(scrape._id).subscribe(data => {
-            this.scrapes.splice(this.scrapes.indexOf(scrape),1);
+      this.scrapes.splice(this.scrapes.indexOf(scrape),1);
+    }, err => {
+      window.alert(err.error);
+      this.scrapes.splice(this.scrapes.indexOf(scrape),1);
     });
   }
   onDetails(scrape : Scrape){
@@ -58,12 +68,16 @@ export class ScrapesListComponent implements OnInit {
   onDeleteAll(){
     this.scrapesService.deleteAllScrape().subscribe(data => {
       this.loadAll();
+    }, err => {
+      window.alert(err.error);
     });
   }
 
   onScrape(){
     this.scrapesService.scrape().subscribe(data => {
       this.loadAll();
+    }, err => {
+      window.alert(err.error);
     });
   }
 }

@@ -21,6 +21,9 @@ export class CreateUserComponent implements OnInit {
       this.usersService.addUser(firstName, lastName, email, password, phone, true).subscribe(data => {
         this.user = data;
         this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
       });
     }
 }

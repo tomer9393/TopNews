@@ -1,18 +1,21 @@
 const Scrape = require('../models/scrape');
 
-const createScrape = async (title, link, year, rating, genre, duration, img) => {
+const createScrape = async (title, img, published, time) => {
+    try {
     const scrape = new Scrape({
         title : title,
-        link : link,
-        year : year,
-        rating : rating,
-        genre : genre,
-        duration : duration,
-        img : img
+        img : img,
+        published : published
     });
+
+    if(time)
+    scrape.time = time;
 
 
     return await scrape.save();
+    } catch (err) {
+        console.log('data was not scraped!');
+    }
 };
 
 const getScrapeById = async (id) => {
@@ -23,18 +26,23 @@ const getScrapes = async () => {
     return await Scrape.find({});
 };
 
-const updateScrape = async (id, title, link, year, rating, genre, duration, img) => {
+const getNumOfScrapes = async () => {
+    return await Scrape.countDocuments();
+};
+
+const getLatestScrapes = async (numOfScrapes) => {
+    return await Scrape.find().sort({ time: 'asc' }).limit(parseInt(numOfScrapes));
+};
+
+const updateScrape = async (id, title, img, published, time) => {
     const scrape = await getScrapeById(id);
     if (!scrape)
         return null;
 
     scrape.title = title;
-    scrape.year = year;
-    scrape.link = link;
-    scrape.rating = rating;
-    scrape.genre = genre;
-    scrape.duration = duration;
     scrape.img = img;
+    scrape.published = published;
+    scrape.time = time;
     await scrape.save();
     return scrape;
 };
@@ -63,5 +71,7 @@ module.exports = {
     getScrapes,
     updateScrape,
     deleteScrape,
+    getLatestScrapes,
+    getNumOfScrapes,
     deleteAllScrape
 }

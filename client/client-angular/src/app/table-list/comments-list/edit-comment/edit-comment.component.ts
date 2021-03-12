@@ -28,6 +28,9 @@ export class EditCommentComponent implements OnInit {
       this.commentsService.updateComment(this.comment).subscribe(data => {
         this.comment = data;
         this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
       });
     }
 

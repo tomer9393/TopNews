@@ -9,8 +9,6 @@ const createContact = async (fullName,email,message) => {
      });
 
     let contactDocument = await contact.save();
-    console.log('contact:');
-    console.log(contactDocument);
 
     return contactDocument;
 }

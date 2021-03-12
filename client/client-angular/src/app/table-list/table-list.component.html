@@ -19,6 +19,15 @@
             <i class="material-icons">search</i>
             <div class="ripple-container"></div>
           </button>
+          <button
+            mat-raised-button
+            type="submit"
+            (click)="onRefresh()"
+            class="btn btn-white btn-round btn-just-icon"
+          >
+            <i class="material-icons">autorenew</i>
+            <div class="ripple-container"></div>
+          </button>
         </div>
       </span>
     </form>
@@ -28,18 +37,21 @@
       <app-categories-list
         [listFor]="listFor"
         [search]="search"
+        [refresh]="refresh"
       ></app-categories-list>
+      <app-users-list [search]="search" [refresh]="refresh"></app-users-list>
+      <app-contacts-list [search]="search" [refresh]="refresh"></app-contacts-list>
       <app-articles-list
         [listFor]="listFor"
         [search]="search"
+        [refresh]="refresh"
       ></app-articles-list>
       <app-comments-list
         [listFor]="listFor"
         [search]="search"
+        [refresh]="refresh"
       ></app-comments-list>
-      <app-users-list [search]="search"></app-users-list>
-      <app-contacts-list [search]="search"></app-contacts-list>
-      <app-scrapes-list [search]="search"></app-scrapes-list>
+      <app-scrapes-list [search]="search" [refresh]="refresh"></app-scrapes-list>
     </div>
   </div>
 </div>
