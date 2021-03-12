@@ -13,9 +13,9 @@ const func = async () => {
   const o = {};
   // `map()` and `reduce()` are run on the MongoDB server, not Node.js,
   // these functions are converted to strings
-  o.map = function () { emit(this.articleId, 1) };
-  o.reduce = function (k, vals) { return vals.length };
-  Comment.mapReduce(o, function (err, results) {
+  o.map = function () { emit(this.category, 1); };
+  o.reduce = function (k, vals) { return vals.length() };
+  Article.mapReduce(o.map,o.reduce, function (err, results) {
     if (err) throw err;
     console.log(results);
   })
