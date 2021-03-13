@@ -38,7 +38,7 @@ function AboutUsPage() {
           <div className="row">
             <div className="col-12 col-md-8">
               <div className="gazette-heading">
-                <h4 className="font-bold">address</h4>
+                <h4 className="font-bold">your message</h4>
               </div>
 
               {/* Contact Form */}
