@@ -1,7 +1,9 @@
+import { format } from "date-fns";
 
 function SingleWorldNews(props) {
   const scrape = props.scrape;
-
+  var date = new Date(scrape.published);
+  var formattedDate = format(date, "dd/MM/yyyy");
 
   return (
     <>
@@ -10,8 +12,8 @@ function SingleWorldNews(props) {
                   <img src={scrape.img} alt="" />             
               </div>
               <div className="dont-miss-post-content">
-                  <a href="#" className="font-pt">{scrape.title}</a>
-                  <span>{scrape.published}</span>
+                  <a className="font-pt">{scrape.title}</a>
+                  <span>{formattedDate}</span>
               </div>
           </div>
 
