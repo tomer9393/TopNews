@@ -24,8 +24,8 @@ const getArticles = async (req, res) => {
 const getArticleById = async (req, res) => {
   
   console.log(`req with articleId: ${req.params.id} `);
-  if (!req.params.id) {
-    res.status(400).json("id is required");
+  if (!req.params.id || !req.params.id.match(/^[0-9a-fA-F]{24}$/)) {
+    res.status(400).json("Valid id is required");
   }
   const article = await articleService.getArticleById(req.params.id);
   if (!article) {

@@ -24,16 +24,16 @@ const func = async () => {
 
 const homePageSearch = async (category, title, gt, lt) => {
 
-  if (!category) {
+  if (category === "undefined") {
     category = "";
   }
-  if (!title) {
+  if (title === "undefined") {
     title = "";
   }
-  if (!gt) {
-    gt = new Date(2021, 1, 1);
+  if (gt === "undefined") {
+    gt = new Date(2010, 1, 1);
   }
-  if (!lt) {
+  if (lt === "undefined") {
     lt = new Date(Date.now());
   }
 

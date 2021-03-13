@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import CommentsArea from "./commentArea/commentsArea";
 import { getArticleById } from "../../api/ArticleAPI";
 
 function PostDetailsPage(props) {
-  //const published = props.published;
   const { id } = useParams();
   const [article, setArticle] = useState(undefined);
+  const history = useHistory();
 
   useEffect(() => {
-    getArticleById(id).then((res) => setArticle(res.data));
+    getArticleById(id).then((res) => {
+      if (res === -1) {
+        history.push({
+          pathname: "/ErrorPage",
+        });
+      }
+      setArticle(res.data);
+    });
   }, []);
 
   return !article ? (
@@ -41,7 +48,7 @@ function PostDetailsPage(props) {
         <div class="col-12">
           <div class="single-post-thumb">
             <center>
-              <img style={{marginTop:"50px"}} src={article.img} alt=""/>
+              <img style={{ marginTop: "50px" }} src={article.img} alt="" />
             </center>
           </div>
         </div>
@@ -49,9 +56,9 @@ function PostDetailsPage(props) {
           <div className="container">
             <div className="row justify-content-center">
               <div class="col-12 col-md-8">
-                  <div class="single-post-text">
-                      <p>{article.body}</p>
-                  </div>
+                <div class="single-post-text">
+                  <p>{article.body}</p>
+                </div>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 import SingleCategoryPost from "./singleCategoryPost";
 import moment from "moment";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { getArticleByCategory } from "../../api/ArticleAPI";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,9 +8,17 @@ import { Link } from "react-router-dom";
 function CategoryPage() {
   const { name } = useParams();
   const [articles, setArticles] = useState(undefined);
+  const history = useHistory();
 
   useEffect(() => {
-    getArticleByCategory(name).then((res) => setArticles(res.data));
+    getArticleByCategory(name).then((res) => {
+      if (res.data.length === 0) {
+        history.push({
+          pathname: "/ErrorPage",
+        });
+      }
+      setArticles(res.data);
+    });
   }, [name]);
 
   const singleCategoriesPosts = articles?.map((article) => (
@@ -29,9 +37,7 @@ function CategoryPage() {
               <div className="breacumb-content d-flex align-items-center justify-content-between">
                 {/* Post Tag */}
                 <div className="gazette-post-tag">
-                  <Link to={`/Category/${name}`}>
-                    {name}
-                  </Link>
+                  <Link to={`/Category/${name}`}>{name}</Link>
                 </div>
                 <p className="editorial-post-date text-dark mb-0">
                   {moment().format("DD/MM/YYYY")}
@@ -45,9 +51,7 @@ function CategoryPage() {
 
       <section className="catagory-welcome-post-area section_padding_100">
         <div className="container">
-          <div className="row">
-            {singleCategoriesPosts}
-          </div>
+          <div className="row">{singleCategoriesPosts}</div>
         </div>
       </section>
     </>

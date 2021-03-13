@@ -26,8 +26,7 @@ function Slide() {
 
   useEffect(() => {
     //if we got all the articles then set articles
-    //TODO[Lee]: Change 3 to categories.length
-    if (tempArticles.length === 3) {
+    if (tempArticles.length === categories.length) {
       setArticles(tempArticles);
     }
   }, [tempArticles]);
