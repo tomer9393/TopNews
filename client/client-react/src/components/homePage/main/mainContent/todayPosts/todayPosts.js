@@ -20,11 +20,9 @@ function TodayPosts() {
         <div className="gazette-heading">
           <h4>Latest Articles</h4>
         </div>
-
-        {/* Single Today Post */}
-        <SingleTodayPosts article={articles[0]} />
-        {/* Single Today Post */}
-        <SingleTodayPosts article={articles[1]} />
+        {articles.map((article) => {
+        return <SingleTodayPosts key={article._id} article={article} />;
+        })}
       </div>
     </>
   );
