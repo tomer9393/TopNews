@@ -1,5 +1,5 @@
 import PostsSlide from './postsSlide/slide';
-import LatestNewsSlide from './latestNewsSlide/slide';
+// import LatestNewsSlide from './latestNewsSlide/slide';
 import Main from './main/main';
 
 
