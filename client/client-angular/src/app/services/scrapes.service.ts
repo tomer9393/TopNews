@@ -22,7 +22,7 @@ export class ScrapesService {
     return this.http.get<any>(this.scrapesUrl);
   }
 
-  addScrape(title: String, img: String, published: String,time: Date): Observable<any> {
+  addScrape(title: String, img: String, published: Date,time: Date): Observable<any> {
     return this.http.post<any>(this.scrapesUrl, { title: title, img: img ,published: published ,time: time});
   }
 

@@ -1,20 +1,12 @@
 import { createContact } from "../../api/ContactAPI";
 import { useState } from "react";
-
+import { useAlert, withAlert } from "react-alert";
 
 function ContactForm() {
-  var [fullName, setFullName] = useState(undefined);
-  var [email, setEmail] = useState(undefined);
-  var [message, setMessage] = useState(undefined);
-  
-  function reset(){
-      fullName = undefined;
-      email = undefined;
-      message = undefined;
-      document.getElementById('contact-name').value = '';
-      document.getElementById('contact-email').value = '';
-      document.getElementById('message').value = '';
-  }
+  const [fullName, setFullName] = useState(undefined);
+  const [email, setEmail] = useState(undefined);
+  const [message, setMessage] = useState(undefined);
+  const alert = useAlert();
 
   return (
     <>
@@ -26,6 +18,7 @@ function ContactForm() {
             onChange={(event) => setFullName(event.target.value)}
             id="contact-name"
             placeholder="Enter Your Full Name"
+            value={fullName}
           />
         </div>
         <div className="form-group">
@@ -35,6 +28,7 @@ function ContactForm() {
             id="contact-email"
             placeholder="Email"
             onChange={(event) => setEmail(event.target.value)}
+            value={email}
           />
         </div>
         <div className="form-group">
@@ -47,17 +41,20 @@ function ContactForm() {
             placeholder="Message"
             defaultValue={""}
             onChange={(event) => setMessage(event.target.value)}
+            value={message}
           />
         </div>
       </form>
       <button
         onClick={() => {
-          if(fullName === undefined || email === undefined ||message === undefined )
-            window.alert("Please fill all fields");
-          else{
+          if (fullName && email && message) {
             createContact(fullName, email, message);
-            window.alert("Thank you for contact us");
-            reset();
+            alert.success("Message was sent successfuly");
+            setMessage("");
+            setEmail("");
+            setFullName("");
+          } else {
+            alert.error("Please fill all the fields");
           }
         }}
         type="submit"
@@ -69,4 +66,4 @@ function ContactForm() {
   );
 }
 
-export default ContactForm;
+export default withAlert()(ContactForm);

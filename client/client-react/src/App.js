@@ -8,7 +8,8 @@ import PostDetailsPage from './components/postDetailsPage/postDetailsPage';
 import AboutUsPage from './components/aboutUsPage/aboutUsPage';
 import ContactPage from './components/contactPage/contactPage';
 import SearchPage from './components/searchPage/searchPage'
-
+import PageNotFound from './components/404PageNotFound/404PageNotFound';
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 
@@ -18,6 +19,7 @@ function App() {
       <BrowserRouter>
         <Header />
         
+        <ScrollToTop />
         <Switch>
           <Route path="/" exact component={HomePage} />
           <Route path="/Category/:name" component={() => <CategoryPage />} />
@@ -25,6 +27,7 @@ function App() {
           <Route path="/AboutUs" component={() => <AboutUsPage />} />
           <Route path="/Contact" component={() => <ContactPage />} />
           <Route path="/Search" component={(props) => <SearchPage {...props}/>} />
+          <Route path="*" component={() => <PageNotFound />} />
         </Switch>
 
         <Footer />

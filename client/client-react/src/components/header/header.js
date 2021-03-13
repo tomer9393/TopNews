@@ -2,13 +2,13 @@ import SingleStockReport from "./singleStockReport";
 import { Link } from "react-router-dom";
 import SerachBox from "./SearchBox";
 import { useState } from "react";
+import logo from "../../img/core-img/logo1.PNG";
 
 function Header() {
   const [showSearch, setShowSearch] = useState();
 
   return (
-    <header className="header-area" style={{marginBottom: '30px'}}>
-      <img src="src/img/core-img/ourLogo.jpg" alt="logo" />
+    <header className="header-area" style={{ marginBottom: "30px" }}>
       {/* Top Header Area */}
       <div className="top-header">
         <div className="container h-100">
@@ -52,7 +52,8 @@ function Header() {
           <div className="row h-100 align-items-center">
             {/* Logo Area */}
             <div className="col-12 col-md-4">
-              <div className="logo-area"></div>
+              {/* <div className="logo-area"></div> */}
+              <img src={logo} />
             </div>
           </div>
         </div>
@@ -118,7 +119,12 @@ function Header() {
                         </li>
                         <li className="nav-item">
                           <Link className="nav-link" to="/Contact">
-                            contact
+                            Contact
+                          </Link>
+                        </li>
+                        <li className="nav-item">
+                          <Link className="nav-link" to="/AboutUs">
+                            About Us
                           </Link>
                         </li>
                       </ul>
