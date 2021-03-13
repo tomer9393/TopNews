@@ -3,6 +3,12 @@ import { useHistory, useParams } from "react-router-dom";
 import CommentsArea from "./commentArea/commentsArea";
 import { getArticleById } from "../../api/ArticleAPI";
 
+function NewlineText(props) {
+  const text = props.text;
+  const newText = text.split('\n\n').map(str => <p>{str}</p>);
+  
+  return newText;
+}
 function PostDetailsPage(props) {
   const { id } = useParams();
   const [article, setArticle] = useState(undefined);
@@ -57,7 +63,7 @@ function PostDetailsPage(props) {
             <div className="row justify-content-center">
               <div className="col-12 col-md-8">
                 <div className="single-post-text">
-                    <p>{article.body}</p>
+                  <NewlineText text={article.body} />
                 </div>
               </div>
             </div>
