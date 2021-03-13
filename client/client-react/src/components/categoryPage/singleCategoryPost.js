@@ -10,6 +10,9 @@ function SingleCategoryPost(props) {
         {/* Gazette Welcome Post */}
         <div className="gazette-welcome-post">
           {/* Post Tag */}
+          <div className="gazette-post-tag">
+            <a href="#">{article.category}</a>
+          </div>
           <h2 className="font-pt">{article.title}</h2>
           <p>{new Date(article.lastUpdate).toLocaleString("he-IL")}</p>
           {/* Post Thumbnail */}
