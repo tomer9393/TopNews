@@ -18,12 +18,16 @@ export class CreateCategoryComponent implements OnInit {
     ngOnInit(): void {
     }
     onCreate(name: string){
-      this.categoriesService.addCategory(name).subscribe(data => {
-        this.category = data;
-        this.router.navigate(['/table-list']);
-      }, err => {
-        window.alert(err.error);
-        this.router.navigate(['/table-list']);
-      });
+      if(name === '')
+      window.alert('Please fill all fields');
+      else{
+        this.categoriesService.addCategory(name).subscribe(data => {
+          this.category = data;
+          this.router.navigate(['/table-list']);
+        }, err => {
+          window.alert(err.error);
+          this.router.navigate(['/table-list']);
+        });
+      }
     }
 }

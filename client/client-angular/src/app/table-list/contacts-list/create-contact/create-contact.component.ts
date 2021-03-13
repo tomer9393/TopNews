@@ -18,12 +18,16 @@ export class CreateContactComponent implements OnInit {
   }
   
   onCreate(fullName: String, email: String, message: String){
-    this.contactsService.addContact(fullName, email, message).subscribe(data => {
-      this.contact = data;
-      this.router.navigate(['/table-list']);
-    }, err => {
-      window.alert(err.error);
-      this.router.navigate(['/table-list']);
-    });
+    if(fullName === '' || email === '' || message === '')
+    window.alert('Please fill all fields');
+    else{
+      this.contactsService.addContact(fullName, email, message).subscribe(data => {
+        this.contact = data;
+        this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
+      });
+    }
   }
 }
