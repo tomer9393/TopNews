@@ -13,7 +13,7 @@ function Footer(){
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Categories</h4>
+                      <h4 className="font-pt" style={{textAlign: 'left'}}>Categories</h4>
                     </div>
                     <ul className="footer-widget-menu">
                       <li><Link to="/Category/Politics">Politics</Link></li>
@@ -28,7 +28,7 @@ function Footer(){
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Our vision</h4>
+                      <h4 className="font-pt" style={{textAlign: 'left'}}>Our vision</h4>
                     </div>
                     <ul className="footer-widget-menu">
                       <li><a >Our vision is to provide the best news in the world, and the most interesting content while providing the best service possible</a></li>
