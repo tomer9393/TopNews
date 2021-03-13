@@ -13,10 +13,10 @@ function Footer(){
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Categories</h4>
+                      <h4 className="font-pt" style={{textAlign: 'left'}}>Categories</h4>
                     </div>
                     <ul className="footer-widget-menu">
-                      <li><Link to="/Category/test">Politics</Link></li>
+                      <li><Link to="/Category/Politics">Politics</Link></li>
                       <li><Link to="/Category/Lifestyle">Lifestyle</Link></li>
                       <li><Link to="/Category/Travel">Travel</Link></li>
                       <li><Link to="/Category/Health">Health</Link></li>
@@ -25,78 +25,37 @@ function Footer(){
                     </ul>
                   </div>
                 </div>
-                
-                 {/* Single Footer Widget */}
-                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
+                <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">About Us</h4>
+                      <h4 className="font-pt" style={{textAlign: 'left'}}>Our vision</h4>
                     </div>
                     <ul className="footer-widget-menu">
-                      <li><Link to="/AboutUs">About us page</Link></li>
+                      <li><a >Our vision is to provide the best news in the world, and the most interesting content while providing the best service possible</a></li>
                     </ul>
                   </div>
                 </div>
+                <div className="col-12 col-sm-6 col-md-4 col-lg-2"></div>
+                <div className="col-12 col-sm-6 col-md-4 col-lg-2"></div>
+                <div ></div>
+                <div ></div>
                  {/* Single Footer Widget */}
                  <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      {/* <h4 className="font-pt">Featured</h4> */}
+                    <Link to="/AboutUs"><h4 className="font-pt">About Us</h4></Link>
                     </div>
-                    {/* <ul className="footer-widget-menu">
-                      <li><a href="#">Football</a></li>
-                      <li><a href="#">Golf</a></li>
-                      <li><a href="#">Tennis</a></li>
-                      <li><a href="#">Motorsport</a></li>
-                      <li><a href="#">Horseracing</a></li>
-                      <li><a href="#">Equestrian</a></li>
-                      <li><a href="#">Sailing</a></li>
-                      <li><a href="#">Skiing</a></li>
-                    </ul> */}
                   </div>
                 </div>
                 {/* Single Footer Widget */}
                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
                   <div className="single-footer-widget">
                     <div className="footer-widget-title">
-                      <h4 className="font-pt">Our vision</h4>
+                    <Link to="/Contact"><h4 className="font-pt">Contact Us</h4></Link>
                     </div>
                     <ul className="footer-widget-menu">
-                      <li><a href="#">Our vision is to provide the best news in the world, and the most interesting content while providing the best service possible</a></li>
-                      {/* <li><a href="#">Our Team</a></li> */}
-                    </ul>
-                  </div>
-                </div>
-                 {/* Single Footer Widget */}
-                 <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-                  <div className="single-footer-widget">
-                    <div className="footer-widget-title">
-                      {/* <h4 className="font-pt">Featured</h4> */}
-                    </div>
-                    {/* <ul className="footer-widget-menu">
-                      <li><a href="#">Football</a></li>
-                      <li><a href="#">Golf</a></li>
-                      <li><a href="#">Tennis</a></li>
-                      <li><a href="#">Motorsport</a></li>
-                      <li><a href="#">Horseracing</a></li>
-                      <li><a href="#">Equestrian</a></li>
-                      <li><a href="#">Sailing</a></li>
-                      <li><a href="#">Skiing</a></li>
-                    </ul> */}
-                  </div>
-                </div>
-                {/* Single Footer Widget */}
-                <div className="col-12 col-sm-6 col-md-4 col-lg-2">
-                  <div className="single-footer-widget">
-                    {/* <div className="footer-widget-title">
-                      <h4 className="font-pt"></h4>
-                    </div> */}
-                    <div className="footer-widget-title">
-                      <h4 className="font-pt">Contact Us</h4>
-                    </div>
-                    <ul className="footer-widget-menu">
-                      <img src="https://www.merhofcu.org/wp-content/uploads/2018/07/time-to-update-website.jpg" className="lazyloaded" data-ll-status="loaded"></img>
-                      <li><Link to="/Contact">For contact press here</Link></li>
+                      {/* <img src="https://www.merhofcu.org/wp-content/uploads/2018/07/time-to-update-website.jpg" className="lazyloaded" data-ll-status="loaded"></img> */}
+                      {/* <li><Link to="/Contact">To contact us press here</Link></li> */}
                     </ul>
                   </div>
                 </div>

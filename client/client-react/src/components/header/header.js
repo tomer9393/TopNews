@@ -4,6 +4,16 @@ import SerachBox from "./SearchBox";
 import { useState } from "react";
 import logo from "../../img/core-img/logo1.PNG";
 
+const ColoredLine = ({ color }) => (
+  <hr
+      style={{
+          color: color,
+          backgroundColor: color,
+          height: 5
+      }}
+  />
+);
+
 function Header() {
   const [showSearch, setShowSearch] = useState();
 
@@ -117,16 +127,18 @@ function Header() {
                             sport
                           </Link>
                         </li>
+                        <li className="col-3"></li>
+                        <li className="nav-item col-lg-2">
+                          <Link className="nav-link" to="/AboutUs">
+                            About Us
+                          </Link>
+                        </li>
                         <li className="nav-item">
                           <Link className="nav-link" to="/Contact">
                             Contact
                           </Link>
                         </li>
-                        <li className="nav-item">
-                          <Link className="nav-link" to="/AboutUs">
-                            About Us
-                          </Link>
-                        </li>
+
                       </ul>
                     )}
                     <SerachBox
