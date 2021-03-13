@@ -19,7 +19,7 @@ function SerachBox(props) {
   const history = useHistory();
 
   const dropdownOptions = [
-    { key: undefined, text: "" },
+    { key: "emptyOption", text: "" },
     ...categories.map((category) => ({
       key: category,
       text: category,

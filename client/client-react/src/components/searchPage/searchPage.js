@@ -10,7 +10,7 @@ function SearchPage(props) {
       <div className="container">
         <div className="row">
           {articles?.map((article) => (
-            <SingleCategoryPost article={article} />
+            <SingleCategoryPost key={article._id} article={article} />
           ))}
         </div>
       </div>
