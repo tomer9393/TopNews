@@ -20,7 +20,7 @@ function WorldNews() {
               <div className="widget-title">
                <h5>World News</h5>
               </div>
-              {scrapes.map((scrape) => {
+        {scrapes.map((scrape) => {
         return <SingleWorldNews key={scrape._id} scrape={scrape} />;
         })}
       </div>
