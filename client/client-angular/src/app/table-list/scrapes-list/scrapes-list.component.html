@@ -23,7 +23,7 @@
             <tr *ngFor="let scrape of scrapes">
               <td>{{scrape.title}}</td>
               <td >{{scrape.img.substring(0,50) + '...' }}</td>
-              <td>{{scrape.published}}</td>
+              <td>{{scrape.published | date:'short'}}</td>
               <td>{{scrape.time | date:'short'}}</td>
               <td>
                 <a class="" href="javascript:void(0)" (click)="onEdit(scrape)">
