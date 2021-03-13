@@ -5,7 +5,7 @@ import { getArticleById } from "../../api/ArticleAPI";
 
 function NewlineText(props) {
   const text = props.text;
-  const newText = text.split('\n\n').map(str => <p>{str}</p>);
+  const newText = text.split('\n\n').map((str,i) => <p key={i}>{str}</p>);
   
   return newText;
 }
