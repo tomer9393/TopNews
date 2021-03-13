@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getArticleById } from "../../../../api/ArticleAPI";
 
-const ID = "60438fb5824ab66b3c103b90";
+const ID = "604ca926f4ddf82ecc5c15c1";
 function MainContent() {
   const [article, setArticle] = useState();
 
@@ -17,7 +17,7 @@ function MainContent() {
       <div className="gazette-welcome-post">
         {/* Post Tag */}
         <div className="gazette-post-tag">
-          <a href="#">Travel</a>
+          <a href="#">Politics</a>
         </div>
         <h2 className="font-pt">{article.title}</h2>
         <p className="gazette-post-date">{new Date(article.published).toLocaleString("he-IL")}</p>
