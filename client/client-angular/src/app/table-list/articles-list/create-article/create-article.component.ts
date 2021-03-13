@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Article } from '../../../models/article';
 import { ArticlesService } from '../../../services/articles.service';
 import { Router } from '@angular/router';
+import { Category } from '../../../models/category';
+import { CategoriesService } from '../../../services/categories.service';
+
 
 
 @Component({
@@ -13,11 +16,15 @@ export class CreateArticleComponent implements OnInit {
 
   article: Article = null;
   category: String = '';
+  categories: Category[] = [];
   isEditable = false;
 
-  constructor(private articlesService : ArticlesService, private router: Router) { }
+  constructor(private articlesService : ArticlesService, private router: Router, private categoriesService : CategoriesService) { }
 
   ngOnInit(): void {
+    this.categoriesService.getCategories().subscribe(data => {
+      this.categories = data;
+    });
     this.category=history.state.category;
     if(this.category !== ''){
       this.isEditable = true;
@@ -25,12 +32,16 @@ export class CreateArticleComponent implements OnInit {
   }
 
   onCreate(title: String, subTitle: String, img: String, category: String, body: String){
-    this.articlesService.addArticle(title, subTitle, img, category, body).subscribe(data => {
-      this.article = data;
-      this.router.navigate(['/table-list']);
-    }, err => {
-      window.alert(err.error);
-      this.router.navigate(['/table-list']);
-    });
+    if(title === '' || subTitle === '' || img === '' || category === '' || body === '')
+      window.alert('Please fill all fields');
+    else{
+      this.articlesService.addArticle(title, subTitle, img, category, body).subscribe(data => {
+        this.article = data;
+        this.router.navigate(['/table-list']);
+      }, err => {
+        window.alert(err.error);
+        this.router.navigate(['/table-list']);
+      });
+    }
   }
 }
