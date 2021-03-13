@@ -18,7 +18,7 @@ function TodayPosts() {
     <>
       <div className="gazette-todays-post section_padding_100_50">
         <div className="gazette-heading">
-          <h4>today’s most popular</h4>
+          <h4>Latest Articles</h4>
         </div>
 
         {/* Single Today Post */}

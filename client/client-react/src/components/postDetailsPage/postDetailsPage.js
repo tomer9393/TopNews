@@ -38,8 +38,8 @@ function PostDetailsPage(props) {
             </div>
           </div>
         </div>
-        <div class="col-12">
-          <div class="single-post-thumb">
+        <div className="col-12">
+          <div className="single-post-thumb">
             <center>
               <img style={{marginTop:"50px"}} src={article.img} alt=""/>
             </center>
@@ -48,10 +48,10 @@ function PostDetailsPage(props) {
         <div className="single-post-contents">
           <div className="container">
             <div className="row justify-content-center">
-              <div class="col-12 col-md-8">
-                  <div class="single-post-text">
-                      <p>{article.body}</p>
-                  </div>
+              <div className="col-12 col-md-8">
+                <div className="single-post-text">
+                    <p>{article.body}</p>
+                </div>
               </div>
             </div>
           </div>
