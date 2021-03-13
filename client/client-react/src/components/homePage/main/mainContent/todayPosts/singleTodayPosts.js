@@ -26,17 +26,14 @@ function SingleTodayPosts(props) {
         <div className="todays-post-content">
           {/* Post Tag */}
           <div className="gazette-post-tag">
-            {/* TODO: add link to */}
             <Link to={`Category/${article.category}`}>{article.category}</Link>
           </div>
-          {/* TODO: Add link to */}
           <h3>
             <Link to={`PostDetails/${article._id}`} className="font-pt mb-2">
               {article.title}
             </Link>
           </h3>
           <p>{new Date(article.published).toLocaleString("he-IL")}</p>
-          {/* TODO: Add link to */}
           <Link to="#" className="post-total-comments">
             {comments
               ? comments.length === 1
