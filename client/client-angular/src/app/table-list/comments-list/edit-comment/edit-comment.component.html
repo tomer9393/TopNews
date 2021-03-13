@@ -24,13 +24,22 @@
               <div class="row">
                 <div class="col-md-12">
                   <mat-form-field class="example-full-width">
+                    <mat-label>Article</mat-label>
+                    <mat-select #articleId value={{comment.articleId}}>
+                      <mat-option *ngFor="let article of articles" [value]="article._id">
+                        {{article.title}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <!-- <mat-form-field 
+                  <!-- <mat-form-field class="example-full-width">
                     <input
                       #articleId
                       value="{{ comment.articleId }}"
                       matInput
                       placeholder="Article ID"
                     />
-                  </mat-form-field>
+                  </mat-form-field> -->
                 </div>
               </div>
               <div class="row">
