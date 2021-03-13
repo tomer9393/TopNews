@@ -6,7 +6,7 @@ import "react-multi-carousel/lib/styles.css";
 import SinglePostSlide from "./singlePostSlide";
 
 function Slide() {
-  const [articles, setArticles] = useState(undefined);
+  const [articles, setArticles] = useState();
   const [tempArticles, setTempArticles] = useState([]);
 
   useEffect(
@@ -60,9 +60,9 @@ function Slide() {
       autoPlaySpeed={5000}
       infinite={true}
     >
-      {articles.map((article) => (
-        <SinglePostSlide key={article.id} article={article} />
-      ))}
+      {articles.map((article) => {
+        return <SinglePostSlide key={article._id} article={article} />;
+      })}
     </Carousel>
   );
 }
