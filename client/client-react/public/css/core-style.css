@@ -1033,18 +1033,18 @@ img {
     margin-bottom: 100px;
 }
 
-.catagory-welcome-post-area .col-12:last-child .gazette-welcome-post {
+/* .catagory-welcome-post-area .col-12:last-child .gazette-welcome-post {
     padding-bottom: 0;
     border-bottom: none;
-}
+} */
 
-.catagory-welcome-post-area .col-12:last-child .gazette-welcome-post .blog-post-thumbnail,
+/* .catagory-welcome-post-area .col-12:last-child .gazette-welcome-post .blog-post-thumbnail,
 .catagory-welcome-post-area .col-12:last-child .gazette-welcome-post .welcome-post-contents {
     -webkit-box-flex: 0;
         -ms-flex: 0 0 50%;
             flex: 0 0 50%;
     max-width: 50%;
-}
+} */
 
 .page-item:first-child .page-link {
     border-top-left-radius: 0;

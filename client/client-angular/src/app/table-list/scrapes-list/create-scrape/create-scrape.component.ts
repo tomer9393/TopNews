@@ -20,7 +20,7 @@ export class CreateScrapeComponent implements OnInit {
     ngOnInit(): void {
     }
     
-    onCreate(title: String, img: String, published: String, time: Date){
+    onCreate(title: String, img: String, published: Date, time: Date){
       this.scrapesService.addScrape(title, img, published, time).subscribe(data => {
         this.scrape = data;
         this.router.navigate(['/table-list']);

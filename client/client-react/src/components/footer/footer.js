@@ -22,9 +22,6 @@ function Footer(){
                       <li><Link to="/Category/Health">Health</Link></li>
                       <li><Link to="/Category/Entertainment">Entertainment</Link></li>
                       <li><Link to="/Category/Sport">Sport</Link></li>
-                      {/* <li><a href="#">Middle</a></li>
-                      <li><a href="#">East</a></li>
-                      <li><a href="#">Opinion</a></li> */}
                     </ul>
                   </div>
                 </div>
@@ -37,13 +34,6 @@ function Footer(){
                     </div>
                     <ul className="footer-widget-menu">
                       <li><Link to="/AboutUs">About us page</Link></li>
-                      {/* <li><a href="#">Business</a></li>
-                      <li><a href="#">Traveller</a></li>
-                      <li><a href="#">Destinations</a></li>
-                      <li><a href="#">Features</a></li>
-                      <li><a href="#">Food/Drink</a></li>
-                      <li><a href="#">Hotels</a></li>
-                      <li><a href="#">Partner Hotels</a></li> */}
                     </ul>
                   </div>
                 </div>
@@ -105,8 +95,8 @@ function Footer(){
                       <h4 className="font-pt">Contact Us</h4>
                     </div>
                     <ul className="footer-widget-menu">
-                      <img src="https://www.merhofcu.org/wp-content/uploads/2018/07/time-to-update-website.jpg" class="lazyloaded" data-ll-status="loaded"></img>
-                      <li><Link to="/Contact">For contact info press here</Link></li>
+                      <img src="https://www.merhofcu.org/wp-content/uploads/2018/07/time-to-update-website.jpg" className="lazyloaded" data-ll-status="loaded"></img>
+                      <li><Link to="/Contact">For contact press here</Link></li>
                     </ul>
                   </div>
                 </div>

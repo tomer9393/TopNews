@@ -31,7 +31,7 @@ const removeCategory = async (name) => {
     if (!category)
         return null;
 
-    return await Category.remove();
+    return await category.remove();
 
 }
 

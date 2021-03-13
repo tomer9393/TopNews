@@ -11,7 +11,7 @@ const Scrape = new Schema({
         type: String
     },
     published: {
-        type: String
+        type: Date
     },
     time: {
         type: Date,

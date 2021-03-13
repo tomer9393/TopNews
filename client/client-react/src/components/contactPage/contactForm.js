@@ -2,11 +2,20 @@ import { createContact } from "../../api/ContactAPI";
 import { useState } from "react";
 import { useAlert, withAlert } from "react-alert";
 
+
 function ContactForm() {
-  const [fullName, setFullName] = useState(undefined);
-  const [email, setEmail] = useState(undefined);
-  const [message, setMessage] = useState(undefined);
-  const alert = useAlert();
+  var [fullName, setFullName] = useState(undefined);
+  var [email, setEmail] = useState(undefined);
+  var [message, setMessage] = useState(undefined);
+  
+  function reset(){
+      fullName = undefined;
+      email = undefined;
+      message = undefined;
+      document.getElementById('contact-name').value = '';
+      document.getElementById('contact-email').value = '';
+      document.getElementById('message').value = '';
+  }
 
   return (
     <>
@@ -44,9 +53,13 @@ function ContactForm() {
       </form>
       <button
         onClick={() => {
-          // createContact(fullName, email, message);
-          alert.success("Message was sent successfuly");
-          // window.location.reload();
+          if(fullName === undefined || email === undefined ||message === undefined )
+            window.alert("Please fill all fields");
+          else{
+            createContact(fullName, email, message);
+            window.alert("Thank you for contact us");
+            reset();
+          }
         }}
         type="submit"
         className="btn contact-btn"

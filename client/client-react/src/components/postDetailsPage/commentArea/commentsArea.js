@@ -27,7 +27,7 @@ function CommentArea(props) {
   // ];
 
   const allComments = comments?.map((comment) => {
-    return <SingleComment comment={comment} />;
+    return <SingleComment key={comment._id} comment={comment} />;
   });
 
   return (

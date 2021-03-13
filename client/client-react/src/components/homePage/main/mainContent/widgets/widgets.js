@@ -12,20 +12,6 @@ function MainContent() {
 
                     {/* Don't Miss Widget */}
                     <WorldNews/>
- 
-                   
-                    {/* Subscribe Widget */}
-                    <div className="subscribe-widget">
-                        <div className="widget-title">
-                            <h5>subscribe</h5>
-                        </div>
-                        <div className="subscribe-form">
-                            <form action="#">
-                                <input type="email" name="email" id="subs_email" placeholder="Your Email" />
-                                <button type="submit">subscribe</button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
 

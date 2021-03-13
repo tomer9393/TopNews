@@ -21,7 +21,7 @@ function SingleTodayPosts(props) {
     <>
       <div className="gazette-single-todays-post d-md-flex align-items-start mb-50">
         <div className="todays-post-thumb">
-          <img src={article.img} alt />
+          <img src={article.img} alt="" />
         </div>
         <div className="todays-post-content">
           {/* Post Tag */}

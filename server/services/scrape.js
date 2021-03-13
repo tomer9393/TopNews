@@ -23,7 +23,7 @@ const getScrapeById = async (id) => {
 };
 
 const getScrapes = async () => {
-    return await Scrape.find({});
+    return await Scrape.find({}).sort({"published":-1});
 };
 
 const getNumOfScrapes = async () => {
@@ -31,7 +31,7 @@ const getNumOfScrapes = async () => {
 };
 
 const getLatestScrapes = async (numOfScrapes) => {
-    return await Scrape.find().sort({ time: 'asc' }).limit(parseInt(numOfScrapes));
+    return await Scrape.find().sort({ published: 'desc' }).limit(parseInt(numOfScrapes));
 };
 
 const updateScrape = async (id, title, img, published, time) => {
