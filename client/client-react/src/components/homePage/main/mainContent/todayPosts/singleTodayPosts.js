@@ -29,7 +29,7 @@ function SingleTodayPosts(props) {
             <Link to={`Category/${article.category}`}>{article.category}</Link>
           </div>
           <h3>
-            <Link to={`PostDetails/${article._id}`} className="font-pt mb-2">
+            <Link to={`PostDetails/${article._id}`} className="font-pt mb-1">
               {article.title}
             </Link>
           </h3>

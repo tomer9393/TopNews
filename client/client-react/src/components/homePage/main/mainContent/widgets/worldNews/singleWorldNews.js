@@ -12,7 +12,7 @@ function SingleWorldNews(props) {
                   <img src={scrape.img} alt="" />             
               </div>
               <div className="dont-miss-post-content">
-                  <a className="font-pt">{scrape.title}</a>
+                  <a className="font-pt" style={{textAlign: 'left'}}>{scrape.title}</a>
                   <span>{formattedDate}</span>
               </div>
           </div>

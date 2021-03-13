@@ -19,7 +19,7 @@ function MainContent() {
         <div className="gazette-post-tag">
           <a href="#">Politics</a>
         </div>
-        <h2 className="font-pt">{article.title}</h2>
+        <h2 className="font-pt" style={{textAlign: 'left'}}>{article.title}</h2>
         <p className="gazette-post-date">{new Date(article.published).toLocaleString("he-IL")}</p>
         {/* Post Thumbnail */}
         <div className="blog-post-thumbnail my-5">
