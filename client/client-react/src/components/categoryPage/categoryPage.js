@@ -39,9 +39,6 @@ function CategoryPage() {
                 <div className="gazette-post-tag">
                   <Link to={`/Category/${name}`}>{name}</Link>
                 </div>
-                <p className="editorial-post-date text-dark mb-0">
-                  {moment().format("DD/MM/YYYY")}
-                </p>
               </div>
             </div>
           </div>

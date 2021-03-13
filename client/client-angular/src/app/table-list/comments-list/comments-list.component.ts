@@ -19,7 +19,7 @@ export class CommentsListComponent implements OnInit {
   
   ngOnInit() {
     if(this.listFor === '')
-    this.loadAll();
+      this.loadAll();
     else if (this.listFor !== '')
     {
       this.loadForArticle(this.listFor);
@@ -36,11 +36,15 @@ export class CommentsListComponent implements OnInit {
     }
     else if(this.listFor === "search")
     { 
-      this.commentsService.filter(this.search).subscribe(data =>{
+      this.commentsService.filter(this.search).subscribe(data =>{ 
         this.comments = data;
       }, err => {
         window.alert(err.error);
       })
+    }
+    else if (this.listFor !== '')
+    {
+      this.loadForArticle(this.listFor);
     }
   }
 

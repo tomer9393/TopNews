@@ -22,14 +22,18 @@ export class EditCategoryComponent implements OnInit {
     }
   
     onUpdate(name: String){
-      this.category.name = name;
-      this.categoriesService.updateCategory(this.category).subscribe(data => {
-        this.category = data;
-        this.router.navigate(['/table-list']);
-      }, err => {
-        window.alert(err.error);
-        this.router.navigate(['/table-list']);
-      });
+      if(name === '')
+      window.alert('Please fill all fields');
+      else{
+        this.category.name = name;
+        this.categoriesService.updateCategory(this.category).subscribe(data => {
+          this.category = data;
+          this.router.navigate(['/table-list']);
+        }, err => {
+          window.alert(err.error);
+          this.router.navigate(['/table-list']);
+        });
+      }
     }
 
 }

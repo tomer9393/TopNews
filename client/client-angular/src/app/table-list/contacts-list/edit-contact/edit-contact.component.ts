@@ -22,13 +22,17 @@ export class EditContactComponent implements OnInit {
       }
     
       onUpdate(fullName: String, email: String, message: String){
-        this.contact.fullName = fullName;
-        this.contact.email = email;
-        this.contact.message = message;
-        this.contactsService.updateContact(this.contact).subscribe(data => {
-          this.contact = data;
-          this.router.navigate(['/table-list']);
-        });
+        if(fullName === '' || email === '' || message === '')
+        window.alert('Please fill all fields');
+        else{
+          this.contact.fullName = fullName;
+          this.contact.email = email;
+          this.contact.message = message;
+          this.contactsService.updateContact(this.contact).subscribe(data => {
+            this.contact = data;
+            this.router.navigate(['/table-list']);
+          });
+        }
       }
   
 }
