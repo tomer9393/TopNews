@@ -130,7 +130,7 @@ img {
 }
 
 .background-overlay:before {
-    background-color: rgba(0, 0, 0, 0.568);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 .background-overlay-5:before {

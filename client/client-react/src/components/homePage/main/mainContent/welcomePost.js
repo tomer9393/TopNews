@@ -29,7 +29,7 @@ function MainContent() {
           />
         </div>
         {/* Post Excerpt */}
-        <p>{article.body}</p>
+        <p>{article.body.substring(0, 500)}...</p>
         {/* Reading More */}
         <div className="post-continue-reading-share d-sm-flex align-items-center justify-content-between mt-30">
           <div className="post-continue-btn">
