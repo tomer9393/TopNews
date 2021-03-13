@@ -75,7 +75,7 @@ function AboutUsPage()
                     <div className="row justify-content-center">
                         <div className="col-12 col-md-8">
                             <div className="cta-content text-center">
-                                <h2 className="font-pt">Join Our Team</h2>
+                                <h2 className="font-pt" style={{textAlign: 'center'}}>Join Our Team</h2>
                                 <p style={{ color: '#ffffff' }}>Join the best team the world ever had. We are waiting to join you to the family</p>
                                 <Link to="/Contact" className="btn gazette-btn font-pt">Contact Us <i className="fa fa-angle-right" /></Link>
                             </div>
