@@ -6,7 +6,7 @@ function WorldNews() {
   const [scrapes, setScrapes] = useState();
   useEffect(
     () =>
-      getLatestScrapes(11)
+      getLatestScrapes(15)
         .then((res) => res.data)
         .then((res) => setScrapes(res)),
     []
