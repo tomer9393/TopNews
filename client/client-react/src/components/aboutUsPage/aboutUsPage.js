@@ -48,8 +48,7 @@ function AboutUsPage()
                         <div className="row">
                             <div className="col-12">
                             <div className="container" ></div>
-                                <h3 className="font-pt mb-50" style={{ lineHeight: '4' }}>Our Team</h3>
-                            </div>
+                                <h3 className="font-pt mb-50" style={{ textAlign: 'center', lineHeight: '4' }}>Our Team</h3>                            </div>
                         </div> 
                         <div className="row ">
                         <div className="col-1"></div>

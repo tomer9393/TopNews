@@ -1,10 +1,18 @@
 import { useState } from "react";
-import { createComment } from "../../../api/CommentAPI";
+import { createComment, getCommentsByArticleID } from "../../../api/CommentAPI";
 
 function LeaveComment(props) {
   const [contactName, setContactName] = useState(undefined);
   const [message, setMessage] = useState(undefined);
 
+  const onClick = () => {
+    createComment(props.id, contactName, message)
+    .then((res) => {
+      getCommentsByArticleID(props.id).then((res) => {
+        props.setComments(res.data)});
+      setContactName("");
+      setMessage("");});
+  }
   return (
     <>
       <div className="leave-comment-area clearfix">
@@ -22,6 +30,7 @@ function LeaveComment(props) {
                 name="contactName"
                 placeholder="Enter Your Full Name"
                 onChange={(event) => setContactName(event.target.value)}
+                value={contactName || ''}
               />
             </div>
             <div className="form-group">
@@ -32,18 +41,15 @@ function LeaveComment(props) {
                 cols={30}
                 rows={10}
                 placeholder="Message"
-                defaultValue={""}
                 onChange={(event) => setMessage(event.target.value)}
+                value={message || ''}
               />
             </div>
           </form>
           <button
             type="submit"
             className="btn leave-comment-btn"
-            onClick={() => {
-              createComment(props.id, contactName, message);
-              window.location.reload();
-            }}
+            onClick={onClick}
           >
             SUBMIT <i className="fa fa-angle-right ml-2" />
           </button>
@@ -54,3 +60,4 @@ function LeaveComment(props) {
 }
 
 export default LeaveComment;
+

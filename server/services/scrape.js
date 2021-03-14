@@ -31,7 +31,7 @@ const getNumOfScrapes = async () => {
 };
 
 const getLatestScrapes = async (numOfScrapes) => {
-    return await Scrape.find().sort({ published: 'desc' }).limit(parseInt(numOfScrapes));
+    return await Scrape.aggregate([ { $sample: { size: parseInt(numOfScrapes) } } ]);
 };
 
 const updateScrape = async (id, title, img, published, time) => {

@@ -6,7 +6,7 @@ import { getCommentsByArticleID } from "../../../api/CommentAPI";
 
 function CommentArea(props) {
   const id = props.id;
-  const [comments, setComments] = useState(undefined);
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getCommentsByArticleID(id).then((res) => setComments(res.data));
@@ -45,7 +45,7 @@ function CommentArea(props) {
               </div>
 
               {/* Leave A Comment */}
-              <LeaveComment id={id}/>
+              <LeaveComment id={id} comments={comments} setComments={setComments}/>
             </div>
           </div>
         </div>
