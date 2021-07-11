@@ -35,6 +35,10 @@ Reader can see all the info regarding this news post and a the comments list fro
 <h3>For Admins - </h3>
 Admin can see all the data stored about all the news posts created.<br>
 Admin can add, modify and delete posts. And also can see important information in graphs.<br>
+  
+
+<h3>Scraper</h3>
+All the posts on the world news list at the right side of the home page was scraped by a scraper code made to collect news breaks from:https://www.jpost.com/international<br>
 
 
 ## Use-case Video
