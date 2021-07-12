@@ -9,7 +9,7 @@
 ## Table of Contents:
 * [**Project Description**](#project-description)
 * [**Functionality and Use-case**](#functionality-and-use-case)
-* [**Use-case Video**](#use-case-videos)
+* [**Use-case Video**](#use-case-video)
 * [**Technologies Used**](#technologies-used)
 * [**How To Install**](#installation)
 
